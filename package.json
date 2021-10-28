@@ -1,0 +1,16 @@
+{
+  "name": "challenge-toolbox-draft",
+  "version": "1.0.0",
+  "description": "Test power-up app",
+  "main": "src/js/connector.js",
+  "repository": "https://github.com/danhartley/challenge-toolbox-draft.git",
+  "author": "Daniel Hartley <danhartleybcn@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "parcel": "^2.0.0"
+  },
+  "scripts": {
+      "build": "parcel build src/html/index.html",
+      "start": "node server.js"
+  }
+}
