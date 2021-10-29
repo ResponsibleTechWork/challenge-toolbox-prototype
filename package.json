@@ -10,7 +10,7 @@
     "parcel": "^2.0.0"
   },
   "scripts": {
-      "build": "parcel build src/js/connector.js",
+      "build": "parcel build src/html/index.html",
       "start": "node server.js"
   }
 }
