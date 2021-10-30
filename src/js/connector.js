@@ -23,7 +23,7 @@ var onBtnClick = function (t, opts) {
     },
   
     "card-badges": function (t, opts) {    
-      console.log('card-badges t object:', t.getAll();
+      console.log('card-badges t object:', t.getAll());
       return t
         .card("name")
         .get("name")
