@@ -6,8 +6,8 @@ const onBtnClick = function (t, opts) {
     console.log(JSON.stringify(context, null, 2));
 
 
-    t.arg({
-        'card-back-section': function(t, options){
+    
+        return {'card-back-section': function(t, options){
           return {
             title: 'My Card Back Section',
             icon: GRAY_ICON, // Must be a gray icon, colored icons not allowed.
@@ -21,8 +21,8 @@ const onBtnClick = function (t, opts) {
               },
             }
           };
-        }
-      });
+        }}
+      
     // return t.card('id', 'name').then(function (card) {
     //     console.log('click event, card');
     //     console.log(JSON.stringify(card, null, 2));
