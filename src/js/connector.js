@@ -1,7 +1,9 @@
 
 const GRAY_ICON = 'https://cdn.hyperdev.com/us-east-1%3A3d31b21c-01a0-4da2-8827-4bc6e88b7618%2Ficon-gray.svg';
 
-var onBtnClick = function (t, opts) {    
+const onBtnClick = function (t, opts) {    
+    const context = t.getContext();
+    console.log(JSON.stringify(context, null, 2));
     return t.card('id', 'name').then(function (card) {
         console.log('click event, card');
         console.log(JSON.stringify(card, null, 2));
@@ -26,22 +28,8 @@ var onBtnClick = function (t, opts) {
   
     "card-badges": function (t, opts) {    
         return t
-            .board('id', 'name')
-            .then(function (board) {
-                console.log('board');
-                console.log(JSON.stringify(board, null, 2));
-            })
-            .cards('id', 'name')
-            .then(function (cards) {
-                console.log('cards');
-                console.log(JSON.stringify(cards, null, 2));
-            })
-            .member('id', 'username')
-            .then(function (member) {
-                console.log('member');
-                console.log(JSON.stringify(member, null, 2));
-            })
-            .then(function (cardName) {        
+            .card('id', 'name')            
+            .then(function (card) {        
             return [
                 {
                 text: "Challenge",
@@ -55,3 +43,22 @@ var onBtnClick = function (t, opts) {
             });
         },
   });
+
+    const t = window.TrelloPowerUp.iframe();
+
+    return t.member('id', 'username')
+    .then(function (member) {
+        console.log('member');
+        console.log(JSON.stringify(member, null, 2));
+    });
+
+    // .board('id', 'name')
+    //         .then(function (board) {
+    //             console.log('board');
+    //             console.log(JSON.stringify(board, null, 2));
+    //         })
+    //         .cards('id', 'name')
+    //         .then(function (cards) {
+    //             console.log('cards');
+    //             console.log(JSON.stringify(cards, null, 2));
+    //         })
