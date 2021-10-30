@@ -45,20 +45,3 @@ const onBtnClick = function (t, opts) {
   });
 
     const t = window.TrelloPowerUp.iframe();
-
-    return t.member('id', 'username')
-    .then(function (member) {
-        console.log('member');
-        console.log(JSON.stringify(member, null, 2));
-    });
-
-    // .board('id', 'name')
-    //         .then(function (board) {
-    //             console.log('board');
-    //             console.log(JSON.stringify(board, null, 2));
-    //         })
-    //         .cards('id', 'name')
-    //         .then(function (cards) {
-    //             console.log('cards');
-    //             console.log(JSON.stringify(cards, null, 2));
-    //         })
