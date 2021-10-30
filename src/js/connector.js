@@ -12,6 +12,8 @@ const onBtnClick = function (t, opts) {
 
   window.TrelloPowerUp.initialize({
     'card-buttons': function (t, opts) {
+        const context = t.getContext();
+        console.log(JSON.stringify(context, null, 2));
         return [{
             icon: GRAY_ICON,
             text: 'Add challenge--',
@@ -29,7 +31,7 @@ const onBtnClick = function (t, opts) {
     "card-badges": function (t, opts) {    
         return t
             .card('id', 'name')            
-            .then(function (card) {        
+            .then(function (card) {
             return [
                 {
                 text: "Challenge",
