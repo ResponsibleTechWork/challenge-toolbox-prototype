@@ -6,7 +6,7 @@ const onBtnClick = function (t, opts) {
     console.log(JSON.stringify(context, null, 2));
 
 
-    window.TrelloPowerUp.initialize({
+    t.arg({
         'card-back-section': function(t, options){
           return {
             title: 'My Card Back Section',
