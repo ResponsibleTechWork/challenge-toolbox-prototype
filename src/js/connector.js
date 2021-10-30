@@ -2,7 +2,10 @@ console.log('testing challenge cards')
 const GRAY_ICON = 'https://cdn.hyperdev.com/us-east-1%3A3d31b21c-01a0-4da2-8827-4bc6e88b7618%2Ficon-gray.svg';
 
 var onBtnClick = function (t, opts) {
-    return t.card("all").then(function (card) {
+    t.member("all").then(function (member) {
+        console.log(JSON.stringify(member, null, 2));
+      });
+    return t.card('id', 'name').then(function (card) {
         console.log(JSON.stringify(card, null, 2));
     });
   };
