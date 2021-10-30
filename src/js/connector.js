@@ -43,5 +43,3 @@ const onBtnClick = function (t, opts) {
             });
         },
   });
-
-    const t = window.TrelloPowerUp.iframe();
