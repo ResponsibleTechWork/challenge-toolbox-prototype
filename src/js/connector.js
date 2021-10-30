@@ -2,12 +2,12 @@ console.log('testing challenge cards')
 const GRAY_ICON = 'https://cdn.hyperdev.com/us-east-1%3A3d31b21c-01a0-4da2-8827-4bc6e88b7618%2Ficon-gray.svg';
 
 var onBtnClick = function (t, opts) {
-    console.log('Someone clicked the button: ', t.get('all'));
+    console.log('Someone clicked the button: ', getAll());
   };
   
   window.TrelloPowerUp.initialize({
     'card-buttons': function (t, opts) {
-      console.log('card-buttons t object:', t.get('all'));
+      console.log('card-buttons t object:', getAll());
       return [{
         icon: GRAY_ICON,
         text: 'Add challenge--',
@@ -23,7 +23,7 @@ var onBtnClick = function (t, opts) {
     },
   
     "card-badges": function (t, opts) {    
-      console.log('card-badges t object:', t.get('all'));
+      console.log('card-badges t object:', getAll());
       return t
         .card("name")
         .get("name")
