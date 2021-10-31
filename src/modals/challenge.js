@@ -49,7 +49,7 @@ let pledgeItems = '';
 
 pledges.map(pledge => {
     pledgeItems += `<li>
-                <button id="${pledge}" class="btn btnChallenge" onClick={onSelect}>${pledge}</button>
+                <button id="${pledge}" class="btn btnChallenge" onclick="{onSelect}">${pledge}</button>
              </li>`;
 });
 
@@ -68,7 +68,9 @@ reasonsContainer.innerHTML = reasonItems;
 const onSelect = e => {
     console.log(e);
 
-    const t = window.TrelloPowerUp.iframe();
+    
+};
+
+const t = window.TrelloPowerUp.iframe();
     const context = t.getContext();
     console.log(JSON.stringify(context, null, 2));
-};
