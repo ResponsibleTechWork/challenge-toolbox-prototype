@@ -79,7 +79,7 @@ const onBtnClick = function (t, opts) {
         icon: GRAY_ICON, // Must be a gray icon, colored icons not allowed.
         content: {
             type: 'iframe',
-            url: cbs.signUrl('./section.html', { anArg: 'hey' }),
+            url: cbs.signUrl('/src/html/section.html', { anArg: 'hey' }),
             height: 230, // Max height is 1500.
             action: {
                 text: 'My Action',
