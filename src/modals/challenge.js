@@ -46,11 +46,14 @@ const pledgesContainer = document.getElementById('pledges');
 const reasonsContainer = document.getElementById('reasons');
 
 const redrawChallengePledges = () => {
-    const pledgeItems = pledges.map(pledge => {
-        return `<li>
-                    <button id="${pledge}" class="btn btnChallenge" onclick="onSelect(${pledge});">${pledge}</button>
-                </li>`;
+    const pledgeItems = pledges.map(pledge => {    
+        const item = `<li>
+                        <button id="${pledge}" class="btn btnChallenge" onclick="onSelect(${pledge});">${pledge}</button>
+                      </li>`;
+        return item;
     });
+
+    console.log(pledgeItems);
     
     pledgesContainer.innerHTML = pledgeItems;
 };
@@ -73,6 +76,8 @@ redrawChallengePledges();
 
 const onSelect = pledge => {
     console.log(pledge);
+    logChallenge(pledge);
+    console.log(pledgesLog);
 };
 
 const t = window.TrelloPowerUp.iframe();
