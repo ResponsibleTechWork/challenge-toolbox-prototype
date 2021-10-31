@@ -56,20 +56,22 @@ const onBtnClick = function (t, opts) {
                 {
                     text: "Challenge",
                     callback: function(t){
-                        return t.popup({
+                        return t.modal({
                             title: "Challenge card",
                             url: './challenge.html',
-                            height: 600,
+                            fullscreen: false,
+                            height: 500,
                         });
                         }
                   },      
                   {
                     text: "Celebrate",
                     callback: function(t){
-                        return t.popup({
+                        return t.modal({
                           title: "Celebrate card",
                           url: './celebrate.html',
-                          height: 600,
+                          fullscreen: false,
+                          height: 500,
                         });
                       }
                   },
