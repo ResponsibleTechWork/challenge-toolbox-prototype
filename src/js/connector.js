@@ -5,7 +5,7 @@ const onBtnClick = function (t, opts) {
     const context = t.getContext();
     console.log(JSON.stringify(context, null, 2));
 
-
+    console.log(t.get('card', 'shared', 'isClicked'));
     
         return {'card-back-section': function(t, options){
           return {
@@ -33,6 +33,13 @@ const onBtnClick = function (t, opts) {
     'card-buttons': function (t, opts) {
         const context = t.getContext();
         console.log(JSON.stringify(context, null, 2));
+
+        let myKeyValueObject = {
+            'isClicked': 'you bectcha!',
+          }
+          t.set('card', 'shared', myKeyValueObject);
+
+
         return [{
             icon: GRAY_ICON,
             text: 'Add challenge--',
