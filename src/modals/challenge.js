@@ -2,6 +2,10 @@ const sources = [
     {
         name: 'Principles of Green Software Engineering',
         src: 'https://principles.green/',
+        pledges: [
+            'carbon efficient',
+            'energy efficient'
+        ],
         reasons: {
             positive: [
                 'efficient',
@@ -17,6 +21,10 @@ const sources = [
     {
         name: 'Challenge Toolbox Prototype',
         src: 'https://www.figma.com/file/E7ZOq83wqAE6ABfoIXnnVm/Challenge-Toolbox-Prototype?node-id=3%3A111',
+        pledges: [
+            'respect people',
+            'protect against abuse'
+        ],
         reasons: {
             positive: [
                 'improves well-being',
@@ -31,16 +39,28 @@ const sources = [
     },
 ]
 
+const pledges = sources.find(s => s.selected).pledges;
 const reasons = sources.find(s => s.selected).negative.reasons;
 
+const pledgesContainer = document.getElementById('pledges');
 const reasonsContainer = document.getElementById('reasons');
 
-let items = '';
+let pledgeItems = '';
+
+pledges.map(pledge => {
+    pledgeItems += `<li>
+                <button id="${pledge}" class="btn btnChallenge">${pledge}</button>
+             </li>`;
+});
+
+pledgesContainer.innerHTML = pledgeItems;
+
+let reasonItems = '';
 
 reasons.map(reason => {
-    items += `<li>
+    reasonItems += `<li>
                 <button id="${reason}" class="btn btnChallenge">${reason}</button>
              </li>`;
 });
 
-reasonsContainer.innerHTML = items;
+reasonsContainer.innerHTML = reasonItems;
