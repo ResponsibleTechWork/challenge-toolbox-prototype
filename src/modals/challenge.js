@@ -49,7 +49,7 @@ let pledgeItems = '';
 
 pledges.map(pledge => {
     pledgeItems += `<li>
-                <button id="${pledge}" class="btn btnChallenge" onclick="{onSelect}">${pledge}</button>
+                <button id="${pledge}" class="btn btnChallenge" onclick="onSelect(event);">${pledge}</button>
              </li>`;
 });
 
