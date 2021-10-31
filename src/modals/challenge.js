@@ -64,7 +64,7 @@ const redrawChallengePledges = () => {
                 </li>`;
     });
 
-    pledgesContainer.innerHTML = pledgeItems;
+    pledgesContainer.innerHTML = pledgeItems.joion('');
 };
 
 redrawChallengePledges();
@@ -76,7 +76,7 @@ const redrawChallengeReasons = () => {
                 </li>`;
     });
     
-    reasonsContainer.innerHTML = reasonItems;
+    reasonsContainer.innerHTML = reasonItems.joion('');
 };
 
 redrawChallengeReasons();
@@ -101,4 +101,5 @@ const logChallenge = pledge => {
     } else {
         pledgesLog = pledgesLog.filter(log => log.pledge !== pledge);        
     }
+    console.log(pledgesLog);
 };
