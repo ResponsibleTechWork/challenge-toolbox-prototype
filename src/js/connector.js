@@ -10,21 +10,21 @@ const onBtnClick = function (t, opts) {
     });
 
     
-    return {'card-back-section': function(t, options){
-        return {
-        title: 'My Card Back Section',
-        icon: GRAY_ICON, // Must be a gray icon, colored icons not allowed.
-        content: {
-            type: 'iframe',
-            url: t.signUrl('../html/section.html'),
-            height: 230, // Max height is 1500.
-            action: {
-            text: 'My Action',
-            callback: (t) => t.popup(),
-            },
-        }
-        };
-    }}
+    // return {'card-back-section': function(cbs, options){
+    //     return {
+    //     title: 'My Card Back Section',
+    //     icon: GRAY_ICON, // Must be a gray icon, colored icons not allowed.
+    //     content: {
+    //         type: 'iframe',
+    //         url: cbs.signUrl('../html/section.html'),
+    //         height: 230, // Max height is 1500.
+    //         action: {
+    //             text: 'My Action',
+    //             // callback: (t) => t.popup(),
+    //         },
+    //     }
+    //     };
+    // }}
       
     // return t.card('id', 'name').then(function (card) {
     //     console.log('click event, card');
@@ -73,4 +73,20 @@ const onBtnClick = function (t, opts) {
             ];
             });
         },
+    'card-back-section': function(cbs, options){
+        return {
+        title: 'My Card Back Section',
+        icon: GRAY_ICON, // Must be a gray icon, colored icons not allowed.
+        content: {
+            type: 'iframe',
+            url: cbs.signUrl('../html/section.html'),
+            height: 230, // Max height is 1500.
+            action: {
+                text: 'My Action',
+                // callback: (t) => t.popup(),
+            },
+        }
+        };
+    }
+          
   });
