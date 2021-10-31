@@ -58,7 +58,7 @@ const onBtnClick = function (t, opts) {
                     callback: function(t){
                         return t.modal({
                             title: "Challenge card",
-                            url: './challenge.html',
+                            url: './modals/challenge.html',
                             fullscreen: false,
                             height: 500,
                         });
@@ -69,7 +69,7 @@ const onBtnClick = function (t, opts) {
                     callback: function(t){
                         return t.modal({
                           title: "Celebrate card",
-                          url: './celebrate.html',
+                          url: './modals/celebrate.html',
                           fullscreen: false,
                           height: 500,
                         });
