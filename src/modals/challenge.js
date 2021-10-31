@@ -45,32 +45,54 @@ const reasons = sources.find(s => s.selected).reasons.negative;
 const pledgesContainer = document.getElementById('pledges');
 const reasonsContainer = document.getElementById('reasons');
 
-let pledgeItems = '';
+const redrawChallengePledges = () => {
+    const pledgeItems = pledges.map(pledge => {
+        return `<li>
+                    <button id="${pledge}" class="btn btnChallenge" onclick="onSelect(${pledge});">${pledge}</button>
+                </li>`;
+    });
+    
+    pledgesContainer.innerHTML = pledgeItems;
+};
 
-pledges.map(pledge => {
-    pledgeItems += `<li>
-                <button id="${pledge}" class="btn btnChallenge" onclick="onSelect(event);">${pledge}</button>
-             </li>`;
-});
-
-pledgesContainer.innerHTML = pledgeItems;
+redrawChallengePledges();
 
 let reasonItems = '';
 
-reasons.map(reason => {
-    reasonItems += `<li>
-                <button id="${reason}" class="btn btnChallenge">${reason}</button>
-             </li>`;
-});
-
-reasonsContainer.innerHTML = reasonItems;
-
-const onSelect = e => {
-    console.log(e);
-
+const redrawChallengeReasons = () => {
+    reasons.map(reason => {
+        reasonItems += `<li>
+                            <button id="${reason}" class="btn btnChallenge">${reason}</button>
+                        </li>`;
+    });
     
+    reasonsContainer.innerHTML = reasonItems;
+};
+
+redrawChallengePledges();
+
+const onSelect = pledge => {
+    console.log(pledge);
 };
 
 const t = window.TrelloPowerUp.iframe();
-    const context = t.getContext();
-    console.log(JSON.stringify(context, null, 2));
+const context = t.getContext();
+console.log(JSON.stringify(context, null, 2));
+
+let pledgesLog = [];
+
+const logChallenge = pledge => {
+    const log = pledgesLog.find(log => log.pledge === pledge);
+    if(log) {
+        pledgesLog = pledgesLog.filter(log => log.pledge === pledge);
+    } else {
+        pledgesLog.push({
+                type: 'challenge',
+                board: context.board,
+                member: context.member,
+                card: context.card,
+                pledge: pledge,        
+            }
+        );
+    }
+};
