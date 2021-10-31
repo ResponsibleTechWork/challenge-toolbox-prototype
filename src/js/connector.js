@@ -3,25 +3,28 @@ const GRAY_ICON = 'https://cdn.hyperdev.com/us-east-1%3A3d31b21c-01a0-4da2-8827-
 
 const onBtnClick = function (t, opts) {    
     const context = t.getContext();
-    console.log(JSON.stringify(context, null, 2));
+    // console.log(JSON.stringify(context, null, 2));
 
-    console.log(t.get('card', 'shared', 'isClicked'));
+    t.get('card', 'shared', 'isClicked').then(function(data) {
+        console.log('card clicked callback, properties of isClicked: ', JSON.stringify(data, null, 2));
+    });
+
     
-        return {'card-back-section': function(t, options){
-          return {
-            title: 'My Card Back Section',
-            icon: GRAY_ICON, // Must be a gray icon, colored icons not allowed.
-            content: {
-              type: 'iframe',
-              url: t.signUrl('../html/section.html'),
-              height: 230, // Max height is 1500.
-              action: {
-                text: 'My Action',
-                callback: (t) => t.popup(),
-              },
-            }
-          };
-        }}
+    return {'card-back-section': function(t, options){
+        return {
+        title: 'My Card Back Section',
+        icon: GRAY_ICON, // Must be a gray icon, colored icons not allowed.
+        content: {
+            type: 'iframe',
+            url: t.signUrl('../html/section.html'),
+            height: 230, // Max height is 1500.
+            action: {
+            text: 'My Action',
+            callback: (t) => t.popup(),
+            },
+        }
+        };
+    }}
       
     // return t.card('id', 'name').then(function (card) {
     //     console.log('click event, card');
@@ -32,12 +35,12 @@ const onBtnClick = function (t, opts) {
   window.TrelloPowerUp.initialize({
     'card-buttons': function (t, opts) {
         const context = t.getContext();
-        console.log(JSON.stringify(context, null, 2));
+        // console.log(JSON.stringify(context, null, 2));
 
-        let myKeyValueObject = {
+        const myKeyValueObject = {
             'isClicked': 'you bectcha!',
-          }
-          t.set('card', 'shared', myKeyValueObject);
+          };
+        t.set('card', 'shared', myKeyValueObject);
 
 
         return [{
