@@ -63,7 +63,7 @@ const onBtnClick = function (t, opts) {
                     callback: function(t){
                         return t.popup({
                           title: "Hello Dolly",
-                          url: './html/section.html'
+                          url: './section.html'
                         });
                       }
                   },
