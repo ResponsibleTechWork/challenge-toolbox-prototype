@@ -47,35 +47,29 @@ const reasonsContainer = document.getElementById('reasons');
 
 const redrawChallengePledges = () => {
     const pledgeItems = pledges.map(pledge => {    
-        const item = `<li>
-                        <button id="${pledge}" class="btn btnChallenge" onclick="onSelect(${pledge});">${pledge}</button>
-                      </li>`;
-        return item;
+        return `<li>
+                    <button id="${pledge}" class="btn btnChallenge" onclick="onSelect('${pledge}'');">${pledge}</button>
+                </li>`;
     });
 
-    console.log(pledgeItems);
-    
     pledgesContainer.innerHTML = pledgeItems;
 };
 
 redrawChallengePledges();
 
-let reasonItems = '';
-
 const redrawChallengeReasons = () => {
-    reasons.map(reason => {
-        reasonItems += `<li>
-                            <button id="${reason}" class="btn btnChallenge">${reason}</button>
-                        </li>`;
+    const reasonItems = reasons.map(reason => {
+        return `<li>
+                    <button id="${reason}" class="btn btnChallenge">${reason}</button>
+                </li>`;
     });
     
     reasonsContainer.innerHTML = reasonItems;
 };
 
-redrawChallengePledges();
+redrawChallengeReasons();
 
 const onSelect = pledge => {
-    console.log(pledge);
     logChallenge(pledge);
     console.log(pledgesLog);
 };
@@ -88,16 +82,16 @@ let pledgesLog = [];
 
 const logChallenge = pledge => {
     const log = pledgesLog.find(log => log.pledge === pledge);
-    if(log) {
-        pledgesLog = pledgesLog.filter(log => log.pledge === pledge);
-    } else {
+    if(log === undefined) {
         pledgesLog.push({
-                type: 'challenge',
-                board: context.board,
-                member: context.member,
-                card: context.card,
-                pledge: pledge,        
-            }
-        );
+            type: 'challenge',
+            board: context.board,
+            member: context.member,
+            card: context.card,
+            pledge: pledge,        
+        }
+    );
+    } else {
+        pledgesLog = pledgesLog.filter(log => log.pledge !== pledge);        
     }
 };
