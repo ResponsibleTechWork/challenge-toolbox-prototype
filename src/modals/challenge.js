@@ -40,7 +40,7 @@ const sources = [
 ]
 
 const pledges = sources.find(s => s.selected).pledges;
-const reasons = sources.find(s => s.selected).negative.reasons;
+const reasons = sources.find(s => s.selected).reasons.negative;
 
 const pledgesContainer = document.getElementById('pledges');
 const reasonsContainer = document.getElementById('reasons');
