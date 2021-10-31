@@ -1,3 +1,15 @@
+body {
+    margin: 2rem calc(.75rem + 1vw) .5rem calc(.75rem + 1vw);
+}
+
+section {
+    margin: 1rem 0;
+}
+
+li {
+    display: inline-block;
+}
+
 .btn {
     padding: 1rem;
     border-radius: .25rem;

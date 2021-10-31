@@ -8,8 +8,8 @@ const reasonsContainer = document.getElementById('reasons');
 let items;
 
 reasons.map(reason => {
-    items += `<li>
-                <button class="btn btnChallenge">reason</button>
+    items =+ `<li>
+                <button class="btn btnChallenge">${reason}</button>
              </li>`
 });
 
