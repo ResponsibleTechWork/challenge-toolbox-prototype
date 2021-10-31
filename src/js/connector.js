@@ -79,11 +79,11 @@ const onBtnClick = function (t, opts) {
         icon: GRAY_ICON, // Must be a gray icon, colored icons not allowed.
         content: {
             type: 'iframe',
-            url: cbs.signUrl('../html/section.html'),
+            url: cbs.signUrl('./section.html'),
             height: 230, // Max height is 1500.
             action: {
                 text: 'My Action',
-                // callback: (t) => t.popup(),
+                callback: (t) => t.popup(),
             },
         }
         };
