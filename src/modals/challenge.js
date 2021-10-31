@@ -8,9 +8,9 @@ const reasonsContainer = document.getElementById('reasons');
 let items;
 
 reasons.map(reason => {
-    items += <li>
+    items += `<li>
                 <button class="btn btnChallenge">reason</button>
-             </li>
+             </li>`
 });
 
 reasonsContainer.innerHTML = items;
