@@ -3,8 +3,14 @@ const sources = [
         name: 'Principles of Green Software Engineering',
         src: 'https://principles.green/',
         pledges: [
-            'carbon efficient',
-            'energy efficient'
+            {
+                id: 1,
+                text: 'carbon efficient',
+            },            
+            {
+                id: 2,
+                text: 'energy efficient',
+            },            
         ],
         reasons: {
             positive: [
@@ -22,8 +28,14 @@ const sources = [
         name: 'Challenge Toolbox Prototype',
         src: 'https://www.figma.com/file/E7ZOq83wqAE6ABfoIXnnVm/Challenge-Toolbox-Prototype?node-id=3%3A111',
         pledges: [
-            'respect people',
-            'protect against abuse'
+            {
+                id: 1,
+                text: 'respect people',
+            },
+            {
+                id: 2,
+                text: 'protect against abuse',
+            },            
         ],
         reasons: {
             positive: [
@@ -48,7 +60,7 @@ const reasonsContainer = document.getElementById('reasons');
 const redrawChallengePledges = () => {
     const pledgeItems = pledges.map(pledge => {    
         return `<li>
-                    <button id="${pledge}" class="btn btnChallenge" onclick="onSelect('${pledge}'');">${pledge}</button>
+                    <button id="${pledge.id}" class="btn btnChallenge" onclick="logChallenge('${pledge}');">${pledge.text}</button>
                 </li>`;
     });
 
@@ -69,11 +81,6 @@ const redrawChallengeReasons = () => {
 
 redrawChallengeReasons();
 
-const onSelect = pledge => {
-    logChallenge(pledge);
-    console.log(pledgesLog);
-};
-
 const t = window.TrelloPowerUp.iframe();
 const context = t.getContext();
 console.log(JSON.stringify(context, null, 2));
@@ -81,7 +88,7 @@ console.log(JSON.stringify(context, null, 2));
 let pledgesLog = [];
 
 const logChallenge = pledge => {
-    const log = pledgesLog.find(log => log.pledge === pledge);
+    const log = pledgesLog.find(log => log.pledge.id === pledge.id);
     if(log === undefined) {
         pledgesLog.push({
             type: 'challenge',
