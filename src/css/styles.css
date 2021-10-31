@@ -1,0 +1,16 @@
+.btn {
+    padding: 1rem;
+    border-radius: .25rem;
+}
+
+.btnChallenge {
+    background-color: red;
+}
+
+.btnCelebrate {
+    background-color: green;
+}
+
+.btnSubmit {
+    background-color: blue;
+}

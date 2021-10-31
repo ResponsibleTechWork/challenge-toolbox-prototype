@@ -52,18 +52,33 @@ const onBtnClick = function (t, opts) {
               .card("name")
               .get("name")
               .then(function (cardName) {
-                console.log("We just loaded the card name for fun: " + cardName);        
                 return [                  
                   {
-                    // card detail badges (those that appear on the back of cards)
-                    // also support callback functions so that you can open for example
-                    // open a popup on click
-                    title: "Popup Detail Badge",
-                    text: "Popup",
+                    title: "Challenge",
+                    text: "Review pledges",
                     callback: function(t){
                         return t.popup({
-                          title: "Hello Dolly",
-                          url: './section.html'
+                          title: "Challenge card",
+                          url: './challenge.html'
+                        });
+                      }
+                  },
+                ];
+              });
+          },
+        "card-detail-badges": function (t, opts) {
+            return t
+              .card("name")
+              .get("name")
+              .then(function (cardName) {
+                return [                  
+                  {
+                    title: "Celebrate",
+                    text: "Review pledges",
+                    callback: function(t){
+                        return t.popup({
+                          title: "Celebrate card",
+                          url: './celebrate.html'
                         });
                       }
                   },
