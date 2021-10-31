@@ -4,15 +4,15 @@
 }
 
 .btnChallenge {
-    background-color: red;
+    background-color: rgba(255, 0, 0, .5);
 }
 
 .btnCelebrate {
-    background-color: green;
+    background-color: rgba(0, 128, 0, .5);
 }
 
 .btnSubmit {
-    background-color: blue;
+    background-color: rgba(0, 0, 255, .5);
 }
 
 .card-detail-badge a {

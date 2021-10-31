@@ -54,22 +54,22 @@ const onBtnClick = function (t, opts) {
               .then(function (cardName) {
                 return [            
                 {
-                    // title: "Challenge",
                     text: "Challenge",
                     callback: function(t){
                         return t.popup({
                             title: "Challenge card",
-                            url: './challenge.html'
+                            url: './challenge.html',
+                            height: 600,
                         });
                         }
                   },      
                   {
-                    // title: "Celebrate",
                     text: "Celebrate",
                     callback: function(t){
                         return t.popup({
                           title: "Celebrate card",
-                          url: './celebrate.html'
+                          url: './celebrate.html',
+                          height: 600,
                         });
                       }
                   },
