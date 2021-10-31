@@ -14,3 +14,7 @@
 .btnSubmit {
     background-color: blue;
 }
+
+.card-detail-badge a {
+    text-decoration: none;
+}

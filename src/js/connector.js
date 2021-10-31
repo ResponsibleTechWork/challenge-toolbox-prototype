@@ -52,29 +52,20 @@ const onBtnClick = function (t, opts) {
               .card("name")
               .get("name")
               .then(function (cardName) {
-                return [                  
-                  {
-                    title: "Challenge",
-                    text: "Review pledges",
+                return [            
+                {
+                    // title: "Challenge",
+                    text: "Challenge",
                     callback: function(t){
                         return t.popup({
-                          title: "Challenge card",
-                          url: './challenge.html'
+                            title: "Challenge card",
+                            url: './challenge.html'
                         });
-                      }
-                  },
-                ];
-              });
-          },
-        "card-detail-badges": function (t, opts) {
-            return t
-              .card("name")
-              .get("name")
-              .then(function (cardName) {
-                return [                  
+                        }
+                  },      
                   {
-                    title: "Celebrate",
-                    text: "Review pledges",
+                    // title: "Celebrate",
+                    text: "Celebrate",
                     callback: function(t){
                         return t.popup({
                           title: "Celebrate card",
