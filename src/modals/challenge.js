@@ -56,23 +56,25 @@ const submitButton = document.getElementById('submit');
       submitButton.addEventListener('click', e => {
           
             // https://developer.atlassian.com/cloud/trello/power-ups/client-library/getting-and-setting-data/
-            // https://developer.atlassian.com/cloud/trello/rest/api-group-cards/#api-cards-id-plugindata-get
+            // https://developer.atlassian.com/cloud/trello/rest/api-group-actions/
 
-            const scope = 'card';
+            const scope = 'memeber';
             const visibility = 'private';
             const key = 'challenged pledges';
+            const intitial = { challenges: [] };
             
-            const data = t.get(scope, visibility, key);
+            const data = t.get(scope, visibility, key, intitial);
 
-            const challengedPledges = data ? data.challenges : [];
+            console.log(data.challenges);
 
             const value = {
                 challenges: [
-                    ...challengedPledges,
+                    ...data.challenges,
                     pledgesLog.map(pledge => {
                         return {
-                          card: t.card,
-                          pledge: pledge.id
+                            member: t.member,
+                            card: t.card,
+                            pledge: pledge.id
                       }
                     })              
                 ]   
@@ -80,8 +82,8 @@ const submitButton = document.getElementById('submit');
             
             t.set(scope, visibility, key, value);
 
-            const response = t.get(scope, visibility, key);
+            const response = t.get(scope, visibility, key, empty);
 
-            console.log('challenged pledges: ', response ? response.challenges : 'nothing stored');
+            console.log('challenged pledges: ', JSON.stringify((response ? response.challenges : 'nothing stored on t'), null, 2));
 
         });
