@@ -1,10 +1,13 @@
+import { add } from '../shared/funcs';
+
 async function load() {
     
         const sources = await import('../shared/sources.json');
-        const shared = await import('../shared/funcs');
+        // const shared = await import('../shared/funcs');
         
         console.log(sources.data);
-        console.log('shared: ', shared);
+        console.log('add: ', add);
+        // console.log('shared: ', shared);
 
         const pledges = sources.data.find(s => s.selected).pledges;
         const reasons = sources.data.find(s => s.selected).reasons.negative;
