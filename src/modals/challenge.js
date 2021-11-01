@@ -6,9 +6,9 @@ async function load() {
         const funcs = await import('../shared/funcs');
     
         console.log(sources.data);
-        console.log('helpers: ', funcs);
-        console.log('helpers.funcs: ', funcs.funcs);
-        console.log('add 2 + 2 = ', funcs.funcs.add(2,2));
+        console.log('funcs: ', funcs);
+        console.log('funcs.add: ', funcs.add);
+        // console.log('add 2 + 2 = ', funcs.funcs.add(2,2));
 
         const pledges = sources.data.find(s => s.selected).pledges;
         const reasons = sources.data.find(s => s.selected).reasons.negative;

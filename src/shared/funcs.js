@@ -1,7 +1,3 @@
-const add = (x,y) => {
+export const add = (x,y) => {
     return x + y;
 };
-
-export const funcs = {
-    add
-}
