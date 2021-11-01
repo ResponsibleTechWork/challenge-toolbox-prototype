@@ -1,9 +1,9 @@
-import('../shared.json').then(function (sources) {
+import('../sources.json').then(function (sources) {
 
-console.log(sources)
+console.log(sources.data)
 
-const pledges = sources.find(s => s.selected).pledges;
-const reasons = sources.find(s => s.selected).reasons.negative;
+const pledges = sources.data.find(s => s.selected).pledges;
+const reasons = sources.data.find(s => s.selected).reasons.negative;
 
 const pledgesContainer = document.getElementById('pledges');
 const reasonsContainer = document.getElementById('reasons');
