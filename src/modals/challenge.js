@@ -58,7 +58,7 @@ const submitButton = document.getElementById('submit');
             // https://developer.atlassian.com/cloud/trello/power-ups/client-library/getting-and-setting-data/
             // https://developer.atlassian.com/cloud/trello/rest/api-group-actions/
 
-            const scope = 'memeber';
+            const scope = 'member';
             const visibility = 'private';
             const key = 'challenged pledges';
             const intitial = { challenges: [] };
