@@ -61,10 +61,10 @@ const submitButton = document.getElementById('submit');
             const scope = 'member';
             const visibility = 'private';
             const key = 'challenged pledges';
-            const intitial = { challenges: [] };
             
-            const data = t.get(scope, visibility, key, intitial);
+            const data = t.get(scope, visibility, key) || { challenges: [] };
 
+            console.log(data);
             console.log(data.challenges);
 
             const value = {
