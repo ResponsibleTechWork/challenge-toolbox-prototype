@@ -13,6 +13,7 @@ const clickHandler = pledgeId => {
     const t = window.TrelloPowerUp.iframe();
     const context = t.getContext();
     pledgesLog = logChallenge(pledgesLog, context, pledgeId);
+    console.log('click! - ', pledgesLog);
 };
 
 const redrawChallengePledges = () => {
