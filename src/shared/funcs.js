@@ -5,7 +5,7 @@ export const add = (x,y) => {
 
 let pledgesLog = [];
 
-export const logChallenge = pledgeId => {
+export const logChallenge = (context, pledgeId) => {
     const log = pledgesLog.find(log => log.pledge.id === pledgeId);
     if(log === undefined) {
         pledgesLog.push({
