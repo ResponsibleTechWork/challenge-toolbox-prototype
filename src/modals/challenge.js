@@ -15,7 +15,7 @@ const clickHandler = (e, pledgeId) => {
     const context = t.getContext();
 
     const btn = e.target;
-          btn.classList.find('selected') 
+          Array.from(btn.classList).find('selected') 
             ? btn.classList.remove('selected')
             : btn.classList.add('selected');
 
