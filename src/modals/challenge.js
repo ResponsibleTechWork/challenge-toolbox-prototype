@@ -55,20 +55,28 @@ redrawChallengeReasons();
 const submitButton = document.getElementById('submit');
       submitButton.addEventListener('click', e => {
           
-        console.log('submit!');
+            // https://developer.atlassian.com/cloud/trello/power-ups/client-library/getting-and-setting-data/
 
-          const challengedPledges = t.get('challenged pledges') || [];
-          
-          t.set('challenged pledges', [
-              ...challengedPledges,
-              pledgesLog.map(pledge => {
-                  return {
-                    card: t.card,
-                    pledge: pledge.id
-                }
-              })              
-          ]);
+            const scope = 'card';
+            const visibility = 'private';
+            const key = 'challenged pledges';
+            
+            const challengedPledges = t.get(scope, visibility, key) || [];
 
-          console.log('challenged pledges: ', t.get('challenged pledges'));
+            const value = {
+                challenges: [
+                    ...challengedPledges,
+                    pledgesLog.map(pledge => {
+                        return {
+                          card: t.card,
+                          pledge: pledge.id
+                      }
+                    })              
+                ]   
+            }
+            
+            t.set(scope, visibility, key, value);
 
-      });
+            console.log('challenged pledges: ', t.get(scope, visibility, key));
+
+        });
