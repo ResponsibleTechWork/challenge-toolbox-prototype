@@ -9,11 +9,20 @@ const reasonsContainer = document.getElementById('reasons');
 
 let pledgesLog = [];
 
-const clickHandler = pledgeId => {
+const clickHandler = (e, pledgeId) => {
+    
     const t = window.TrelloPowerUp.iframe();
     const context = t.getContext();
+
+    const btn = e.target;
+          btn.classList.find('selected') 
+            ? btn.classList.remove('selected')
+            : btn.classList.add('selected');
+
     pledgesLog = logChallenge(pledgesLog, context, pledgeId);
+    
     console.log('click! - ', pledgesLog);
+    console.log('btn: ', btn);
 };
 
 const redrawChallengePledges = () => {
@@ -25,11 +34,11 @@ const redrawChallengePledges = () => {
     });
 
     pledgesContainer.innerHTML = pledgeItems.join('');
+
     const buttons = pledgesContainer.querySelectorAll('.btn');
-    console.log(buttons);
-    buttons.forEach(btn => {
-        btn.addEventListener('click', () => clickHandler(btn.id));
-    });
+          buttons.forEach(btn => {
+              btn.addEventListener('click', e => clickHandler(e, btn.id));
+          });
 };
 
 redrawChallengePledges();
