@@ -1,7 +1,9 @@
-import('../shared').then(function (shared) {
+import('../shared').then(function (data) {
 
-const pledges = shared.sources.find(s => s.selected).pledges;
-const reasons = shared.sources.find(s => s.selected).reasons.negative;
+console.log(data.sources)
+
+const pledges = data.sources.find(s => s.selected).pledges;
+const reasons = data.sources.find(s => s.selected).reasons.negative;
 
 const pledgesContainer = document.getElementById('pledges');
 const reasonsContainer = document.getElementById('reasons');
