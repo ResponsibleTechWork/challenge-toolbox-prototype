@@ -16,28 +16,19 @@ const clickHandler = pledgeId => {
 };
 
 const redrawChallengePledges = () => {
-    const pledgeItems = pledges.map(pledge => {    
-        // const li = document.createElement('li');
-        // const btn = document.createElement('button');
-        //       btn.id = pledge.id;
-        //       btn.classList.add('btn'); 
-        //       btn.classList.add('btnChallenge'); 
-        //       btn.innerHTML = pledge.text;
-        //       btn.addEventListener('click', clickHandler(pledge.id));
-        //       li.appendChild(btn);
-        //       return li;
+    
+    const pledgeItems = pledges.map(pledge => {
         return `<li>
                     <button id="${pledge.id}" class="btn btnChallenge">${pledge.text}</button>
                 </li>`;
     });
 
     pledgesContainer.innerHTML = pledgeItems.join('');
-    pledgesContainer.querySelectorAll('.btn').forEach(btn => {
-        btn.addEventListener('click', clickHandler(btn.id));
+    const buttons = pledgesContainer.querySelectorAll('.btn');
+    console.log(buttons);
+    buttons.forEach(btn => {
+        btn.addEventListener('click', () => clickHandler(btn.id));
     });
-    // pledgeItems.forEach(item => {
-    //     pledgesContainer.appendChild(item);
-    // });
 };
 
 redrawChallengePledges();
