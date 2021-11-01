@@ -1,8 +1,8 @@
 import { add } from '../shared/funcs';
-
-async function load() {
+import sources from '../shared/sources.json';
+// async function load() {
     
-        const sources = await import('../shared/sources.json');
+        // const sources = await import('../shared/sources.json');
         // const shared = await import('../shared/funcs');
         
         console.log(sources.data);
@@ -61,8 +61,8 @@ async function load() {
             }
             console.log(pledgesLog);
         };
-}
+// }
 
-load();
+// load();
 
 // });
