@@ -15,7 +15,7 @@ const reasonsContainer = document.getElementById('reasons');
 const redrawChallengePledges = () => {
     const pledgeItems = pledges.map(pledge => {    
         return `<li>
-                    <button id="${pledge.id}" class="btn btnChallenge" onclick="logChallenge(${pledge.id})">${pledge.text}</button>
+                    <button id="${pledge.id}" class="btn btnChallenge" onclick="${logChallenge(pledge.id)})">${pledge.text}</button>
                 </li>`;
     });
 
