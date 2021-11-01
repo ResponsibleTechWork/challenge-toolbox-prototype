@@ -3,10 +3,12 @@
 async function load() {
     
         const sources = await import('../shared/sources.json');
-        const funcs = await import('../shared/funcs.js');
+        const helpers = await import('../shared/funcs.js');
     
         console.log(sources.data);
-        console.log('add 2 + 2 = ', funcs.add(2,2));
+        console.log('helpers: ', helpers);
+        console.log('helpers.funcs: ', helpers.funcs);
+        console.log('add 2 + 2 = ', helpers.funcs.add(2,2));
 
         const pledges = sources.data.find(s => s.selected).pledges;
         const reasons = sources.data.find(s => s.selected).reasons.negative;
