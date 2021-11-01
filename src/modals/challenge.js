@@ -53,7 +53,7 @@ const redrawChallengeReasons = () => {
 redrawChallengeReasons();
 
 const submitButton = document.getElementById('submit');
-      submitButton.addEventListener('click', e => {
+      submitButton.addEventListener('click', async e => {
           
             // https://developer.atlassian.com/cloud/trello/power-ups/client-library/getting-and-setting-data/
             // https://developer.atlassian.com/cloud/trello/rest/api-group-actions/
@@ -62,7 +62,7 @@ const submitButton = document.getElementById('submit');
             const visibility = 'private';
             const key = 'challenged pledges';
             
-            const data = t.get(scope, visibility, key) || { challenges: [] };
+            const data = await t.get(scope, visibility, key) || { challenges: [] };
 
             console.log(data);
             console.log(data.challenges);
