@@ -3,8 +3,8 @@
 async function load() {
     
         const sources = await import('../shared/sources.json');
-        // const funcs = await import('../shared/funcs.js');
-        const { add } = import('../shared/funcs.js');
+        
+        import { add } from '../shared/funcs';
     
         console.log(sources.data);
         console.log('add: ', add);
