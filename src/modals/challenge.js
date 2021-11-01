@@ -9,7 +9,7 @@ const reasonsContainer = document.getElementById('reasons');
 
 let pledgesLog = [];
 
-const clickHandler = (e, pledgeId) => {
+const clickHandler = pledgeId => {
     const t = window.TrelloPowerUp.iframe();
     const context = t.getContext();
     pledgesLog = logChallenge(pledgesLog, context, pledgeId);
@@ -17,27 +17,27 @@ const clickHandler = (e, pledgeId) => {
 
 const redrawChallengePledges = () => {
     const pledgeItems = pledges.map(pledge => {    
-        const li = document.createElement('li');
-        const btn = document.createElement('button');
-              btn.id = pledge.id;
-              btn.classList.add('btn'); 
-              btn.classList.add('btnChallenge'); 
-              btn.innerHTML = pledge.text;
-              btn.addEventListener('click', e => clickHandler(e, pledge.id));
-              li.appendChild(btn);
-              return li;
-        // return `<li>
-        //             <button id="${pledge.id}" class="btn btnChallenge" onclick="clickHandler(${pledge.id})">${pledge.text}</button>
-        //         </li>`;
-        // return `<li>
-        //             <button id="${pledge.id}" class="btn btnChallenge" onclick="clickHandler(${pledge.id})">${pledge.text}</button>
-        //         </li>`;
+        // const li = document.createElement('li');
+        // const btn = document.createElement('button');
+        //       btn.id = pledge.id;
+        //       btn.classList.add('btn'); 
+        //       btn.classList.add('btnChallenge'); 
+        //       btn.innerHTML = pledge.text;
+        //       btn.addEventListener('click', clickHandler(pledge.id));
+        //       li.appendChild(btn);
+        //       return li;
+        return `<li>
+                    <button id="${pledge.id}" class="btn btnChallenge">${pledge.text}</button>
+                </li>`;
     });
 
-    // pledgesContainer.innerHTML = pledgeItems.join('');
-    pledgeItems.forEach(item => {
-        pledgesContainer.appendChild(item);
+    pledgesContainer.innerHTML = pledgeItems.join('');
+    pledgesContainer.querySelectorAll('btn').forEach(btn => {
+        btn.addEventListener('click', clickHandler(btn.id));
     });
+    // pledgeItems.forEach(item => {
+    //     pledgesContainer.appendChild(item);
+    // });
 };
 
 redrawChallengePledges();
