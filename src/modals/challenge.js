@@ -1,5 +1,6 @@
-import('../shared').then(function (data) {
+import('../shared.json').then(function (data) {
 
+console.log(data)
 console.log(data.sources)
 
 const pledges = data.sources.find(s => s.selected).pledges;
