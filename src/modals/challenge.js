@@ -53,7 +53,7 @@ const redrawChallengeReasons = () => {
 redrawChallengeReasons();
 
 const submitButton = document.getElementById('submit');
-      submitButton.addEventListener(e => {
+      submitButton.addEventListener('click', e => {
           
         console.log('submit!');
 
