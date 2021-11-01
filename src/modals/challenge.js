@@ -21,8 +21,15 @@ const clickHandler = (e, pledgeId) => {
 
     pledgesLog = logChallenge(pledgesLog, context, pledgeId);
     
-    console.log('click! - ', pledgesLog);
-    console.log('btn: ', btn);
+    const challengedPledges = t.get('challenged pledges') || [];
+
+    t.set('challenged pledges', [
+        ...challengedPledges,
+        {
+            card: t.card,
+            pledge: pledgeId
+        }
+    ])
 };
 
 const redrawChallengePledges = () => {
