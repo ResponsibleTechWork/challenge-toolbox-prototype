@@ -6,6 +6,7 @@
   "author": "Daniel Hartley <danhartleybcn@gmail.com>",
   "license": "MIT",
   "devDependencies": {
+    "@babel/preset-env": "^7.16.0",
     "jest": "^27.3.1",
     "parcel": "^2.0.0"
   },
@@ -14,8 +15,6 @@
     "tests": "jest ./src/shared/funcs.test.js"
   },
   "dependencies": {
-    "babel-preset-env": "^1.7.0",
-    "parcel-bundler": "^1.12.5",
     "save-dev": "^0.0.1-security"
   }
 }
