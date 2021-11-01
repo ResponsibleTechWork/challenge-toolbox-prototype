@@ -1,4 +1,4 @@
-// import { add, logChallenge } from '../shared/funcs';
+import { add, logChallenge } from '../shared/funcs';
 import sources from '../shared/sources.json';
 
 const pledges = sources.data.find(s => s.selected).pledges;
@@ -7,10 +7,18 @@ const reasons = sources.data.find(s => s.selected).reasons.negative;
 const pledgesContainer = document.getElementById('pledges');
 const reasonsContainer = document.getElementById('reasons');
 
+let pledgesLog = [];
+
+const clickHandler = pledgeId => {
+    const t = window.TrelloPowerUp.iframe();
+    const context = t.getContext();
+    pledgesLog = logChallenge(pledgesLog, context, pledgeId);
+};
+
 const redrawChallengePledges = () => {
     const pledgeItems = pledges.map(pledge => {    
         return `<li>
-                    <button id="${pledge.id}" class="btn btnChallenge" onclick="logChallenge(${context, pledge.id})">${pledge.text}</button>
+                    <button id="${pledge.id}" class="btn btnChallenge" onclick="clickHandler(${pledge.id})">${pledge.text}</button>
                 </li>`;
     });
 
@@ -30,26 +38,3 @@ const redrawChallengeReasons = () => {
 };
 
 redrawChallengeReasons();
-
-const t = window.TrelloPowerUp.iframe();
-const context = t.getContext();
-console.log(logChallenge);
-
-const logChallenge = (context, pledgeId) => {
-    const log = pledgesLog.length > 0 ? pledgesLog.find(log => log.pledge.id === pledgeId) : undefined;
-    if(log === undefined) {
-        pledgesLog.push({
-            type: 'challenge',
-            board: context.board,
-            member: context.member,
-            card: context.card,
-            pledge: {
-                id: pledgeId
-            },        
-        }
-    );
-    } else {
-        pledgesLog = pledgesLog.filter(log => log.pledge.id !== pledgeId);
-    }
-    console.log(pledgesLog);
-};

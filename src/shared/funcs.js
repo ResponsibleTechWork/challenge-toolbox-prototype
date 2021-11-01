@@ -2,13 +2,11 @@ export const add = (x,y) => {
     return x + y;
 };
 
-
-let pledgesLog = [];
-
-export const logChallenge = (context, pledgeId) => {
-    const log = pledgesLog.length > 0 ? pledgesLog.find(log => log.pledge.id === pledgeId) : undefined;
+export const logChallenge = (pledgesLog, context, pledgeId) => {
+    let _pledgesLog = [ ...pledgesLog ];
+    const log = _pledgesLog.length > 0 ? _pledgesLog.find(log => log.pledge.id === pledgeId) : undefined;
     if(log === undefined) {
-        pledgesLog.push({
+        _pledgesLog.push({
             type: 'challenge',
             board: context.board,
             member: context.member,
@@ -19,7 +17,7 @@ export const logChallenge = (context, pledgeId) => {
         }
     );
     } else {
-        pledgesLog = pledgesLog.filter(log => log.pledge.id !== pledgeId);
+        _pledgesLog = _pledgesLog.filter(log => log.pledge.id !== pledgeId);
     }
-    console.log(pledgesLog);
+    return _pledgesLog;
 };
