@@ -32,7 +32,7 @@ const redrawChallengePledges = () => {
     });
 
     pledgesContainer.innerHTML = pledgeItems.join('');
-    pledgesContainer.querySelectorAll('btn').forEach(btn => {
+    pledgesContainer.querySelectorAll('.btn').forEach(btn => {
         btn.addEventListener('click', clickHandler(btn.id));
     });
     // pledgeItems.forEach(item => {

@@ -5,7 +5,6 @@
   "repository": "https://github.com/danhartley/challenge-toolbox-draft.git",
   "author": "Daniel Hartley <danhartleybcn@gmail.com>",
   "license": "MIT",
-  "type": "module",
   "devDependencies": {
     "jest": "^27.3.1",
     "parcel": "^2.0.0"
