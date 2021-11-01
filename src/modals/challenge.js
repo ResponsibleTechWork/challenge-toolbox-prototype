@@ -4,6 +4,7 @@ import sources from '../shared/sources.json';
 const t = window.TrelloPowerUp.iframe();
 const context = t.getContext();
 console.log(JSON.stringify(context, null, 2));
+console.log(logChallenge);
 
 const pledges = sources.data.find(s => s.selected).pledges;
 const reasons = sources.data.find(s => s.selected).reasons.negative;
@@ -14,7 +15,7 @@ const reasonsContainer = document.getElementById('reasons');
 const redrawChallengePledges = () => {
     const pledgeItems = pledges.map(pledge => {    
         return `<li>
-                    <button id="${pledge.id}" class="btn btnChallenge" onclick="logChallenge('${pledge.id}');">${pledge.text}</button>
+                    <button id="${pledge.id}" class="btn btnChallenge" onclick="logChallenge(${pledge.id})">${pledge.text}</button>
                 </li>`;
     });
 
