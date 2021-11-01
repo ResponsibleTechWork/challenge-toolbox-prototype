@@ -6,14 +6,16 @@ export const add = (x,y) => {
 let pledgesLog = [];
 
 export const logChallenge = (context, pledgeId) => {
-    const log = pledgesLog.find(log => log.pledge.id === pledgeId);
+    const log = pledgesLog.length > 0 ? pledgesLog.find(log => log.pledge.id === pledgeId) : undefined;
     if(log === undefined) {
         pledgesLog.push({
             type: 'challenge',
             board: context.board,
             member: context.member,
             card: context.card,
-            pledgeId: pledgeId,        
+            pledge: {
+                id: pledgeId
+            },        
         }
     );
     } else {
