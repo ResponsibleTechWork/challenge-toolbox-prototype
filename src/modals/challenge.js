@@ -1,4 +1,4 @@
-import { add, logChallenge } from '../shared/funcs';
+import { logChallenge } from '../shared/funcs';
 import sources from '../shared/sources.json';
 
 const pledges = sources.data.find(s => s.selected).pledges;
@@ -9,11 +9,11 @@ const reasonsContainer = document.getElementById('reasons');
 
 let pledgesLog = [];
 
+const t = window.TrelloPowerUp.iframe();
+const context = t.getContext();
+
 const clickHandler = (e, pledgeId) => {
     
-    const t = window.TrelloPowerUp.iframe();
-    const context = t.getContext();
-
     const btn = e.target;
           Array.from(btn.classList).find(c => c === 'selected') 
             ? btn.classList.remove('selected')
