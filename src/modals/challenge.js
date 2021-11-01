@@ -19,17 +19,7 @@ const clickHandler = (e, pledgeId) => {
             ? btn.classList.remove('selected')
             : btn.classList.add('selected');
 
-    pledgesLog = logChallenge(pledgesLog, context, pledgeId);
-    
-    const challengedPledges = t.get('challenged pledges') || [];
-
-    t.set('challenged pledges', [
-        ...challengedPledges,
-        {
-            card: t.card,
-            pledge: pledgeId
-        }
-    ])
+    pledgesLog = logChallenge(pledgesLog, context, pledgeId);    
 };
 
 const redrawChallengePledges = () => {
@@ -61,3 +51,24 @@ const redrawChallengeReasons = () => {
 };
 
 redrawChallengeReasons();
+
+const submitButton = document.getElementById('submit');
+      submitButton.addEventListener(e => {
+          
+        console.log('submit!');
+
+          const challengedPledges = t.get('challenged pledges') || [];
+          
+          t.set('challenged pledges', [
+              ...challengedPledges,
+              pledgesLog.map(pledge => {
+                  return {
+                    card: t.card,
+                    pledge: pledge.id
+                }
+              })              
+          ]);
+
+          console.log('challenged pledges: ', t.get('challenged pledges'));
+
+      });
