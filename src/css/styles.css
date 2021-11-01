@@ -16,16 +16,24 @@ li {
 }
 
 .btnChallenge {
-    background-color: #F5793A;
+    background-color: rgb(245, 121, 58,.3);
+}
+
+.btnChallenge.selected {
+    background-color: rgb(245, 121, 58);
 }
 
 .btnCelebrate {
-    background-color: #A95AA1;
+    background-color: rgba(169, 90, 161,.3);
+}
+
+.btnCelebrate.selected {
+    background-color: rgb(169, 90, 161);
 }
 
 .btnSubmit {
-    background-color: #0F2080;
-    color: #FFFFFF;
+    background-color: rgb(15, 32, 128);
+    color: rgb(255,255,255);
 }
 
 .card-detail-badge a {
