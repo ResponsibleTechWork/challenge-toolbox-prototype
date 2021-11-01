@@ -4,7 +4,7 @@ async function load() {
     
         const sources = await import('../shared/sources.json');
         const funcs = await import('../shared/funcs');
-        const add = await import('../shared/funcs');
+        const { add } = await import('../shared/funcs');
     
         console.log(sources.data);
         console.log('add: ', add);
