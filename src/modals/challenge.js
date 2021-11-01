@@ -3,6 +3,7 @@ import sources from '../shared/sources.json';
 
 const t = window.TrelloPowerUp.iframe();
 const context = t.getContext();
+console.log(logChallenge);
 
 const pledges = sources.data.find(s => s.selected).pledges;
 const reasons = sources.data.find(s => s.selected).reasons.negative;
