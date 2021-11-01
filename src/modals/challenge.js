@@ -82,7 +82,7 @@ const submitButton = document.getElementById('submit');
             
             t.set(scope, visibility, key, value);
 
-            const response = t.get(scope, visibility, key, empty);
+            const response = t.get(scope, visibility, key);
 
             console.log('challenged pledges: ', JSON.stringify((response ? response.challenges : 'nothing stored on t'), null, 2));
 
