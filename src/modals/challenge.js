@@ -80,9 +80,11 @@ submitButton.addEventListener('click', async e => {
 
     const t = window.TrelloPowerUp.iframe();
 
-    await t.set(scope, visibility, key, value);
+    const setResponse = await t.set(scope, visibility, key, value);
+
+    log('setResponse: ', setResponse);
 
     const response = await t.get(scope, visibility, key);
 
-    log('challenged pledges: ', logify(response ? response.challenges : 'nothing stored on t'));
+    log('challenged pledges: ', log(response ? response : 'nothing stored on t'));
 });

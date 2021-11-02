@@ -7,11 +7,17 @@ const Scope = Object.freeze({
 const Type = Object.freeze({
     Challenge: 'challenge',
     Celebtrate: 'celebtrate'
-})
+});
+
+const Visibility = Object.freeze({
+    Shared: 'shared',
+    Private: 'private'
+});
 
 const enums = {
     Scope,
-    Type
+    Type,
+    Visibility
 };
 
 export default enums;
