@@ -62,7 +62,7 @@ const submitButton = document.getElementById('submit');
             const context = t.getContext();
 
             const scope = 'member';
-            const visibility = 'private';
+            const visibility = 'shared';
             const key = 'challenged pledges';
             
             const data = await t.get(scope, visibility, key) || { challenges: [] };
