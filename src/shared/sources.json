@@ -14,12 +14,24 @@
         ],
         "reasons": {
             "positive": [
-                "efficient",
-                "low intensity"
+                {
+                    "id": 1,
+                    "text": "efficient"
+                },
+                {
+                    "id": 2,
+                    "text": "low intensity"
+                }                
             ],
             "negative": [
-                "inefficient",
-                "high intensity"
+                {
+                    "id": 1,
+                    "text": "inefficient"
+                },                
+                {
+                    "id": 2,
+                    "text": "high intensity"
+                }                
             ]
         },
         "selected": true
@@ -39,12 +51,24 @@
         ],
         "reasons": {
             "positive": [
-                "improves well-being",
-                "improves privacy"
+                {
+                    "id": 1,
+                    "text": "improves well-being"
+                },                
+                {
+                    "id": 2,
+                    "text": "improves privacy"
+                }            
             ],
             "negative": [
-                "annoying",
-                "misleading"
+                {
+                    "id": 1,
+                    "text": "annoying"
+                },                
+                {
+                    "id": 2,
+                    "text": "misleading"
+                }                
             ]
         },
         "selected": false

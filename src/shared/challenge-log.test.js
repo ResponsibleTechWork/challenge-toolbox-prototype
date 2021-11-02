@@ -3,7 +3,9 @@ import { ChallengeLog } from '../shared/challenge-log';
 
 describe('tests for instances of ChallengeLog', () => {
 
-    const challengeLog = new ChallengeLog(enums.Type.Challenge);
+    const type = enums.Type.Challenge;
+
+    const challengeLog = new ChallengeLog(type);
 
     const context = {
         board: 'board #1',
@@ -11,25 +13,42 @@ describe('tests for instances of ChallengeLog', () => {
         card: 'card #1',
     };
 
-    const pledgeId = 1;
+    const pledge = {
+        id: 1,
+        text: 'pldege #1'
+    };
 
-    const type = enums.Type.Challenge;
+    const reason = {
+        id: 1,
+        text: 'reason #1'
+    }
 
     it('log should initially be empty', () => {
         expect(challengeLog.getLog()).toEqual([]);
     });
 
     it('log should include first record', () => {
-        challengeLog.record(context, type, pledgeId);
+        challengeLog.record(context, pledge);
         expect(challengeLog.getLog()).toStrictEqual([
             {
                 type: type,
                 board: context.board,
                 member: context.member,
                 card: context.card,
-                pledge: {
-                    id: pledgeId
-                }, 
+                pledge: { ...pledge, reasons: [] }
+            }
+        ])
+    });
+
+    it('log should include first reason', () => {
+        challengeLog.toggleReason(reason);
+        expect(challengeLog.getLog()).toStrictEqual([
+            {
+                type: type,
+                board: context.board,
+                member: context.member,
+                card: context.card,
+                pledge: { ...pledge, reasons: [ reason ] }
             }
         ])
     });

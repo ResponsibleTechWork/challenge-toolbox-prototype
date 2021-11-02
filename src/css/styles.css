@@ -19,7 +19,7 @@ li {
     background-color: rgb(245, 121, 58,.3);
 }
 
-.btnChallenge.selected {
+.btnChallenge:hover, .btnChallenge.selected {
     background-color: rgb(245, 121, 58);
 }
 
@@ -27,13 +27,16 @@ li {
     background-color: rgba(169, 90, 161,.3);
 }
 
-.btnCelebrate.selected {
+.btnCelebrate:hover, .btnCelebrate.selected {
     background-color: rgb(169, 90, 161);
 }
 
 .btnSubmit {
-    background-color: rgb(15, 32, 128);
-    color: rgb(255,255,255);
+    background-color: rgba(15, 32, 128, .7);
+}
+
+.btnSubmit:hover {
+    background-color: rgba(15, 32, 128, .5);
 }
 
 .card-detail-badge a {

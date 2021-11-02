@@ -15,7 +15,7 @@ const reasonsContainer = document.getElementById('reasons');
 
 const challengeLog = new ChallengeLog(enums.Type.Challenge);
 
-const clickHandler = (e, pledgeId) => {
+const clickPledgeHandler = (e, pledgeId) => {
 
     const t = window.TrelloPowerUp.iframe();
     const context = t.getContext();
@@ -25,7 +25,31 @@ const clickHandler = (e, pledgeId) => {
             ? btn.classList.remove('selected')
             : btn.classList.add('selected');
 
-    challengeLog.record(context, enums.Type.Challenge, pledgeId); 
+    const pledge = pledges.find(p => p.id === pledgeId);
+
+    if(pledge !== challengeLog.getPledge()) {
+        reasonsContainer.querySelectorAll('.btn').forEach(btn => {
+            btn.classList.remove('selected')
+        })
+    }
+
+    challengeLog.record(context, pledge); 
+
+};
+
+const clickReasonHandler = (e, reasonId) => {
+
+    const t = window.TrelloPowerUp.iframe();
+    const context = t.getContext();
+    
+    const btn = e.target;
+          Array.from(btn.classList).find(c => c === 'selected') 
+            ? btn.classList.remove('selected')
+            : btn.classList.add('selected');
+
+    const reason = reasons.find(r => r.id === reasonId);
+
+    challengeLog.reason(reason);
 };
 
 const redrawChallengePledges = () => {
@@ -38,10 +62,9 @@ const redrawChallengePledges = () => {
 
     pledgesContainer.innerHTML = pledgeItems.join('');
 
-    const buttons = pledgesContainer.querySelectorAll('.btn');
-          buttons.forEach(btn => {
-              btn.addEventListener('click', e => clickHandler(e, btn.id));
-          });
+    pledgesContainer.querySelectorAll('.btn').forEach(btn => {
+        btn.addEventListener('click', e => clickPledgeHandler(e, btn.id));
+    });
 };
 
 redrawChallengePledges();
@@ -49,11 +72,15 @@ redrawChallengePledges();
 const redrawChallengeReasons = () => {
     const reasonItems = reasons.map(reason => {
         return `<li>
-                    <button id="${reason}" class="btn btnChallenge">${reason}</button>
+                    <button id="${reason.id}" class="btn btnChallenge">${reason.text}</button>
                 </li>`;
     });
     
     reasonsContainer.innerHTML = reasonItems.join('');
+
+    reasonsContainer.querySelectorAll('.btn').forEach(btn => {
+        btn.addEventListener('click', e => clickReasonHandler(e, btn.id));
+    });
 };
 
 redrawChallengeReasons();
@@ -61,18 +88,9 @@ redrawChallengeReasons();
 const submitButton = document.getElementById('submit');
 
 submitButton.addEventListener('click', async e => {
-    
-    // https://developer.atlassian.com/cloud/trello/power-ups/client-library/getting-and-setting-data/
-    // https://developer.atlassian.com/cloud/trello/rest/api-group-actions/
 
-    // NB although you could use card ID instead of card, Trello stores against the current card (board, member, etc.) by default.
-
-    // const cardData = await api.getCard(context.card);
-
-    // logify(cardData);
-
-    const scope = 'member';
-    const visibility = 'shared';
+    const scope = enums.Scope.Member;
+    const visibility = enums.Visibility.Shared;
     const key = 'challenged pledges';
     const value = challengeLog.getLog();
     
