@@ -81,8 +81,8 @@ const submitButton = document.getElementById('submit');
                     ...data.challenges,
                     pledgesLog.map(pledge => {
                         return {
-                            member: t.member,
-                            card: t.card,
+                            member: context.member,
+                            card: context.card,
                             pledge: pledge.id
                       }
                     })              
@@ -91,7 +91,7 @@ const submitButton = document.getElementById('submit');
             
             t.set(scope, visibility, key, value);
 
-            const response = t.get(scope, visibility, key);
+            const response = await t.get(scope, visibility, key);
 
             log('challenged pledges: ', JSON.stringify((response ? response.challenges : 'nothing stored on t'), null, 2));
 
