@@ -13,8 +13,6 @@ const reasons = sources.data.find(s => s.selected).reasons.negative;
 const pledgesContainer = document.getElementById('pledges');
 const reasonsContainer = document.getElementById('reasons');
 
-// let pledgesLog = [];
-
 const challengeLog = new ChallengeLog(enums.Type.Challenge);
 
 const clickHandler = (e, pledgeId) => {
@@ -27,7 +25,6 @@ const clickHandler = (e, pledgeId) => {
             ? btn.classList.remove('selected')
             : btn.classList.add('selected');
 
-    // pledgesLog = logChallenge(pledgesLog, context, pledgeId);   
     challengeLog.record(context, enums.Type.Challenge, pledgeId); 
 };
 
@@ -63,52 +60,27 @@ redrawChallengeReasons();
 
 const submitButton = document.getElementById('submit');
 
-      submitButton.addEventListener('click', async e => {
-          
-            // https://developer.atlassian.com/cloud/trello/power-ups/client-library/getting-and-setting-data/
-            // https://developer.atlassian.com/cloud/trello/rest/api-group-actions/
+submitButton.addEventListener('click', async e => {
+    
+    // https://developer.atlassian.com/cloud/trello/power-ups/client-library/getting-and-setting-data/
+    // https://developer.atlassian.com/cloud/trello/rest/api-group-actions/
 
-            // NB although you could use card ID instead of card, Trello stores against the current card (board, member, etc.) by default.
+    // NB although you could use card ID instead of card, Trello stores against the current card (board, member, etc.) by default.
 
-            const t = window.TrelloPowerUp.iframe();
-            const context = t.getContext();
+    // const cardData = await api.getCard(context.card);
 
-            // const cardData = await api.getCard(context.card);
+    // logify(cardData);
 
-            // logify(cardData);
+    const scope = 'member';
+    const visibility = 'shared';
+    const key = 'challenged pledges';
+    const value = challengeLog.getLog();
+    
+    console.log(' log: ', challengeLog.getLog());
 
-            const scope = 'member';
-            const visibility = 'shared';
-            const key = 'challenged pledges';
-            const value = challengeLog.getLog();
-            
-            console.log(' log: ', challengeLog.getLog());
+    await t.set(scope, visibility, key, value);
 
-            t.set(scope, visibility, key, value);
+    const response = await t.get(scope, visibility, key);
 
-            const response = await t.get(scope, visibility, key);
-
-            log('challenged pledges: ', logify(response ? response.challenges : 'nothing stored on t'));
-        });
-
-                                
-            // const data = await t.get(scope, visibility, key) || { challenges: [] };
-            // const data2 = await t.get('card', visibility, key) || { challenges: [] };
-
-            // log('member data: ', logify(data));
-            // log('member data challenges: ', logify(data.challenges));
-            // log('card data: ', logify(data2));
-
-            // const value = {
-            //     challenges: [
-            //         ...data.challenges,
-            //         pledgesLog.map(pledge => {
-            //             return {
-            //                 member: context.member,
-            //                 card: context.card,
-            //                 pledge: pledge.id
-            //           }
-            //         })              
-            //     ]   
-            // }
-            
+    log('challenged pledges: ', logify(response ? response.challenges : 'nothing stored on t'));
+});

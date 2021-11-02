@@ -29,7 +29,7 @@ export class ChallengeLog {
         };
     
     remove(pledgeId) {
-        if(log.length === 0) return;
+        if(this.log.length === 0) return;
         this.log = this.log.find(entry => entry.pledge.id !== pledgeId);
     }
 
