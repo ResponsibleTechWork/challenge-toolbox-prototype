@@ -1,7 +1,7 @@
 import { logChallenge } from '../shared/funcs';
 import sources from '../shared/sources.json';
-commit -m 'clearer logging'
-const { log, warn, error } = console;
+
+const { log, warn, error } = window.console;
 
 const pledges = sources.data.find(s => s.selected).pledges;
 const reasons = sources.data.find(s => s.selected).reasons.negative;
