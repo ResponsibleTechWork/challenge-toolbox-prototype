@@ -1,6 +1,8 @@
 import { logChallenge } from '../shared/funcs';
 import api from '../shared/api';
 import sources from '../shared/sources.json';
+import enums from '../shared/enums';
+import { ChallengeLog } from '../shared/challenge-log';
 
 const { log, warn, error } = window.console;
 const logify = data => JSON.stringify(data, null, 2)
@@ -11,7 +13,9 @@ const reasons = sources.data.find(s => s.selected).reasons.negative;
 const pledgesContainer = document.getElementById('pledges');
 const reasonsContainer = document.getElementById('reasons');
 
-let pledgesLog = [];
+// let pledgesLog = [];
+
+const challengeLog = new ChallengeLog(enums.Type.Challenge);
 
 const clickHandler = (e, pledgeId) => {
 
@@ -23,7 +27,8 @@ const clickHandler = (e, pledgeId) => {
             ? btn.classList.remove('selected')
             : btn.classList.add('selected');
 
-    pledgesLog = logChallenge(pledgesLog, context, pledgeId);    
+    // pledgesLog = logChallenge(pledgesLog, context, pledgeId);   
+    challengeLog.record(context, enums.Type.Challenge, pledgeId); 
 };
 
 const redrawChallengePledges = () => {
@@ -57,6 +62,7 @@ const redrawChallengeReasons = () => {
 redrawChallengeReasons();
 
 const submitButton = document.getElementById('submit');
+
       submitButton.addEventListener('click', async e => {
           
             // https://developer.atlassian.com/cloud/trello/power-ups/client-library/getting-and-setting-data/
@@ -67,8 +73,6 @@ const submitButton = document.getElementById('submit');
             const t = window.TrelloPowerUp.iframe();
             const context = t.getContext();
 
-            warn('context: ', context);
-
             // const cardData = await api.getCard(context.card);
 
             // logify(cardData);
@@ -76,31 +80,35 @@ const submitButton = document.getElementById('submit');
             const scope = 'member';
             const visibility = 'shared';
             const key = 'challenged pledges';
-                        
-            const data = await t.get(scope, visibility, key) || { challenges: [] };
-            const data2 = await t.get('card', visibility, key) || { challenges: [] };
-
-            log('member data: ', logify(data));
-            log('member data challenges: ', logify(data.challenges));
-            log('card data: ', logify(data2));
-
-            const value = {
-                challenges: [
-                    ...data.challenges,
-                    pledgesLog.map(pledge => {
-                        return {
-                            member: context.member,
-                            card: context.card,
-                            pledge: pledge.id
-                      }
-                    })              
-                ]   
-            }
+            const value = challengeLog.getLog();
             
+            console.log(' log: ', challengeLog.getLog());
+
             t.set(scope, visibility, key, value);
 
             const response = await t.get(scope, visibility, key);
 
             log('challenged pledges: ', logify(response ? response.challenges : 'nothing stored on t'));
-
         });
+
+                                
+            // const data = await t.get(scope, visibility, key) || { challenges: [] };
+            // const data2 = await t.get('card', visibility, key) || { challenges: [] };
+
+            // log('member data: ', logify(data));
+            // log('member data challenges: ', logify(data.challenges));
+            // log('card data: ', logify(data2));
+
+            // const value = {
+            //     challenges: [
+            //         ...data.challenges,
+            //         pledgesLog.map(pledge => {
+            //             return {
+            //                 member: context.member,
+            //                 card: context.card,
+            //                 pledge: pledge.id
+            //           }
+            //         })              
+            //     ]   
+            // }
+            

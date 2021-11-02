@@ -12,7 +12,7 @@
   },
   "scripts": {
     "build": "parcel build src/index.html",
-    "tests": "jest ./src/shared/funcs.test.js"
+    "tests": "jest"
   },
   "dependencies": {
     "save-dev": "^0.0.1-security"
