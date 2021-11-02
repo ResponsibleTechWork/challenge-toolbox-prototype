@@ -30,7 +30,7 @@ export class ChallengeLog {
     
     remove(pledgeId) {
         if(this.log.length === 0) return;
-        this.log = this.log.find(entry => entry.pledge.id !== pledgeId);
+        this.log = this.log.filter(entry => entry.pledge.id !== pledgeId);
     }
 
     record(context, type, pledgeId) {

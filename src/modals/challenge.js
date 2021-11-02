@@ -78,6 +78,8 @@ submitButton.addEventListener('click', async e => {
     
     console.log(' log: ', challengeLog.getLog());
 
+    const t = window.TrelloPowerUp.iframe();
+
     await t.set(scope, visibility, key, value);
 
     const response = await t.get(scope, visibility, key);
