@@ -14,5 +14,27 @@
         integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
         crossorigin="anonymous"></script>
     <script src="https://api.trello.com/1/client.js?key=779f3fe25b914f6cef4434357de28641"></script>
+    <script>
+        
+        const authenticationSuccess = function() {
+            console.log('Successful authentication');
+        };
+
+        const authenticationFailure = function() {
+            console.log('Failed authentication');
+        };
+
+        window.Trello.authorize({
+            type: 'popup',
+            name: 'Getting Started Application',
+            scope: {
+                read: 'true',
+                write: 'true' },
+            expiration: 'never',
+            success: authenticationSuccess,
+            error: authenticationFailure
+        });
+    </script>
+
   </body>
 </html>
