@@ -7,11 +7,6 @@ export class ChallengeLog {
       this.log = [];
     }
   
-    checkType() {
-      console.log(`Hello, my type is ${this.type}`);
-      console.log(`Does type match enum ${this.type === enums.Type.Challenge}`)
-    }
-
     getLog() {
         return this.log;
     }

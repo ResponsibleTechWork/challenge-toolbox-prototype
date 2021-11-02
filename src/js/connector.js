@@ -15,7 +15,7 @@ const { log, warn, error } = window.console;
   window.TrelloPowerUp.initialize({
     // 'card-buttons': function (t, opts) {
     //     const context = t.getContext();
-    //     // console.log(JSON.stringify(context, null, 2));
+    //     console.log(JSON.stringify(context, null, 2));
     //     const myKeyValueObject = {
     //         'isClicked': 'you bectcha!',
     //       };

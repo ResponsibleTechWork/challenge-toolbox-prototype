@@ -76,15 +76,13 @@ submitButton.addEventListener('click', async e => {
     const key = 'challenged pledges';
     const value = challengeLog.getLog();
     
-    console.log(' log: ', challengeLog.getLog());
+    log(' log: ', challengeLog.getLog());
 
     const t = window.TrelloPowerUp.iframe();
 
-    const setResponse = await t.set(scope, visibility, key, value);
+    await t.set(scope, visibility, key, value);
 
-    log('setResponse: ', setResponse);
+    const response = await t.get(scope, visibility, key);
 
-    const getResponse = await t.get(scope, visibility, key);
-
-    log('challenged pledges: ', log(getResponse ? getResponse : 'nothing stored on t'));
+    log('returned save object: ',  response);
 });
