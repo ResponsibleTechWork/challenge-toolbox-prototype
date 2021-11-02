@@ -24,6 +24,8 @@ const getCard = async id => {
 
 };
 
-export default api = {
+const api = {
     getCard
-}
+};
+
+export default api;
