@@ -1,5 +1,7 @@
 import { logChallenge } from '../shared/funcs';
 import sources from '../shared/sources.json';
+commit -m 'clearer logging'
+const { log, warn, error } = console;
 
 const pledges = sources.data.find(s => s.selected).pledges;
 const reasons = sources.data.find(s => s.selected).reasons.negative;
@@ -61,16 +63,18 @@ const submitButton = document.getElementById('submit');
             const t = window.TrelloPowerUp.iframe();
             const context = t.getContext();
 
+            warn('context: ', context);
+
             const scope = 'member';
             const visibility = 'shared';
             const key = 'challenged pledges';
-            
+                        
             const data = await t.get(scope, visibility, key) || { challenges: [] };
             const data2 = await t.get('card', visibility, key) || { challenges: [] };
 
-            console.log('member data: ', data);
-            console.log('member data challenges: ', data.challenges);
-            console.log('card data: ', data2);
+            log('member data: ', data);
+            log('member data challenges: ', data.challenges);
+            log('card data: ', data2);
 
             const value = {
                 challenges: [
@@ -89,6 +93,6 @@ const submitButton = document.getElementById('submit');
 
             const response = t.get(scope, visibility, key);
 
-            console.log('challenged pledges: ', JSON.stringify((response ? response.challenges : 'nothing stored on t'), null, 2));
+            log('challenged pledges: ', JSON.stringify((response ? response.challenges : 'nothing stored on t'), null, 2));
 
         });
