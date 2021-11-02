@@ -9,10 +9,10 @@ const reasonsContainer = document.getElementById('reasons');
 
 let pledgesLog = [];
 
-const t = window.TrelloPowerUp.iframe();
-const context = t.getContext();
-
 const clickHandler = (e, pledgeId) => {
+
+    const t = window.TrelloPowerUp.iframe();
+    const context = t.getContext();
     
     const btn = e.target;
           Array.from(btn.classList).find(c => c === 'selected') 
@@ -58,14 +58,19 @@ const submitButton = document.getElementById('submit');
             // https://developer.atlassian.com/cloud/trello/power-ups/client-library/getting-and-setting-data/
             // https://developer.atlassian.com/cloud/trello/rest/api-group-actions/
 
+            const t = window.TrelloPowerUp.iframe();
+            const context = t.getContext();
+
             const scope = 'member';
             const visibility = 'private';
             const key = 'challenged pledges';
             
             const data = await t.get(scope, visibility, key) || { challenges: [] };
+            const data2 = await t.get('card', visibility, key) || { challenges: [] };
 
-            console.log(data);
-            console.log(data.challenges);
+            console.log('member data: ', data);
+            console.log('member data challenges: ', data.challenges);
+            console.log('card data: ', data2);
 
             const value = {
                 challenges: [
