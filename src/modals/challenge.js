@@ -69,9 +69,9 @@ const submitButton = document.getElementById('submit');
 
             warn('context: ', context);
 
-            const cardData = await api.getCard(context.card);
+            // const cardData = await api.getCard(context.card);
 
-            logify(cardData);
+            // logify(cardData);
 
             const scope = 'member';
             const visibility = 'shared';
