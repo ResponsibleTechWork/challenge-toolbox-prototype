@@ -84,7 +84,7 @@ submitButton.addEventListener('click', async e => {
 
     log('setResponse: ', setResponse);
 
-    const response = await t.get(scope, visibility, key);
+    const getResponse = await t.get(scope, visibility, key);
 
-    log('challenged pledges: ', log(response ? response : 'nothing stored on t'));
+    log('challenged pledges: ', log(getResponse ? getResponse : 'nothing stored on t'));
 });
