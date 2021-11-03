@@ -3,6 +3,9 @@ import sources from '../shared/sources.json';
 import enums from '../shared/enums';
 import { ChallengeLog } from '../shared/challenge-log';
 
+// close modal on submit
+// reload pledges and reason when re-opening modal
+
 const pledges = sources.data.find(s => s.selected).pledges;
 const reasons = sources.data.find(s => s.selected).reasons.negative;
 
@@ -107,5 +110,5 @@ submitButton.addEventListener('click', async e => {
 
     console.log('returned save object: ',  response);
 
-    return t.notifyParent('done');
+    return t.notifyParent('done');    
 });
