@@ -6,30 +6,29 @@ const get = async t => {
     const visibility = enums.Visibility.Shared;
     const key = enums.Key.ChallengedPledges;
 
-    // const log = await t.get(scope, visibility, key);
+    const log = await t.get(scope, visibility, key);
 
-    // console.log(`Current value for ${key}`,  log);
+    console.log(`Current value for ${key}`,  log);
 
-    // const challenges = (log && log !== undefined) ? log.filter(entry => entry.type === enums.Type.Challenge) : [];
-    // const celebrations = (log && log !== undefined) ? log.filter(entry => entry.type === enums.Type.Celebtrate) : [];
-
-    const challenges = [];
-    const celebrations = [];
+    const challenges = (log && log !== undefined) ? log.filter(entry => entry.type === enums.Type.Challenge) : [];
 
     const challengeText = challenges.length > 0
         ? `Challenge ${challenges.length}`
         : `Challenge`;
 
-    const celebrateText = celebrations.length > 0
-        ? `Celebrate ${celebrations.length}`
-        : `Celebrate`;
-
     console.log('challengeText: ', challengeText);
-    console.log('celebrateText: ', celebrateText);
 
     const onCloseChallengToolbox = t => {
-        console.log('onCloseChallengToolbox');        
+
+        console.log('onCloseChallengToolbox');
+        // const context = t.getContext();
+        // console.log(JSON.stringify(context, null, 2));
     };
+
+    // return t
+    // .card("name")
+    // .get("name")
+    // .then(function (cardName) {
 
     const card = await t.card('name').get('name');
 
@@ -38,7 +37,6 @@ const get = async t => {
     return [
         {
             text: challengeText,
-            color: "blue",
             callback: function(t){
                 return t.modal({
                     title: "Challenge cards",
@@ -47,25 +45,29 @@ const get = async t => {
                     height: 500,
                     callback: onCloseChallengToolbox,
                 });
-            }
+            },
+            // refresh: 10
         },      
-        {
-            text: celebrateText,
-            color: "green",
-            callback: function(t){
-                return t.modal({
-                    url: './modals/celebrate.html',
-                    fullscreen: false,
-                    height: 500,
-                    // callback: onCloseChallengToolbox,
-                });
-            }
-        },
-    ];
+        // {
+        //     text: "Celebrate",
+        //     callback: function(t){
+        //         return t.modal({
+        //         title: "Celebrate card",
+        //         url: './modals/celebrate.html',
+        //         fullscreen: false,
+        //         height: 500,
+        //         });
+        //     }
+        // },
+        ];
+    // });
 };    
 
 export const getCardDetailBadges = (t, opts) => {
-    return { dynamic: () => {
-        return get(t);
-    }}
+    return get(t);
+    // return [{
+    //     dynamic: () => {
+    //         return get(t);
+    //     },
+    // }];
 }
