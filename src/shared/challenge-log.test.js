@@ -67,7 +67,7 @@ describe('tests for instances of ChallengeLog', () => {
     });
 
 
-    it('log should remove first pledge', () => {
+    it('log should remove first pledge when toggled', () => {
         challengeLog.togglePledge(context, pledge);
         expect(challengeLog.getLog()).toStrictEqual([])
     });

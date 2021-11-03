@@ -43,6 +43,8 @@ window.TrelloPowerUp.initialize({
     //     },
         "card-detail-badges": function (t, opts) {
 
+            let challengeText = `Challenge`;
+
             const onDone = async (t, opts) => {
                 log('onDone inside');
                 const context = t.getContext();
@@ -58,7 +60,7 @@ window.TrelloPowerUp.initialize({
 
                 const challenges = log.filter(entry => entry.type === enums.Type.Challenge);
 
-                const challengeText = challenges.length > 0
+                challengeText = challenges.length > 0
                     ? `Challenge ${challenges.length}`
                     : `Challenge`;
             };
@@ -94,4 +96,6 @@ window.TrelloPowerUp.initialize({
                 ];
             });
         },     
+}, {
+    helpfulStacks: true
 });
