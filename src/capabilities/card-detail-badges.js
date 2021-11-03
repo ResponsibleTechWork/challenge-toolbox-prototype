@@ -57,4 +57,4 @@ export const getCardDetailBadges = (t, opts) => {
         },
         ];
     });
-},    
+};    
