@@ -60,10 +60,18 @@ window.TrelloPowerUp.initialize({
             // const context = t.getContext();
             // error('card context: ', JSON.stringify(context, null, 2));
 
-            const onDone = (t, opts) => {
+            const onDone = async (t, opts) => {
                 log('onDone inside');
                 const context = t.getContext();
                 log(JSON.stringify(context, null, 2));
+
+                const scope = enums.Scope.Member;
+                const visibility = enums.Visibility.Shared;
+                const key = 'challenged pledges';
+
+                const response = await t.get(scope, visibility, key);
+
+                log('returned save object: ',  response);
             };
 
             return t
