@@ -73,3 +73,48 @@ describe('tests for instances of ChallengeLog', () => {
     });
 
 });
+
+describe('tests for challenge reasons', () => {
+
+    const type = enums.Type.Challenge;
+
+    const challengeLog = new ChallengeLog(type);
+
+    const context = {
+        board: 'board #1',
+        member: 'member #1',
+        card: 'card #1',
+    };
+
+    const pledge = {
+        id: 1,
+        text: 'pldege #1'
+    };
+
+    const reason = {
+        id: 1,
+        text: 'reason #1'
+    }
+
+    it('when no reasons selected notification should be blank', () => {
+        const reasons = challengeLog.getPledge().reasons;
+        const reasonCount = (reasons && reasons.length > 0) ? reasons.length : 0;
+        const notification = reasonCount === 0 ? '' : reasonCount;    
+        expect(reasonCount).toBe(0);
+        expect(notification).toBe('');
+    });
+
+    challengeLog.togglePledge(context, pledge);
+    challengeLog.toggleReason(reason);
+
+    console.log(challengeLog.getLog()[0].pledge.reasons);
+
+    it('when reason selected notification should be 1', () => {        
+        const reasons = challengeLog.getLog()[0].pledge.reasons;
+        const reasonCount = (reasons && reasons.length > 0) ? reasons.length : 0;
+        const notification = reasonCount === 0 ? '' : reasonCount;    
+        expect(reasonCount).toBe(1);
+        expect(notification).toBe(1);
+    });
+
+});
