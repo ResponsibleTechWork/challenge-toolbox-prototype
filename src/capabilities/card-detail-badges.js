@@ -11,24 +11,22 @@ const get = async t => {
     console.log(`Current value for ${key}`,  log);
 
     const challenges = (log && log !== undefined) ? log.filter(entry => entry.type === enums.Type.Challenge) : [];
+    const celebrations = (log && log !== undefined) ? log.filter(entry => entry.type === enums.Type.Celebtrate) : [];
 
     const challengeText = challenges.length > 0
         ? `Challenge ${challenges.length}`
         : `Challenge`;
 
+        const celebrateText = celebrations.length > 0
+        ? `Celebrate ${celebrations.length}`
+        : `Celebrate`;
+
     console.log('challengeText: ', challengeText);
+    console.log('celebrateText: ', celebrateText);
 
     const onCloseChallengToolbox = t => {
-
         console.log('onCloseChallengToolbox');
-        // const context = t.getContext();
-        // console.log(JSON.stringify(context, null, 2));
     };
-
-    // return t
-    // .card("name")
-    // .get("name")
-    // .then(function (cardName) {
 
     const card = await t.card('name').get('name');
 
@@ -45,8 +43,7 @@ const get = async t => {
                     height: 500,
                     callback: onCloseChallengToolbox,
                 });
-            },
-            // refresh: 10
+            }
         },      
         // {
         //     text: "Celebrate",
@@ -65,9 +62,4 @@ const get = async t => {
 
 export const getCardDetailBadges = (t, opts) => {
     return get(t);
-    // return [{
-    //     dynamic: () => {
-    //         return get(t);
-    //     },
-    // }];
 }
