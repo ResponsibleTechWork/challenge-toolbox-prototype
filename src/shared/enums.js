@@ -2,6 +2,7 @@ const Scope = Object.freeze({
     Board: 'board',
     Member: 'member',
     Card: 'card',
+    Organization: 'organization'
 });
 
 const Type = Object.freeze({
