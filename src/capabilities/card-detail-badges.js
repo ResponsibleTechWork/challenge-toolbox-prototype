@@ -5,11 +5,9 @@ export const getCardDetailBadges = (t, opts) => {
 
     const onDone = async t => {
 
-        const { log, warn, error } = window.console;
-
-        log('onDone inside');
+        console.log('onDone inside');
         const context = t.getContext();
-        log(JSON.stringify(context, null, 2));
+        console.log(JSON.stringify(context, null, 2));
 
         const scope = enums.Scope.Member;
         const visibility = enums.Visibility.Shared;
@@ -17,7 +15,7 @@ export const getCardDetailBadges = (t, opts) => {
 
         const log = await t.get(scope, visibility, key);
 
-        log('returned save object: ',  log);
+        console.log('returned save object: ',  log);
 
         const challenges = log.filter(entry => entry.type === enums.Type.Challenge);
 

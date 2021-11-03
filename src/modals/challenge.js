@@ -3,9 +3,6 @@ import sources from '../shared/sources.json';
 import enums from '../shared/enums';
 import { ChallengeLog } from '../shared/challenge-log';
 
-const { log, warn, error } = window.console;
-const logify = data => JSON.stringify(data, null, 2)
-
 const pledges = sources.data.find(s => s.selected).pledges;
 const reasons = sources.data.find(s => s.selected).reasons.negative;
 
@@ -97,7 +94,7 @@ submitButton.addEventListener('click', async e => {
     const key = 'challenged pledges';
     const value = challengeLog.getLog();
     
-    log(' log: ', challengeLog.getLog());
+    console.log(' log: ', challengeLog.getLog());
 
     const t = window.TrelloPowerUp.iframe();
 
@@ -105,7 +102,7 @@ submitButton.addEventListener('click', async e => {
 
     const response = await t.get(scope, visibility, key);
 
-    log('returned save object: ',  response);
+    console.log('returned save object: ',  response);
 
     return t.notifyParent('done');
 });
