@@ -33,31 +33,30 @@ const get = async t => {
     console.log('card: ', JSON.stringify(card, null, 2));
 
     return [
-        {
-            text: challengeText,
-            callback: function(t){
-                return t.modal({
-                    title: "Challenge cards",
-                    url: './modals/challenge.html',
-                    fullscreen: false,
-                    height: 500,
-                    callback: onCloseChallengToolbox,
-                });
-            }
-        },      
         // {
-        //     text: "Celebrate",
+        //     text: challengeText,
         //     callback: function(t){
         //         return t.modal({
-        //         title: "Celebrate card",
-        //         url: './modals/celebrate.html',
-        //         fullscreen: false,
-        //         height: 500,
+        //             title: "Challenge",
+        //             url: './modals/challenge.html',
+        //             fullscreen: false,
+        //             height: 500,
+        //             callback: onCloseChallengToolbox,
         //         });
         //     }
-        // },
-        ];
-    // });
+        // },      
+        {
+            text: celebrateText,
+            callback: function(t){
+                return t.modal({
+                    title: "Celebrate",
+                    url: './modals/celebrate.html',
+                    fullscreen: false,
+                    height: 500
+                });
+            }
+        }
+    ];
 };    
 
 export const getCardDetailBadges = (t, opts) => {
