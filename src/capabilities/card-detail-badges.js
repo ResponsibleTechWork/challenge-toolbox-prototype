@@ -17,18 +17,15 @@ const get = async t => {
         ? `Challenge ${challenges.length}`
         : `Challenge`;
 
-    const celebrationText = celebrations.length > 0
-        ? `Challenge ${celebrations.length}`
-        : `Challenge`;
+    const celebrateText = celebrations.length > 0
+        ? `Celebrate ${celebrations.length}`
+        : `Celebrate`;
 
     console.log('challengeText: ', challengeText);
-    console.log('celebrationText: ', celebrationText);
+    console.log('celebrateText: ', celebrateText);
 
     const onCloseChallengToolbox = t => {
-
-        console.log('onCloseChallengToolbox');
-        // const context = t.getContext();
-        // console.log(JSON.stringify(context, null, 2));
+        console.log('onCloseChallengToolbox');        
     };
 
     const card = await t.card('name').get('name');
@@ -38,7 +35,7 @@ const get = async t => {
     return [
         {
             text: challengeText,
-            color: 'blue',
+            color: "blue",
             callback: function(t){
                 return t.modal({
                     title: "Challenge cards",
@@ -50,19 +47,18 @@ const get = async t => {
             }
         },      
         {
-            text: celebrationText,
-            color: 'green',
+            text: celebrateText,
+            color: "green",
             callback: function(t){
                 return t.modal({
                     url: './modals/celebrate.html',
                     fullscreen: false,
                     height: 500,
-                    callback: onCloseChallengToolbox,
+                    // callback: onCloseChallengToolbox,
                 });
             }
         },
-        ];
-    // });
+    ];
 };    
 
 export const getCardDetailBadges = (t, opts) => {
