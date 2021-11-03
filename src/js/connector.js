@@ -8,6 +8,4 @@ window.TrelloPowerUp.initialize({
     // "card-badges": (t, opts) => getCardBadges(t, opts),
     'card-detail-badges': (t, opts) => getCardDetailBadges(t, opts),
 
-}, {
-    helpfulStacks: true
 });

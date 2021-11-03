@@ -7,7 +7,7 @@ const Scope = Object.freeze({
 
 const Type = Object.freeze({
     Challenge: 'challenge',
-    Celebtrate: 'celebtrate'
+    Celebrate: 'celebtrate'
 });
 
 const Visibility = Object.freeze({

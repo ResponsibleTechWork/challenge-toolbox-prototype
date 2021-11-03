@@ -13,6 +13,7 @@ li {
 .btn {
     padding: 1rem;
     border-radius: .25rem;
+    text-decoration: none;
 }
 
 .btnChallenge {
@@ -38,8 +39,3 @@ li {
 .btnSubmit:hover {
     background-color: rgba(15, 32, 128, .5);
 }
-
-/* .card-detail-badge {
-    text-decoration: none;
-    padding: 1rem;
-} */

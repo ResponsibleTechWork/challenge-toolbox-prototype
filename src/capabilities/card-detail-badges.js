@@ -11,7 +11,7 @@ const get = async t => {
     console.log(`Current value for ${key}`,  log);
 
     const challenges = (log && log !== undefined) ? log.filter(entry => entry.type === enums.Type.Challenge) : [];
-    const celebrations = (log && log !== undefined) ? log.filter(entry => entry.type === enums.Type.Celebtrate) : [];
+    const celebrations = (log && log !== undefined) ? log.filter(entry => entry.type === enums.Type.Celebrate) : [];
 
     const challengeText = challenges.length > 0
         ? `Challenge ${challenges.length}`
@@ -38,9 +38,10 @@ const get = async t => {
             callback: function(t){
                 return t.modal({
                     title: "Challenge",
+                    args: { type: enums.Type.Challenge },
                     url: './modals/challenge.html',
                     fullscreen: false,
-                    height: 500,
+                    height: 500,                    
                     // callback: onCloseChallengToolbox,
                 });
             }
@@ -50,6 +51,7 @@ const get = async t => {
             callback: function(t){
                 return t.modal({
                     title: "Celebrate",
+                    args: { type: enums.Type.Celebrate },
                     url: './modals/celebrate.html',
                     fullscreen: false,
                     height: 500

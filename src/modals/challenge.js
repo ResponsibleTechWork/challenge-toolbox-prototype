@@ -9,7 +9,7 @@ const reasons = sources.data.find(s => s.selected).reasons.negative;
 const pledgesContainer = document.getElementById('pledges');
 const reasonsContainer = document.getElementById('reasons');
 
-const challengeLog = new ChallengeLog(enums.Type.Challenge);
+const challengeLog = new ChallengeLog(t.arg('type'));
 
 const clickPledgeHandler = (e, pledgeId) => {
 
