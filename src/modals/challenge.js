@@ -9,12 +9,14 @@ const reasons = sources.data.find(s => s.selected).reasons.negative;
 const pledgesContainer = document.getElementById('pledges');
 const reasonsContainer = document.getElementById('reasons');
 
-const challengeLog = new ChallengeLog(t.arg('type'));
+let challengeLog;
 
 const clickPledgeHandler = (e, pledgeId) => {
 
     const t = window.TrelloPowerUp.iframe();
     const context = t.getContext();
+
+    challengeLog = challengeLog || new ChallengeLog(t.arg('type'));
     
     const btn = e.target;
           Array.from(btn.classList).find(c => c === 'selected') 
@@ -40,7 +42,8 @@ const clickPledgeHandler = (e, pledgeId) => {
 const clickReasonHandler = (e, reasonId) => {
 
     const t = window.TrelloPowerUp.iframe();
-    const context = t.getContext();
+
+    challengeLog = challengeLog || new ChallengeLog(t.arg('type'));
     
     const btn = e.target;
           Array.from(btn.classList).find(c => c === 'selected') 
