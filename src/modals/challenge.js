@@ -5,6 +5,7 @@ import { ChallengeLog } from '../shared/challenge-log';
 
 // close modal on submit
 // reload pledges and reason when re-opening modal
+// show reason count on pledge
 
 const pledges = sources.data.find(s => s.selected).pledges;
 const reasons = sources.data.find(s => s.selected).reasons.negative;
@@ -61,8 +62,9 @@ const clickReasonHandler = (e, reasonId) => {
 const redrawChallengePledges = () => {
     
     const pledgeItems = pledges.map(pledge => {
+        const reasonCount = pledge.reasons.length === 0 ? '' : pledge.reasons.length;
         return `<li>
-                    <button id="${pledge.id}" class="btn btnChallenge">${pledge.text}</button>
+                    <button id="${pledge.id}" class="btn btnChallenge">${pledge.text}<span class="notification">${reasonCount}</span></button>
                 </li>`;
     });
 
@@ -77,8 +79,9 @@ redrawChallengePledges();
 
 const redrawChallengeReasons = () => {
     const reasonItems = reasons.map(reason => {
+        const reasonCount = pledge.reasons.length === 0 ? '' : pledge.reasons.length;
         return `<li>
-                    <button id="${reason.id}" class="btn btnChallenge">${reason.text}</button>
+                    <button id="${reason.id}" class="btn btnChallenge">${reason.text}<span class="notification">${reasonCount}</span></button>
                 </li>`;
     });
     
@@ -110,5 +113,7 @@ submitButton.addEventListener('click', async e => {
 
     console.log('returned save object: ',  response);
 
-    return t.notifyParent('done');    
+    t.notifyParent('done');
+
+    t.closeModal();
 });

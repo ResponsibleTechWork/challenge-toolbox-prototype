@@ -33,6 +33,7 @@ a {
     text-decoration: none;
     border-style: none;
     cursor: pointer;
+    position: relative;
 }
 
 .btnChallenge {
@@ -49,6 +50,13 @@ a {
 
 .btnCelebrate:hover, .btnCelebrate.selected {
     background-color: rgb(169, 90, 161);
+}
+
+.btn .notification {
+    position: absolute;
+    top: .25rem;
+    right: .25rem;
+    font-size: .6rem;
 }
 
 .btnSubmit {
