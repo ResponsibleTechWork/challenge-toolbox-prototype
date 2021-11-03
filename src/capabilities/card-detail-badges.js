@@ -6,7 +6,7 @@ const get = async t => {
     const visibility = enums.Visibility.Shared;
     const key = enums.Key.ChallengedPledges;
 
-    const log = await t.get(scope, visibility, key);
+    // const log = await t.get(scope, visibility, key);
 
     console.log(`Current value for ${key}`,  log);
 
