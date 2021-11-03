@@ -52,7 +52,7 @@ a {
     background-color: rgb(169, 90, 161);
 }
 
-.btn .notification {
+.btn .counter {
     position: absolute;
     top: .25rem;
     right: .25rem;

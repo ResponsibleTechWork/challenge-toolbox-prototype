@@ -97,14 +97,14 @@ describe('tests for challenge reasons', () => {
     }
 
     it('when no reasons selected notification should be blank', () => {
-        const notification = challengeLog.getReasonsNotification();
+        const notification = challengeLog.getReasonsCount();
         expect(notification).toBe('');
     });
 
     it('when reason selected notification should be 1', () => {        
         challengeLog.togglePledge(context, pledge);
         challengeLog.toggleReason(reason);    
-        const notification = challengeLog.getReasonsNotification();   
+        const notification = challengeLog.getReasonsCount();   
         expect(notification).toBe('1');
     });
 

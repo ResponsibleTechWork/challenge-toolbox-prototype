@@ -78,7 +78,7 @@ export class ChallengeLog {
     }
 
     // public
-    getReasonsNotification() {
+    getReasonsCount() {
         const reasons = this.log.length > 0 ? this.log[0].pledge.reasons : [];
         const reasonCount = reasons.length > 0 ? reasons.length : 0;
         return reasonCount === 0 ? '' : reasonCount.toString();
