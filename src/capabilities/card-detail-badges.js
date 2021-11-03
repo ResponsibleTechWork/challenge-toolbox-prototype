@@ -33,18 +33,18 @@ const get = async t => {
     console.log('card: ', JSON.stringify(card, null, 2));
 
     return [
-        // {
-        //     text: challengeText,
-        //     callback: function(t){
-        //         return t.modal({
-        //             title: "Challenge",
-        //             url: './modals/challenge.html',
-        //             fullscreen: false,
-        //             height: 500,
-        //             callback: onCloseChallengToolbox,
-        //         });
-        //     }
-        // },      
+        {
+            text: challengeText,
+            callback: function(t){
+                return t.modal({
+                    title: "Challenge",
+                    url: './modals/challenge.html',
+                    fullscreen: false,
+                    height: 500,
+                    // callback: onCloseChallengToolbox,
+                });
+            }
+        },      
         {
             text: celebrateText,
             callback: function(t){
