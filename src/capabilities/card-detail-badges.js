@@ -8,7 +8,7 @@ const get = async t => {
 
     const log = await t.get(scope, visibility, key);
 
-    console.log(`Curent value for ${key}`,  log);
+    console.log(`Current value for ${key}`,  log);
 
     const challenges = (log && log !== undefined) ? log.filter(entry => entry.type === enums.Type.Challenge) : [];
 
@@ -18,43 +18,51 @@ const get = async t => {
 
     console.log('challengeText: ', challengeText);
 
-    const onCloseChallengToolbox = async t => {
+    const onCloseChallengToolbox = t => {
 
         console.log('onCloseChallengToolbox');
-        const context = t.getContext();
-        console.log(JSON.stringify(context, null, 2));
+        // const context = t.getContext();
+        // console.log(JSON.stringify(context, null, 2));
     };
 
-    return t
-    .card("name")
-    .get("name")
-    .then(function (cardName) {
-        return [
+    // return JSON.parse(await t.get(cardId || 'card', 'shared', 'notes', '[]'));
+
+    // return t
+    // .card("name")
+    // .get("name")
+    // .then(function (cardName) {
+
+    const card = await t.card('name').get('name');
+
+    console.log('card: ', JSON.stringify(card, null, 2));
+
+    return [
         {
             text: challengeText,
             callback: function(t){
                 return t.modal({
-                    title: "Challenge card",
+                    title: "Challenge cards",
                     url: './modals/challenge.html',
                     fullscreen: false,
                     height: 500,
                     callback: onCloseChallengToolbox,
                 });
-                }
+            },
+            refresh: 10, // in seconds
         },      
-        {
-            text: "Celebrate",
-            callback: function(t){
-                return t.modal({
-                title: "Celebrate card",
-                url: './modals/celebrate.html',
-                fullscreen: false,
-                height: 500,
-                });
-            }
-        },
+        // {
+        //     text: "Celebrate",
+        //     callback: function(t){
+        //         return t.modal({
+        //         title: "Celebrate card",
+        //         url: './modals/celebrate.html',
+        //         fullscreen: false,
+        //         height: 500,
+        //         });
+        //     }
+        // },
         ];
-    });
+    // });
 };    
 
 export const getCardDetailBadges = (t, opts) => {
