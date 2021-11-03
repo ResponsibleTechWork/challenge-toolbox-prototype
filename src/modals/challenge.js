@@ -1,4 +1,3 @@
-import { logChallenge } from '../shared/funcs';
 import api from '../shared/api';
 import sources from '../shared/sources.json';
 import enums from '../shared/enums';
@@ -33,7 +32,7 @@ const clickPledgeHandler = (e, pledgeId) => {
         })
     }
 
-    challengeLog.record(context, pledge); 
+    challengeLog.togglePledge(context, pledge); 
 
 };
 
@@ -49,7 +48,7 @@ const clickReasonHandler = (e, reasonId) => {
 
     const reason = reasons.find(r => r.id === reasonId);
 
-    challengeLog.reason(reason);
+    challengeLog.toggleReason(reason);
 };
 
 const redrawChallengePledges = () => {

@@ -27,8 +27,8 @@ describe('tests for instances of ChallengeLog', () => {
         expect(challengeLog.getLog()).toEqual([]);
     });
 
-    it('log should include first record', () => {
-        challengeLog.record(context, pledge);
+    it('log should include first pledge', () => {
+        challengeLog.togglePledge(context, pledge);
         expect(challengeLog.getLog()).toStrictEqual([
             {
                 type: type,
@@ -51,6 +51,25 @@ describe('tests for instances of ChallengeLog', () => {
                 pledge: { ...pledge, reasons: [ reason ] }
             }
         ])
+    });
+
+    it('log should remove first reason when toggled', () => {
+        challengeLog.toggleReason(reason);
+        expect(challengeLog.getLog()).toStrictEqual([
+            {
+                type: type,
+                board: context.board,
+                member: context.member,
+                card: context.card,
+                pledge: { ...pledge, reasons: [ ] }
+            }
+        ])
+    });
+
+
+    it('log should remove first pledge', () => {
+        challengeLog.togglePledge(context, pledge);
+        expect(challengeLog.getLog()).toStrictEqual([])
     });
 
 });

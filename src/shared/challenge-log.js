@@ -42,7 +42,7 @@ export class ChallengeLog {
     }
 
     // public
-    record(context, pledge) {
+    togglePledge(context, pledge) {
 
         this.pledge = pledge;
         this.context = context;
