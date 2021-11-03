@@ -46,18 +46,18 @@ const get = async t => {
                 });
             }
         },      
-        {
-            text: celebrateText,
-            color: "green",
-            callback: function(t){
-                return t.modal({
-                    url: './modals/celebrate.html',
-                    fullscreen: false,
-                    height: 500,
-                    // callback: onCloseChallengToolbox,
-                });
-            }
-        },
+        // {
+        //     text: celebrateText,
+        //     color: "green",
+        //     callback: function(t){
+        //         return t.modal({
+        //             url: './modals/celebrate.html',
+        //             fullscreen: false,
+        //             height: 500,
+        //             // callback: onCloseChallengToolbox,
+        //         });
+        //     }
+        // },
     ];
 };    
 
