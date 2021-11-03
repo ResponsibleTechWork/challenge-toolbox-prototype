@@ -26,11 +26,15 @@ const clickPledgeHandler = (e, pledgeId) => {
 
     const pledge = pledges.find(p => p.id === pledgeId);
 
+    console.log('pledgeId: ', pledgeId);
+
     if(pledge !== challengeLog.getPledge()) {
         reasonsContainer.querySelectorAll('.btn').forEach(btn => {
             btn.classList.remove('selected')
         })
     }
+
+    console.log('pledge: ', pledge);
 
     challengeLog.togglePledge(context, pledge); 
 
