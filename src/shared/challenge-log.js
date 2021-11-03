@@ -1,6 +1,6 @@
 import enums from '../shared/enums';
 
-const { log, warn, error } = window.console;
+// const { log, warn, error } = window.console;
 
 export class ChallengeLog {
 
@@ -51,8 +51,8 @@ export class ChallengeLog {
         
         const isPledgeLogged = (this.log.length > 0 && this.log.find(entry => entry.pledge.id === pledge.id));
 
-        log('this.pledge: ', this.pledge);
-        log('isPledgeLogged: ', isPledgeLogged);
+        // log('this.pledge: ', this.pledge);
+        // log('isPledgeLogged: ', isPledgeLogged);
 
         isPledgeLogged
             ? this.removePledgeFromLog()
