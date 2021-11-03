@@ -36,28 +36,27 @@ const get = async t => {
         {
             text: challengeText,
             color: "blue",
-            callback: function(t){
-                return t.modal({
-                    title: "Challenge cards",
-                    url: './modals/challenge.html',
-                    fullscreen: false,
-                    height: 500,
-                    callback: onCloseChallengToolbox,
-                });
-            }
+            // callback: function(t){
+            //     return t.modal({
+            //         title: "Challenge cards",
+            //         url: './modals/challenge.html',
+            //         fullscreen: false,
+            //         height: 500,
+            //         callback: onCloseChallengToolbox,
+            //     });
+            // }
         },      
-        // {
-        //     text: celebrateText,
-        //     color: "green",
-        //     callback: function(t){
-        //         return t.modal({
-        //             url: './modals/celebrate.html',
-        //             fullscreen: false,
-        //             height: 500,
-        //             // callback: onCloseChallengToolbox,
-        //         });
-        //     }
-        // },
+        {
+            text: celebrateText,
+            color: "green",
+            // callback: function(t){
+            //     return t.modal({
+            //         url: './modals/celebrate.html',
+            //         fullscreen: false,
+            //         height: 500,
+            //     });
+            // }
+        },
     ];
 };    
 
