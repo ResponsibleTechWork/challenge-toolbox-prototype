@@ -34,6 +34,67 @@
                 }                
             ]
         },
+        "selected": false
+    },
+    {
+        "name": "Sustainable Web Manifesto",
+        "src": "https://www.sustainablewebmanifesto.com/",
+        "pledges": [
+            {
+                "id": 1,
+                "text": "clean"
+            },            
+            {
+                "id": 2,
+                "text": "efficient"
+            },    
+            {
+                "id": 3,
+                "text": "open"
+            },
+            {
+                "id": 4,
+                "text": "honest"
+            },
+            {
+                "id": 5,
+                "text": "regenerative"
+            },
+            {
+                "id": 6,
+                "text": "resilient"
+            }
+        ],
+        "reasons": {
+            "positive": [
+                {
+                    "id": 1,
+                    "text": "supportive"
+                },
+                {
+                    "id": 2,
+                    "text": "collaborative"
+                },      
+                {
+                    "id": 3,
+                    "text": "fast"
+                }      
+            ],
+            "negative": [
+                {
+                    "id": 1,
+                    "text": "obstructive"
+                },                
+                {
+                    "id": 2,
+                    "text": "opaque"
+                },                
+                {
+                    "id": 3,
+                    "text": "slow"
+                }           
+            ]
+        },
         "selected": true
     },
     {

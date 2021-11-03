@@ -39,6 +39,7 @@ li {
     background-color: rgba(15, 32, 128, .5);
 }
 
-.card-detail-badge a {
+/* .card-detail-badge {
     text-decoration: none;
-}
+    padding: 1rem;
+} */

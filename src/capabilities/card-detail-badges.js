@@ -11,12 +11,18 @@ const get = async t => {
     console.log(`Current value for ${key}`,  log);
 
     const challenges = (log && log !== undefined) ? log.filter(entry => entry.type === enums.Type.Challenge) : [];
+    const celebrations = (log && log !== undefined) ? log.filter(entry => entry.type === enums.Type.Celebtrate) : [];
 
     const challengeText = challenges.length > 0
         ? `Challenge ${challenges.length}`
         : `Challenge`;
 
+    const celebrationText = celebrations.length > 0
+        ? `Challenge ${celebrations.length}`
+        : `Challenge`;
+
     console.log('challengeText: ', challengeText);
+    console.log('celebrationText: ', celebrationText);
 
     const onCloseChallengToolbox = t => {
 
@@ -25,11 +31,6 @@ const get = async t => {
         // console.log(JSON.stringify(context, null, 2));
     };
 
-    // return t
-    // .card("name")
-    // .get("name")
-    // .then(function (cardName) {
-
     const card = await t.card('name').get('name');
 
     console.log('card: ', JSON.stringify(card, null, 2));
@@ -37,6 +38,7 @@ const get = async t => {
     return [
         {
             text: challengeText,
+            color: 'blue',
             callback: function(t){
                 return t.modal({
                     title: "Challenge cards",
@@ -45,29 +47,26 @@ const get = async t => {
                     height: 500,
                     callback: onCloseChallengToolbox,
                 });
-            },
-            // refresh: 10
+            }
         },      
-        // {
-        //     text: "Celebrate",
-        //     callback: function(t){
-        //         return t.modal({
-        //         title: "Celebrate card",
-        //         url: './modals/celebrate.html',
-        //         fullscreen: false,
-        //         height: 500,
-        //         });
-        //     }
-        // },
+        {
+            text: celebrationText,
+            color: 'green',
+            callback: function(t){
+                return t.modal({
+                    url: './modals/celebrate.html',
+                    fullscreen: false,
+                    height: 500,
+                    callback: onCloseChallengToolbox,
+                });
+            }
+        },
         ];
     // });
 };    
 
 export const getCardDetailBadges = (t, opts) => {
-    return get(t);
-    // return [{
-    //     dynamic: () => {
-    //         return get(t);
-    //     },
-    // }];
+    return { dynamic: () => {
+        return get(t);
+    }}
 }
