@@ -8,7 +8,7 @@ const get = async t => {
 
     // const log = await t.get(scope, visibility, key);
 
-    console.log(`Current value for ${key}`,  log);
+    // console.log(`Current value for ${key}`,  log);
 
     // const challenges = (log && log !== undefined) ? log.filter(entry => entry.type === enums.Type.Challenge) : [];
     // const celebrations = (log && log !== undefined) ? log.filter(entry => entry.type === enums.Type.Celebtrate) : [];
