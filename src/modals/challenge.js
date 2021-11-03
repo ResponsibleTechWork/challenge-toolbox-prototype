@@ -24,7 +24,7 @@ const clickPledgeHandler = (e, pledgeId) => {
             ? btn.classList.remove('selected')
             : btn.classList.add('selected');
 
-    const pledge = pledges.find(p => p.id === pledgeId);
+    const pledge = pledges.find(p => p.id === parseInt(pledgeId));
 
     console.log('pledgeId: ', pledgeId);
 
@@ -50,7 +50,7 @@ const clickReasonHandler = (e, reasonId) => {
             ? btn.classList.remove('selected')
             : btn.classList.add('selected');
 
-    const reason = reasons.find(r => r.id === reasonId);
+    const reason = reasons.find(r => r.id === parseInt(reasonId));
 
     challengeLog.toggleReason(reason);
 };
