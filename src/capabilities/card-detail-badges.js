@@ -1,12 +1,11 @@
 import enums from '../shared/enums';
-
-const { log, warn, error } = window.console;
-
 export const getCardDetailBadges = (t, opts) => {
 
     let challengeText = `Challenge`;
 
     const onDone = async t => {
+
+        const { log, warn, error } = window.console;
 
         log('onDone inside');
         const context = t.getContext();
