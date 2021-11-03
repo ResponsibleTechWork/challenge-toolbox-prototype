@@ -25,8 +25,6 @@ const get = async t => {
         // console.log(JSON.stringify(context, null, 2));
     };
 
-    // return JSON.parse(await t.get(cardId || 'card', 'shared', 'notes', '[]'));
-
     // return t
     // .card("name")
     // .get("name")
@@ -48,7 +46,7 @@ const get = async t => {
                     callback: onCloseChallengToolbox,
                 });
             },
-            refresh: 10, // in seconds
+            // refresh: 10
         },      
         // {
         //     text: "Celebrate",
@@ -67,8 +65,8 @@ const get = async t => {
 
 export const getCardDetailBadges = (t, opts) => {
     return [{
-        dynamic: () => {
+        // dynamic: () => {
             return get(t);
-        },
+        // },
     }];
 }
