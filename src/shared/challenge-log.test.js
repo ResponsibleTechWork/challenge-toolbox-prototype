@@ -15,7 +15,7 @@ describe('tests for instances of ChallengeLog', () => {
 
     const pledge = {
         id: 1,
-        text: 'pldege #1'
+        text: 'pledge #1'
     };
 
     const reason = {
@@ -66,7 +66,6 @@ describe('tests for instances of ChallengeLog', () => {
         ])
     });
 
-
     it('log should remove first pledge when toggled', () => {
         challengeLog.togglePledge(context, pledge);
         expect(challengeLog.getLog()).toStrictEqual([])
@@ -88,7 +87,7 @@ describe('tests for challenge reasons', () => {
 
     const pledge = {
         id: 1,
-        text: 'pldege #1'
+        text: 'pledge #1'
     };
 
     const reason = {
@@ -96,16 +95,33 @@ describe('tests for challenge reasons', () => {
         text: 'reason #1'
     }
 
-    it('when no reasons selected notification should be blank', () => {
-        const notification = challengeLog.getReasonsCount();
-        expect(notification).toBe('');
+    const reason2 = {
+        id: 2,
+        text: 'reason #2'
+    }
+
+    it('when no reason selected count should be blank', () => {
+        const count = challengeLog.getReasonsCount();
+        expect(count).toBe('');
     });
 
-    it('when reason selected notification should be 1', () => {        
+    it('when reason selected count should be "1"', () => {        
         challengeLog.togglePledge(context, pledge);
-        challengeLog.toggleReason(reason);    
-        const notification = challengeLog.getReasonsCount();   
-        expect(notification).toBe('1');
+        challengeLog.toggleReason(reason); 
+        const count = challengeLog.getReasonsCount();   
+        expect(count).toBe('1');
+    });
+
+    it('when second reason selected count should be "2"', () => {                
+        challengeLog.toggleReason(reason2);
+        const count = challengeLog.getReasonsCount();
+        expect(count).toBe('2');
+    });
+
+    it('when first reason reselected count should drop to "1"', () => {                
+        challengeLog.toggleReason(reason);
+        const count = challengeLog.getReasonsCount();
+        expect(count).toBe('1');
     });
 
 });

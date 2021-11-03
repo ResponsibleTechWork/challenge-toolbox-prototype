@@ -56,7 +56,9 @@ export class ChallengeLog {
 
     // private 
     addReasonToPledge() {
-        this.log.find(entry => entry.pledge.id === this.pledge.id).pledge.reasons = [ ...this.log.find(entry => entry.pledge.id === this.pledge.id).pledge.reasons, this.reason ];
+        const pledgeReasons = this.log.find(entry => entry.pledge.id === this.pledge.id).pledge.reasons;
+        const reasons = [ ...pledgeReasons, this.reason ];
+        this.log.find(entry => entry.pledge.id === this.pledge.id).pledge.reasons = reasons;
     }
 
     // private
@@ -70,7 +72,7 @@ export class ChallengeLog {
         this.reason = reason;
 
         const isPledgeLogged = (this.log.length > 0 && !!this.log.find(entry => entry.pledge.id === this.pledge.id));
-        const isReasonLogged = isPledgeLogged && this.log.find(entry => entry.pledge.id === this.pledge.id).pledge.reasons.length > 0;
+        const isReasonLogged = isPledgeLogged && this.log.find(entry => entry.pledge.reasons.find(r => r.id === reason.id));
 
         isReasonLogged 
             ? this.removeReasonFromPledge()
@@ -79,7 +81,8 @@ export class ChallengeLog {
 
     // public
     getReasonsCount() {
-        const reasons = this.log.length > 0 ? this.log[0].pledge.reasons : [];
+        const entry = this.log.find(entry => entry.pledge.id === this.pledge.id);
+        const reasons = entry !== undefined ? entry.pledge.reasons ? entry.pledge.reasons : [] : [];
         const reasonCount = reasons.length > 0 ? reasons.length : 0;
         return reasonCount === 0 ? '' : reasonCount.toString();
     }
