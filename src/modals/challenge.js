@@ -20,8 +20,6 @@ const clickPledgeHandler = (e, pledgeId) => {
     const t = window.TrelloPowerUp.iframe();
     const context = t.getContext();
 
-    challengeLog = challengeLog || new ChallengeLog(t.arg('type'));
-    
     const btn = e.target;
           Array.from(btn.classList).find(c => c === 'selected') 
             ? btn.classList.remove('selected')
@@ -47,8 +45,6 @@ const clickReasonHandler = (e, reasonId) => {
 
     const t = window.TrelloPowerUp.iframe();
 
-    challengeLog = challengeLog || new ChallengeLog(t.arg('type'));
-    
     const btn = e.target;
           Array.from(btn.classList).find(c => c === 'selected') 
             ? btn.classList.remove('selected')
@@ -60,6 +56,7 @@ const clickReasonHandler = (e, reasonId) => {
 };
 
 const redrawChallengePledges = () => {
+    challengeLog = challengeLog || new ChallengeLog(t.arg('type'));
     const reasonCount = challengeLog.getReasonsCount();
     const pledgeItems = pledges.map(pledge => {
         
@@ -115,5 +112,5 @@ submitButton.addEventListener('click', async e => {
 
     t.notifyParent('done');
 
-    t.closeModal();
+    return t.closeModal();
 });
