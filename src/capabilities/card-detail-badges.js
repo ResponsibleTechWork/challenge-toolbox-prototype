@@ -10,8 +10,11 @@ const get = async t => {
 
     console.log(`Current value for ${key}`,  log);
 
-    const challenges = (log && log !== undefined) ? log.filter(entry => entry.type === enums.Type.Challenge) : [];
-    const celebrations = (log && log !== undefined) ? log.filter(entry => entry.type === enums.Type.Celebtrate) : [];
+    // const challenges = (log && log !== undefined) ? log.filter(entry => entry.type === enums.Type.Challenge) : [];
+    // const celebrations = (log && log !== undefined) ? log.filter(entry => entry.type === enums.Type.Celebtrate) : [];
+
+    const challenges = [];
+    const celebrations = [];
 
     const challengeText = challenges.length > 0
         ? `Challenge ${challenges.length}`
@@ -36,26 +39,27 @@ const get = async t => {
         {
             text: challengeText,
             color: "blue",
-            // callback: function(t){
-            //     return t.modal({
-            //         title: "Challenge cards",
-            //         url: './modals/challenge.html',
-            //         fullscreen: false,
-            //         height: 500,
-            //         callback: onCloseChallengToolbox,
-            //     });
-            // }
+            callback: function(t){
+                return t.modal({
+                    title: "Challenge cards",
+                    url: './modals/challenge.html',
+                    fullscreen: false,
+                    height: 500,
+                    callback: onCloseChallengToolbox,
+                });
+            }
         },      
         {
             text: celebrateText,
             color: "green",
-            // callback: function(t){
-            //     return t.modal({
-            //         url: './modals/celebrate.html',
-            //         fullscreen: false,
-            //         height: 500,
-            //     });
-            // }
+            callback: function(t){
+                return t.modal({
+                    url: './modals/celebrate.html',
+                    fullscreen: false,
+                    height: 500,
+                    // callback: onCloseChallengToolbox,
+                });
+            }
         },
     ];
 };    
