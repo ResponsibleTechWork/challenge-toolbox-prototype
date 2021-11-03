@@ -64,9 +64,10 @@ const get = async t => {
 };    
 
 export const getCardDetailBadges = (t, opts) => {
-    return [{
-        // dynamic: () => {
-            return get(t);
-        // },
-    }];
+    return get(t);
+    // return [{
+    //     dynamic: () => {
+    //         return get(t);
+    //     },
+    // }];
 }
