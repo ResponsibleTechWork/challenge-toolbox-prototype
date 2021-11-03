@@ -91,7 +91,7 @@ submitButton.addEventListener('click', async e => {
 
     const scope = enums.Scope.Member;
     const visibility = enums.Visibility.Shared;
-    const key = 'challenged pledges';
+    const key = enums.Key.ChallengedPledges;
     const value = challengeLog.getLog();
     
     console.log(' log: ', challengeLog.getLog());

@@ -15,10 +15,15 @@ const Visibility = Object.freeze({
     Private: 'private'
 });
 
+const Key = Object.freeze({
+    ChallengedPledges: 'challenged pledges'
+})
+
 const enums = {
     Scope,
     Type,
-    Visibility
+    Visibility,
+    Key
 };
 
 export default enums;

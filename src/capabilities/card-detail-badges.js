@@ -1,27 +1,28 @@
 import enums from '../shared/enums';
-export const getCardDetailBadges = (t, opts) => {
 
-    let challengeText = `Challenge`;
+const get = async t => {
 
-    const onDone = async t => {
+    const scope = enums.Scope.Member;
+    const visibility = enums.Visibility.Shared;
+    const key = enums.Key.ChallengedPledges;
 
-        console.log('onDone inside');
+    const log = await t.get(scope, visibility, key);
+
+    console.log(`Curent value for ${key}`,  log);
+
+    const challenges = (log && log !== undefined) ? log.filter(entry => entry.type === enums.Type.Challenge) : [];
+
+    const challengeText = challenges.length > 0
+        ? `Challenge ${challenges.length}`
+        : `Challenge`;
+
+    console.log('challengeText: ', challengeText);
+
+    const onCloseChallengToolbox = async t => {
+
+        console.log('onCloseChallengToolbox');
         const context = t.getContext();
         console.log(JSON.stringify(context, null, 2));
-
-        const scope = enums.Scope.Member;
-        const visibility = enums.Visibility.Shared;
-        const key = 'challenged pledges';
-
-        const log = await t.get(scope, visibility, key);
-
-        console.log('returned save object: ',  log);
-
-        const challenges = log.filter(entry => entry.type === enums.Type.Challenge);
-
-        challengeText = challenges.length > 0
-            ? `Challenge ${challenges.length}`
-            : `Challenge`;
     };
 
     return t
@@ -37,7 +38,7 @@ export const getCardDetailBadges = (t, opts) => {
                     url: './modals/challenge.html',
                     fullscreen: false,
                     height: 500,
-                    callback: onDone,
+                    callback: onCloseChallengToolbox,
                 });
                 }
         },      
@@ -55,3 +56,11 @@ export const getCardDetailBadges = (t, opts) => {
         ];
     });
 };    
+
+export const getCardDetailBadges = (t, opts) => {
+    return [{
+        dynamic: () => {
+            return get(t);
+        },
+    }];
+}
