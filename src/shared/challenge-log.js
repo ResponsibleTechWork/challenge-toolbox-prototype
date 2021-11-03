@@ -76,4 +76,11 @@ export class ChallengeLog {
             ? this.removeReasonFromPledge()
             : this.addReasonToPledge()
     }
+
+    // public
+    getReasonsNotification() {
+        const reasons = this.log.length > 0 ? this.log[0].pledge.reasons : [];
+        const reasonCount = reasons.length > 0 ? reasons.length : 0;
+        return reasonCount === 0 ? '' : reasonCount.toString();
+    }
 }

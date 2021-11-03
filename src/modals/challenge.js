@@ -60,11 +60,9 @@ const clickReasonHandler = (e, reasonId) => {
 };
 
 const redrawChallengePledges = () => {
-    
+    const notification = challengeLog.getReasonsNotification();
     const pledgeItems = pledges.map(pledge => {
-        const reasons = challengeLog.getLog()[0].pledge.reasons;
-        const reasonCount = (reasons && reasons.length > 0) ? reasons.length : 0;
-        const notification = reasonCount === 0 ? '' : reasonCount;      
+        
         return `<li>
                     <button id="${pledge.id}" class="btn btnChallenge">${pledge.text}<span class="notification">${notification}</span></button>
                 </li>`;
@@ -81,9 +79,7 @@ redrawChallengePledges();
 
 const redrawChallengeReasons = () => {
     const reasonItems = reasons.map(reason => {
-        const reasons = challengeLog.getLog()[0].pledge.reasons;
-        const reasonCount = (reasons && reasons.length > 0) ? reasons.length : 0;
-        const notification = reasonCount === 0 ? '' : reasonCount;
+        const notification = challengeLog.getReasonsNotification();
         return `<li>
                     <button id="${reason.id}" class="btn btnChallenge">${reason.text}<span class="notification">${notification}</span></button>
                 </li>`;
