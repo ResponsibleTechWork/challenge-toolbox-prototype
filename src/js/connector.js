@@ -12,7 +12,13 @@ const { log, warn, error } = window.console;
 //     });
 //   };
 
-  window.TrelloPowerUp.initialize({
+// const onDone = (t, opts) => {
+//     log('onDone outside');
+//     const context = t.getContext();
+//     log(JSON.stringify(context, null, 2));
+// };
+
+window.TrelloPowerUp.initialize({
     // 'card-buttons': function (t, opts) {
     //     const context = t.getContext();
     //     console.log(JSON.stringify(context, null, 2));
@@ -51,13 +57,19 @@ const { log, warn, error } = window.console;
     //     },
         "card-detail-badges": function (t, opts) {
 
-            const context = t.getContext();
-            error('card context: ', JSON.stringify(context, null, 2));
+            // const context = t.getContext();
+            // error('card context: ', JSON.stringify(context, null, 2));
+
+            const onDone = (t, opts) => {
+                log('onDone inside');
+                const context = t.getContext();
+                log(JSON.stringify(context, null, 2));
+            };
 
             return t
-              .card("name")
-              .get("name")
-              .then(function (cardName) {
+            .card("name")
+            .get("name")
+            .then(function (cardName) {
                 return [
                 {
                     text: "Challenge",
@@ -67,21 +79,22 @@ const { log, warn, error } = window.console;
                             url: './modals/challenge.html',
                             fullscreen: false,
                             height: 500,
+                            callback: onDone,
                         });
                         }
-                  },      
-                  {
+                },      
+                {
                     text: "Celebrate",
                     callback: function(t){
                         return t.modal({
-                          title: "Celebrate card",
-                          url: './modals/celebrate.html',
-                          fullscreen: false,
-                          height: 500,
+                        title: "Celebrate card",
+                        url: './modals/celebrate.html',
+                        fullscreen: false,
+                        height: 500,
                         });
-                      }
-                  },
+                    }
+                },
                 ];
-              });
-          },     
-  });
+            });
+        },     
+});

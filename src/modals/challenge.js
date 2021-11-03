@@ -106,4 +106,6 @@ submitButton.addEventListener('click', async e => {
     const response = await t.get(scope, visibility, key);
 
     log('returned save object: ',  response);
+
+    return t.notifyParent('done');
 });
