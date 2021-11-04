@@ -35,12 +35,6 @@ export class ChallengeLog {
         return this.currentPledge;
     }
 
-    // public 
-    hasCurrentPledgeChanged(pledge) {
-        if(this.getCurrentPledge() === {}) return true;
-        return pledge.id !== this.getCurrentPledge().id;
-    }
-
     // private
     addPledgeToLog() {
         this.log.push({
@@ -59,7 +53,10 @@ export class ChallengeLog {
     
     // private
     removePledgeFromLog() {
-        if(this.isLogEmpty()) return false;
+        if(this.isLogEmpty()) return { isPledgeNowLogged: false, updatedPledges: [] };
+        if(this.getReasonsForCurrentPledge(this.currentPledge).length > 0) {
+            return { isPledgeNowLogged: false, updatedPledges: this.log.map(entry => entry.pledge) };
+        }
         this.log = this.log.filter(entry => entry.pledge.id !== this.currentPledge.id);
         return { isPledgeNowLogged: false, updatedPledges: this.log.map(entry => entry.pledge) };
     }
@@ -72,7 +69,7 @@ export class ChallengeLog {
         
         const isPledgeLogged = this.isLogEmpty() ? false : this.islogTruthy(this.log.find(entry => entry.pledge.id === pledge.id));
 
-        const { isPledgeNowLogged, updatedPledges } = (isPledgeLogged && this.getReasonsCount() === 0)
+        const { isPledgeNowLogged, updatedPledges } = isPledgeLogged
             ? this.removePledgeFromLog()
             : this.addPledgeToLog();
 

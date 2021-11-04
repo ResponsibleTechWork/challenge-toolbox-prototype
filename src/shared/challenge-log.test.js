@@ -28,7 +28,7 @@ describe('tests for instances of ChallengeLog', () => {
     });
 
     it('log should include first pledge', () => {
-        const isPledgeNowLogged = challengeLog.togglePledge(context, pledge);
+        const { isPledgeNowLogged, updatedPledges } = challengeLog.togglePledge(context, pledge);
         expect(challengeLog.getLog()).toStrictEqual([
             {
                 type: type,

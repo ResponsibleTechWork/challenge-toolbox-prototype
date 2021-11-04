@@ -10,6 +10,8 @@ const reasons = sources.data.find(s => s.selected).reasons.negative;
 const pledgesContainer = document.getElementById('pledges');
 const reasonsContainer = document.getElementById('reasons');
 
+document.getElementById('src').href = sources.data.find(s => s.selected).src;
+
 // const t = window.TrelloPowerUp.iframe();
 
 const challengeLog = new ChallengeLog(enums.Type.Challenge);
@@ -24,14 +26,7 @@ const showSelectedPledges = (pledges, currentPledge) => {
         pledges.forEach(pledge => {
             if (parseInt(currentPledge.id) === parseInt(btn.id)) {
                 btn.classList.add('selected');
-            } 
-            // else {
-            //     if (pledges.filter(sb => parseInt(sb.id) === parseInt(btn.id)) === []) {
-            //         if(pledge.id && parseInt(btn.id) === parseInt(currentPledge.id)) {
-            //             btn.classList.remove('selected');
-            //         }
-            //     }
-            // }
+            }
         });
     });
 };

@@ -14,11 +14,11 @@ const get = async t => {
     const celebrations = (log && log !== undefined) ? log.filter(entry => entry.type === enums.Type.Celebrate) : [];
 
     const challengeText = challenges.length > 0
-        ? `Challenge ${challenges.length}`
+        ? `Challenge (${challenges.length})`
         : `Challenge`;
 
         const celebrateText = celebrations.length > 0
-        ? `Celebrate ${celebrations.length}`
+        ? `Celebrate (${celebrations.length})`
         : `Celebrate`;
 
     console.log('challengeText: ', challengeText);

@@ -95,7 +95,7 @@
                 }           
             ]
         },
-        "selected": true
+        "selected": false
     },
     {
         "name": "Challenge Toolbox Prototype",
@@ -132,6 +132,6 @@
                 }                
             ]
         },
-        "selected": false
+        "selected": true
     }
 ]}
