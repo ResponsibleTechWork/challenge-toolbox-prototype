@@ -40,6 +40,10 @@ describe('tests for instances of ChallengeLog', () => {
         ])
     });
 
+    it('log should not include any reasons for first pledge', () => {
+        expect(challengeLog.getReasonsForCurrentPledge()).toEqual([]);
+    });
+
     it('log should include first reason', () => {
         challengeLog.toggleReason(reason);
         expect(challengeLog.getLog()).toStrictEqual([

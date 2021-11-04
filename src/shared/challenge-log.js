@@ -58,7 +58,7 @@ export class ChallengeLog {
         this.currentPledge = pledge;
         this.context = context;
         
-        const isPledgeLogged = this.log.find(entry => entry.pledge.id === pledge.id);
+        const isPledgeLogged = this.isLogEmpty() ? false : this.log.find(entry => entry.pledge.id === pledge.id);
 
         isPledgeLogged
             ? this.removePledgeFromLog()
@@ -69,8 +69,9 @@ export class ChallengeLog {
 
     // public 
     getReasonsForCurrentPledge() {
-        if(this.currentPledge === {}) return [];
-        return this.log.find(entry => entry.pledge.id === this.currentPledge.id).pledge.reasons;
+        if(this.currentPledge === {} || this.isLogEmpty()) return [];
+        const reasons = this.log.find(entry => entry.pledge.id === this.currentPledge.id).pledge.reasons;
+        return reasons === undefined ? [] : reasons;
     }
 
     // private 
