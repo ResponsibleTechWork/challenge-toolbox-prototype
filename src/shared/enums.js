@@ -16,14 +16,20 @@ const Visibility = Object.freeze({
 });
 
 const Key = Object.freeze({
-    ChallengedPledges: 'challenged pledges'
-})
+    LogEntries: 'Log entries'
+});
+
+const Capability = Object.freeze({
+    CardBadges: 'card-badges',
+    CardDetailBadges: 'card-detail-badges'
+});
 
 const enums = {
     Scope,
     Type,
     Visibility,
-    Key
+    Key,
+    Capability
 };
 
 export default enums;

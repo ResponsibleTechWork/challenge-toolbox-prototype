@@ -134,4 +134,49 @@ export class ChallengeLog {
         const reasonCount = reasons.length > 0 ? reasons.length : 0;
         return reasonCount === 0 ? '' : reasonCount.toString();
     }
+
+    //static
+    static getButtonText(log, capability, type) {
+     
+        const entries = (log && log !== undefined) ? log.filter(entry => entry.type === type) : [];
+
+        let text = '';
+
+        switch(capability) {
+            case enums.Capability.CardBadges:
+                switch(type) {
+                    case enums.Type.Challenge:
+                        text = entries.length > 0
+                            ? `Challenge (${entries.length})`
+                            : `Challenge`;
+                            break;
+                    case enums.Type.Celebrate:
+                        text = entries.length > 0
+                            ? `Celebrate (${entries.length})`
+                            : `Celebrate`;
+                            break;
+                    default:
+                        text = '';
+                }
+                break;
+            case enums.Capability.CardDetailBadges:
+                switch(type) {
+                    case enums.Type.Challenge:
+                        text = entries.length > 0
+                            ? `Challenges (${entries.length})`
+                            : '';
+                            break;
+                    case enums.Type.Celebrate:
+                        text = entries.length > 0
+                            ? `Celebrations (${entries.length})`
+                            : '';
+                            break;
+                    default:
+                        text = '';
+                }
+                break;
+        }
+
+        return text;
+    }
 }

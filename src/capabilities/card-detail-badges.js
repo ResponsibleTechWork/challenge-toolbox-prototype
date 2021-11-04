@@ -1,28 +1,20 @@
 import enums from '../shared/enums';
 
+import { ChallengeLog } from '../shared/challenge-log';
+
 const get = async t => {
 
     const scope = enums.Scope.Member;
     const visibility = enums.Visibility.Shared;
-    const key = enums.Key.ChallengedPledges;
+    const key = enums.Key.LogEntries;
+    const capability = enums.Capability.CardDetailBadges;
 
     const log = await t.get(scope, visibility, key);
 
-    console.log(`Current value for ${key}`,  log);
+    console.log(`Data stored for ${key} against ${scope} with ${visibility} access for ${capability}  : `,  log);
 
-    const challenges = (log && log !== undefined) ? log.filter(entry => entry.type === enums.Type.Challenge) : [];
-    const celebrations = (log && log !== undefined) ? log.filter(entry => entry.type === enums.Type.Celebrate) : [];
-
-    const challengeText = challenges.length > 0
-        ? `Challenge (${challenges.length})`
-        : `Challenge`;
-
-        const celebrateText = celebrations.length > 0
-        ? `Celebrate (${celebrations.length})`
-        : `Celebrate`;
-
-    console.log('challengeText: ', challengeText);
-    console.log('celebrateText: ', celebrateText);
+    const challengeText = ChallengeLog.getButtonText(log, capability, enums.Type.Challenge);
+    const celebrateText = ChallengeLog.getButtonText(log, capability, enums.Type.Celebrate);
 
     const onCloseChallengToolbox = t => {
         console.log('onCloseChallengToolbox');

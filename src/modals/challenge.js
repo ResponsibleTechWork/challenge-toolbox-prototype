@@ -2,8 +2,6 @@ import sources from '../shared/sources.json';
 import enums from '../shared/enums';
 import { ChallengeLog } from '../shared/challenge-log';
 
-// close modal on submit
-
 const pledges = sources.data.find(s => s.selected).pledges;
 const reasons = sources.data.find(s => s.selected).reasons.negative;
 
@@ -12,10 +10,10 @@ const reasonsContainer = document.getElementById('reasons');
 
 document.getElementById('src').href = sources.data.find(s => s.selected).src;
 
-// const t = window.TrelloPowerUp.iframe();
+const t = window.TrelloPowerUp.iframe();
 
-const challengeLog = new ChallengeLog(enums.Type.Challenge);
-// const challengeLog = new ChallengeLog(t.arg('type'));
+// const challengeLog = new ChallengeLog(enums.Type.Challenge);
+const challengeLog = new ChallengeLog(t.arg('type'));
 
 const showSelectedPledges = (pledges, currentPledge) => {
 
@@ -33,13 +31,13 @@ const showSelectedPledges = (pledges, currentPledge) => {
 
 const clickPledgeHandler = (e, pledgeId) => {
     
-    // const context = t.getContext();
+    const context = t.getContext();
 
-    const context = {
-        board: 'board #1',
-        member: 'member #1',
-        card: 'card #1',
-    };
+    // const context = {
+    //     board: 'board #1',
+    //     member: 'member #1',
+    //     card: 'card #1',
+    // };
     
     const pledge = pledges.find(p => parseInt(p.id) === parseInt(pledgeId));
 
@@ -127,23 +125,23 @@ redrawChallengeReasons();
 
 const submitButton = document.getElementById('submit');
 
-// submitButton.addEventListener('click', async e => {
-submitButton.addEventListener('click', e => {
+submitButton.addEventListener('click', async e => {
+// submitButton.addEventListener('click', e => {
 
     const scope = enums.Scope.Member;
     const visibility = enums.Visibility.Shared;
-    const key = enums.Key.ChallengedPledges;
+    const key = enums.Key.LogEntries;
     const value = challengeLog.getLog();
     
     console.log(' log: ', challengeLog.getLog());
 
-    // await t.set(scope, visibility, key, value);
+    await t.set(scope, visibility, key, value);
 
-    // const response = await t.get(scope, visibility, key);
+    const response = await t.get(scope, visibility, key);
 
-    // console.log('returned save object: ',  response);
+    console.log('returned save object: ',  response);
 
-    // t.notifyParent('done');
+    t.notifyParent('done');
 
-    // return t.closeModal();
+    return t.closeModal();
 });
