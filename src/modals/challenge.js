@@ -30,7 +30,7 @@ const clickPledgeHandler = (e, pledgeId) => {
 
     console.log('pledgeId: ', pledgeId);
 
-    if(pledge !== challengeLog.getPledge()) {
+    if(pledge !== challengeLog.getCurrentPledge()) {
         reasonsContainer.querySelectorAll('.btn').forEach(btn => {
             btn.classList.remove('selected')
         })

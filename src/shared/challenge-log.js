@@ -5,9 +5,9 @@ export class ChallengeLog {
     constructor(type) {
       this.type = type;
       this.log = [];
-      this.pledge = {};
+      this.currentPledge = {};
       this.context = {};
-      this.reason = {};
+      this.currentReason = {};
     }
   
     // public
@@ -16,8 +16,8 @@ export class ChallengeLog {
     }
 
     // public
-    getPledge() {
-        return this.pledge;
+    getCurrentPledge() {
+        return this.currentPledge;
     }
 
     // private
@@ -28,8 +28,8 @@ export class ChallengeLog {
                 member: this.context.member,
                 card: this.context.card,
                 pledge: {
-                    id: this.pledge.id,
-                    text: this.pledge.text,
+                    id: this.currentPledge.id,
+                    text: this.currentPledge.text,
                     reasons: []
                 },                
             })
@@ -38,16 +38,16 @@ export class ChallengeLog {
     // private
     removePledgeFromLog() {
         if(this.log.length === 0) return;
-        this.log = this.log.filter(entry => entry.pledge.id !== this.pledge.id);
+        this.log = this.log.filter(entry => entry.pledge.id !== this.currentPledge.id);
     }
 
     // public
     togglePledge(context, pledge) {
 
-        this.pledge = pledge;
+        this.currentPledge = pledge;
         this.context = context;
         
-        const isPledgeLogged = (this.log.length > 0 && this.log.find(entry => entry.pledge.id === pledge.id));
+        const isPledgeLogged = this.log.find(entry => entry.pledge.id === pledge.id);
 
         isPledgeLogged
             ? this.removePledgeFromLog()
@@ -56,22 +56,24 @@ export class ChallengeLog {
 
     // private 
     addReasonToPledge() {
-        const pledgeReasons = this.log.find(entry => entry.pledge.id === this.pledge.id).pledge.reasons;
-        const reasons = [ ...pledgeReasons, this.reason ];
-        this.log.find(entry => entry.pledge.id === this.pledge.id).pledge.reasons = reasons;
+        const pledgeReasons = this.log.find(entry => entry.pledge.id === this.currentPledge.id).pledge.reasons;
+        const reasons = [ ...pledgeReasons, this.currentReason ];
+        this.log.find(entry => entry.pledge.id === this.currentPledge.id).pledge.reasons = reasons;
     }
 
     // private
     removeReasonFromPledge() {
-        this.log.find(entry => entry.pledge.id === this.pledge.id).pledge.reasons = this.log.find(entry => entry.pledge.id === this.pledge.id).pledge.reasons.filter(r => r.id !== this.reason.id);
+        this.log.find(entry => entry.pledge.id === this.currentPledge.id).pledge.reasons = this.log.find(entry => entry.pledge.id === this.currentPledge.id).pledge.reasons.filter(r => r.id !== this.currentReason.id);
     }
 
     // public
     toggleReason(reason) {
 
-        this.reason = reason;
+        if(this.currentPledge === {}) return;
 
-        const isPledgeLogged = (this.log.length > 0 && !!this.log.find(entry => entry.pledge.id === this.pledge.id));
+        this.currentReason = reason;
+
+        const isPledgeLogged = this.log.find(entry => entry.pledge.id === this.currentPledge.id);
         const isReasonLogged = isPledgeLogged && this.log.find(entry => entry.pledge.reasons.find(r => r.id === reason.id));
 
         isReasonLogged 
@@ -81,7 +83,7 @@ export class ChallengeLog {
 
     // public
     getReasonsCount() {
-        const entry = this.log.find(entry => entry.pledge.id === this.pledge.id);
+        const entry = this.log.find(entry => entry.pledge.id === this.currentPledge.id);
         const reasons = entry !== undefined ? entry.pledge.reasons ? entry.pledge.reasons : [] : [];
         const reasonCount = reasons.length > 0 ? reasons.length : 0;
         return reasonCount === 0 ? '' : reasonCount.toString();
