@@ -1,4 +1,3 @@
-import api from '../shared/api';
 import sources from '../shared/sources.json';
 import enums from '../shared/enums';
 import { ChallengeLog } from '../shared/challenge-log';
@@ -11,62 +10,90 @@ const reasons = sources.data.find(s => s.selected).reasons.negative;
 const pledgesContainer = document.getElementById('pledges');
 const reasonsContainer = document.getElementById('reasons');
 
-const t = window.TrelloPowerUp.iframe();
+// const t = window.TrelloPowerUp.iframe();
 
-const challengeLog = new ChallengeLog(t.arg('type'));
+const challengeLog = new ChallengeLog(enums.Type.Challenge);
+// const challengeLog = new ChallengeLog(t.arg('type'));
 
-const showSelectedPledges = (pledgeId, isPledgeSelected) => {
+const showSelectedPledges = (pledges, currentPledge) => {
+
     pledgesContainer.querySelectorAll('.btn').forEach(btn => {
-        if (isPledgeSelected && btn.id === pledgeId) {
-            btn.classList.add('selected');
-        } else {
-            btn.classList.remove('selected');
-        }
+
+        btn.classList.remove('selected');
+        
+        pledges.forEach(pledge => {
+            if (parseInt(currentPledge.id) === parseInt(btn.id)) {
+                btn.classList.add('selected');
+            } 
+            // else {
+            //     if (pledges.filter(sb => parseInt(sb.id) === parseInt(btn.id)) === []) {
+            //         if(pledge.id && parseInt(btn.id) === parseInt(currentPledge.id)) {
+            //             btn.classList.remove('selected');
+            //         }
+            //     }
+            // }
+        });
     });
-}
+};
 
 const clickPledgeHandler = (e, pledgeId) => {
     
-    const context = t.getContext();
+    // const context = t.getContext();
 
-    const pledge = pledges.find(p => p.id === parseInt(pledgeId));
+    const context = {
+        board: 'board #1',
+        member: 'member #1',
+        card: 'card #1',
+    };
+    
+    const pledge = pledges.find(p => parseInt(p.id) === parseInt(pledgeId));
 
-    const isPledgeSelected = challengeLog.togglePledge(context, pledge); 
+    const { isPledgeNowLogged, updatedPledges } = challengeLog.togglePledge(context, pledge); 
 
-    showSelectedPledges(pledgeId, isPledgeSelected);
+    showSelectedPledges(updatedPledges, pledge);
+    redrawChallengeReasons();
+    showSelectedReasons(challengeLog.getReasonsForCurrentPledge());
+};
+
+const showSelectedReasons = reasons => {
+
+    console.log(JSON.stringify(challengeLog.getCurrentPledge(), null, 2));
 
     reasonsContainer.querySelectorAll('.btn').forEach(btn => {
-        const reasons = challengeLog.getReasonsForCurrentPledge();
+
+        btn.classList.remove('selected');
+
+        if(reasons === []) return;
+
         reasons.forEach(reason => {
-            if(reason.id === btn.id) {
+            if (parseInt(reason.id) === parseInt(btn.id)) {
                 btn.classList.add('selected');
             } else {
-                btn.classList.remove('selected')
+                if (reasons.filter(sb => parseInt(sb.id) === parseInt(btn.id)) === []) {
+                    btn.classList.remove('selected');
+                }
             }
-        })        
-    })
+        });
+    });
 };
 
 const clickReasonHandler = (e, reasonId) => {
 
-    const reason = reasons.find(r => r.id === parseInt(reasonId));
+    const reason = reasons.find(r => parseInt(r.id) === parseInt(reasonId));
 
-    const isReasonSelected = challengeLog.toggleReason(reason);
+    const { isReasonNowLogged, updatedReasons } = challengeLog.toggleReason(reason);
 
-    reasonsContainer.querySelectorAll('.btn').forEach(btn => {        
-        if(isReasonSelected && btn.id === reasonId) {
-            btn.classList.add('selected');
-        } else {
-            btn.classList.remove('selected');
-        }
-    });
+    showSelectedReasons(updatedReasons);
+
+    redrawChallengePledges();
 };
 
 const redrawChallengePledges = () => {
 
-    const reasonCount = challengeLog.getReasonsCount();
     const pledgeItems = pledges.map(pledge => {
-        
+       
+        const reasonCount = challengeLog.getReasonsCountByPledge(pledge.id);
+
         return `<li>
                     <button id="${pledge.id}" class="btn btnChallenge">${pledge.text}<span class="counter">${reasonCount}</span></button>
                 </li>`;
@@ -77,11 +104,14 @@ const redrawChallengePledges = () => {
     pledgesContainer.querySelectorAll('.btn').forEach(btn => {
         btn.addEventListener('click', e => clickPledgeHandler(e, btn.id));
     });
+
+    showSelectedPledges(challengeLog.getLoggedPledges(), challengeLog.getCurrentPledge());
 };
 
 redrawChallengePledges();
 
 const redrawChallengeReasons = () => {
+
     const reasonItems = reasons.map(reason => {
         const reasonCount = challengeLog.getReasonsCount();
         return `<li>
@@ -94,13 +124,16 @@ const redrawChallengeReasons = () => {
     reasonsContainer.querySelectorAll('.btn').forEach(btn => {
         btn.addEventListener('click', e => clickReasonHandler(e, btn.id));
     });
+
+    showSelectedReasons(challengeLog.getReasonsForCurrentPledge());
 };
 
 redrawChallengeReasons();
 
 const submitButton = document.getElementById('submit');
 
-submitButton.addEventListener('click', async e => {
+// submitButton.addEventListener('click', async e => {
+submitButton.addEventListener('click', e => {
 
     const scope = enums.Scope.Member;
     const visibility = enums.Visibility.Shared;
@@ -109,13 +142,13 @@ submitButton.addEventListener('click', async e => {
     
     console.log(' log: ', challengeLog.getLog());
 
-    await t.set(scope, visibility, key, value);
+    // await t.set(scope, visibility, key, value);
 
-    const response = await t.get(scope, visibility, key);
+    // const response = await t.get(scope, visibility, key);
 
-    console.log('returned save object: ',  response);
+    // console.log('returned save object: ',  response);
 
-    t.notifyParent('done');
+    // t.notifyParent('done');
 
-    return t.closeModal();
+    // return t.closeModal();
 });

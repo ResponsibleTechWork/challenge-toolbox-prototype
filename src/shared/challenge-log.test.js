@@ -28,7 +28,7 @@ describe('tests for instances of ChallengeLog', () => {
     });
 
     it('log should include first pledge', () => {
-        challengeLog.togglePledge(context, pledge);
+        const isPledgeNowLogged = challengeLog.togglePledge(context, pledge);
         expect(challengeLog.getLog()).toStrictEqual([
             {
                 type: type,
@@ -37,7 +37,8 @@ describe('tests for instances of ChallengeLog', () => {
                 card: context.card,
                 pledge: { ...pledge, reasons: [] }
             }
-        ])
+        ]);
+        expect(isPledgeNowLogged).toBe(true);
     });
 
     it('log should not include any reasons for first pledge', () => {
@@ -45,7 +46,7 @@ describe('tests for instances of ChallengeLog', () => {
     });
 
     it('log should include first reason', () => {
-        challengeLog.toggleReason(reason);
+        const { isReasonNowLogged, updatedReasons } = challengeLog.toggleReason(reason);
         expect(challengeLog.getLog()).toStrictEqual([
             {
                 type: type,
@@ -54,7 +55,9 @@ describe('tests for instances of ChallengeLog', () => {
                 card: context.card,
                 pledge: { ...pledge, reasons: [ reason ] }
             }
-        ])
+        ]);
+        expect(isReasonNowLogged).toBe(true);
+        expect(updatedReasons.length).toBe(1);
     });
 
     it('log should remove first reason when toggled', () => {
@@ -128,4 +131,48 @@ describe('tests for challenge reasons', () => {
         expect(count).toBe('1');
     });
 
+});
+
+describe('test for islogTruthy function', () => {
+
+    const type = enums.Type.Challenge;
+
+    const challengeLog = new ChallengeLog(type);
+
+    it('should be true', () => {
+        expect(challengeLog.islogTruthy(1)).toBe(true);
+        expect(challengeLog.islogTruthy('1')).toBe(true);
+        expect(challengeLog.islogTruthy({a:1})).toBe(true);
+        expect(challengeLog.islogTruthy({"a":1})).toBe(true);
+        expect(challengeLog.islogTruthy([1,2])).toBe(true);
+    });
+
+    it('should be false', () => {
+        expect(challengeLog.islogTruthy(null)).toBe(false);
+        expect(challengeLog.islogTruthy(undefined)).toBe(false);
+        expect(challengeLog.islogTruthy({})).toBe(false);
+        expect(challengeLog.islogTruthy([])).toBe(false);
+    });
+});
+
+describe('test for islogFalsy function', () => {
+
+    const type = enums.Type.Challenge;
+
+    const challengeLog = new ChallengeLog(type);
+
+    it('should be false', () => {
+        expect(challengeLog.islogFalsy(1)).toBe(false);
+        expect(challengeLog.islogFalsy('1')).toBe(false);
+        expect(challengeLog.islogFalsy({a:1})).toBe(false);
+        expect(challengeLog.islogFalsy({"a":1})).toBe(false);
+        expect(challengeLog.islogFalsy([1,2])).toBe(false);
+    });
+
+    it('should be true', () => {
+        expect(challengeLog.islogFalsy(null)).toBe(true);
+        expect(challengeLog.islogFalsy(undefined)).toBe(true);
+        expect(challengeLog.islogFalsy({})).toBe(true);
+        expect(challengeLog.islogFalsy([])).toBe(true);
+    });
 });

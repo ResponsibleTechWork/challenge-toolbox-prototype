@@ -44,12 +44,20 @@ a {
     background-color: rgb(245, 121, 58);
 }
 
+.btnChallenge.selected:hover {
+    background-color: rgb(245, 121, 58,.7);
+}
+
 .btnCelebrate {
     background-color: rgba(169, 90, 161,.3);
 }
 
 .btnCelebrate:hover, .btnCelebrate.selected {
     background-color: rgb(169, 90, 161);
+}
+
+.btnCelebrate.selected:hover {
+    background-color: rgba(169, 90, 161,.7);
 }
 
 .btn .counter {

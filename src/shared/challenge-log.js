@@ -10,6 +10,16 @@ export class ChallengeLog {
       this.currentReason = {};
     }
 
+    // private 
+    islogTruthy(val) {
+        return (val !== null && val !== undefined && val !== [] && Object.entries(val).length > 0 || typeof(val) === 'number' );
+    }
+
+    // private 
+    islogFalsy(val) {
+        return !this.islogTruthy(val);
+    }
+
     // public 
     isLogEmpty() {
         return this.log === [];
@@ -44,12 +54,14 @@ export class ChallengeLog {
                     reasons: []
                 },                
             })
-        };
+            return { isPledgeNowLogged: true, updatedPledges: this.log.map(entry => entry.pledge) };
+    };
     
     // private
     removePledgeFromLog() {
-        if(this.isLogEmpty()) return;
+        if(this.isLogEmpty()) return false;
         this.log = this.log.filter(entry => entry.pledge.id !== this.currentPledge.id);
+        return { isPledgeNowLogged: false, updatedPledges: this.log.map(entry => entry.pledge) };
     }
 
     // public
@@ -58,18 +70,23 @@ export class ChallengeLog {
         this.currentPledge = pledge;
         this.context = context;
         
-        const isPledgeLogged = this.isLogEmpty() ? false : this.log.find(entry => entry.pledge.id === pledge.id);
+        const isPledgeLogged = this.isLogEmpty() ? false : this.islogTruthy(this.log.find(entry => entry.pledge.id === pledge.id));
 
-        isPledgeLogged
+        const { isPledgeNowLogged, updatedPledges } = (isPledgeLogged && this.getReasonsCount() === 0)
             ? this.removePledgeFromLog()
             : this.addPledgeToLog();
 
-        return isPledgeLogged;
+        return { isPledgeNowLogged, updatedPledges };
+    }
+
+    // public
+    getLoggedPledges() {
+        return this.log.map(entry => entry.pledge);
     }
 
     // public 
     getReasonsForCurrentPledge() {
-        if(this.currentPledge === {} || this.isLogEmpty()) return [];
+        if(this.islogFalsy(this.currentPledge) || this.isLogEmpty()) return [];
         const reasons = this.log.find(entry => entry.pledge.id === this.currentPledge.id).pledge.reasons;
         return reasons === undefined ? [] : reasons;
     }
@@ -77,12 +94,15 @@ export class ChallengeLog {
     // private 
     addReasonToPledge() {
         const reasons = [ ...this.getReasonsForCurrentPledge(), this.currentReason ];
+        const updatedReasons = [ ...this.getReasonsForCurrentPledge(), this.currentReason ];
         this.log.find(entry => entry.pledge.id === this.currentPledge.id).pledge.reasons = reasons;
+        return { isReasonNowLogged: true, updatedReasons };
     }
 
     // private
-    removeReasonFromPledge() {
+    removeReasonFromPledge() {        
         this.log.find(entry => entry.pledge.id === this.currentPledge.id).pledge.reasons = this.log.find(entry => entry.pledge.id === this.currentPledge.id).pledge.reasons.filter(r => r.id !== this.currentReason.id);
+        return { isReasonNowLogged: false, updatedReasons: this.log.find(entry => entry.pledge.id === this.currentPledge.id).pledge.reasons };
     }
 
     // public
@@ -92,19 +112,27 @@ export class ChallengeLog {
 
         this.currentReason = reason;
 
-        const isPledgeLogged = this.log.find(entry => entry.pledge.id === this.currentPledge.id);
-        const isReasonLogged = isPledgeLogged && this.log.find(entry => entry.pledge.reasons.find(r => r.id === reason.id));
+        const isPledgeLogged = !!this.log.find(entry => entry.pledge.id === this.currentPledge.id);
+        const isReasonLogged = isPledgeLogged && !!this.log.find(entry => entry.pledge.id === this.currentPledge.id && entry.pledge.reasons.find(r => r.id === reason.id));
 
-        isReasonLogged 
+        const { isReasonNowLogged, updatedReasons } = isReasonLogged 
             ? this.removeReasonFromPledge()
             : this.addReasonToPledge();
 
-        return isReasonLogged;
+        return { isReasonNowLogged, updatedReasons };
     }
 
     // public
     getReasonsCount() {
         const entry = this.log.find(entry => entry.pledge.id === this.currentPledge.id);
+        const reasons = entry !== undefined ? entry.pledge.reasons ? entry.pledge.reasons : [] : [];
+        const reasonCount = reasons.length > 0 ? reasons.length : 0;
+        return reasonCount === 0 ? '' : reasonCount.toString();
+    }
+
+    // public
+    getReasonsCountByPledge(pledgeId) {
+        const entry = this.log.find(entry => entry.pledge.id === pledgeId);
         const reasons = entry !== undefined ? entry.pledge.reasons ? entry.pledge.reasons : [] : [];
         const reasonCount = reasons.length > 0 ? reasons.length : 0;
         return reasonCount === 0 ? '' : reasonCount.toString();
