@@ -4,8 +4,6 @@ import enums from '../shared/enums';
 import { ChallengeLog } from '../shared/challenge-log';
 
 // close modal on submit
-// reload pledges and reason when re-opening modal
-// show reason count on pledge
 
 const pledges = sources.data.find(s => s.selected).pledges;
 const reasons = sources.data.find(s => s.selected).reasons.negative;
@@ -17,44 +15,55 @@ const t = window.TrelloPowerUp.iframe();
 
 const challengeLog = new ChallengeLog(t.arg('type'));
 
+const showSelectedPledges = (pledgeId, isPledgeSelected) => {
+    pledgesContainer.querySelectorAll('.btn').forEach(btn => {
+        if (isPledgeSelected && btn.id === pledgeId) {
+            btn.classList.add('selected');
+        } else {
+            btn.classList.remove('selected');
+        }
+    });
+}
+
 const clickPledgeHandler = (e, pledgeId) => {
     
     const context = t.getContext();
 
-    const btn = e.target;
-          Array.from(btn.classList).find(c => c === 'selected') 
-            ? btn.classList.remove('selected')
-            : btn.classList.add('selected');
-
     const pledge = pledges.find(p => p.id === parseInt(pledgeId));
 
-    console.log('pledgeId: ', pledgeId);
+    const isPledgeSelected = challengeLog.togglePledge(context, pledge); 
 
-    if(pledge !== challengeLog.getCurrentPledge()) {
-        reasonsContainer.querySelectorAll('.btn').forEach(btn => {
-            btn.classList.remove('selected')
-        })
-    }
+    showSelectedPledges(pledgeId, isPledgeSelected);
 
-    console.log('pledge: ', pledge);
-
-    challengeLog.togglePledge(context, pledge); 
-
+    reasonsContainer.querySelectorAll('.btn').forEach(btn => {
+        const reasons = challengeLog.getReasonsForCurrentPledge();
+        reasons.forEach(reason => {
+            if(reason.id === btn.id) {
+                btn.classList.add('selected');
+            } else {
+                btn.classList.remove('selected')
+            }
+        })        
+    })
 };
 
 const clickReasonHandler = (e, reasonId) => {
 
-    const btn = e.target;
-          Array.from(btn.classList).find(c => c === 'selected') 
-            ? btn.classList.remove('selected')
-            : btn.classList.add('selected');
-
     const reason = reasons.find(r => r.id === parseInt(reasonId));
 
-    challengeLog.toggleReason(reason);
+    const isReasonSelected = challengeLog.toggleReason(reason);
+
+    reasonsContainer.querySelectorAll('.btn').forEach(btn => {        
+        if(isReasonSelected && btn.id === reasonId) {
+            btn.classList.add('selected');
+        } else {
+            btn.classList.remove('selected');
+        }
+    });
 };
 
 const redrawChallengePledges = () => {
+
     const reasonCount = challengeLog.getReasonsCount();
     const pledgeItems = pledges.map(pledge => {
         
