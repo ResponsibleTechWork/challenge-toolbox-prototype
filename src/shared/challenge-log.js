@@ -135,7 +135,7 @@ export class ChallengeLog {
 
     // public
     getReasonsCountByPledge(pledgeId) {
-        const entry = this.log.find(entry => entry.pledge.id === pledgeId);
+        const entry = this.log.find(entry => entry.pledge.id === pledgeId).filter(entry => entry.type === this.type);
         const reasons = entry !== undefined ? entry.pledge.reasons ? entry.pledge.reasons : [] : [];
         const reasonCount = reasons.length > 0 ? reasons.length : 0;
         return reasonCount === 0 ? '' : reasonCount.toString();
