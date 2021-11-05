@@ -25,7 +25,7 @@ console.log(`Data stored for ${key} against ${scope} with ${visibility} access f
 const challengeLog = new ChallengeLog(t.arg('type'));
 
 if(log && log !== undefined) {
-    console.log('saved log reinstated as: ', challengeLog.setLog(log));   
+    console.log('set log with log from t: ', challengeLog.setLog(log));   
 }
 
 const showSelectedPledges = (pledges, currentPledge) => {
