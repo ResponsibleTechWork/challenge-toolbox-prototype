@@ -142,43 +142,17 @@ export class ChallengeLog {
 
         let text = '';
 
-        switch(capability) {
-            case enums.Capability.CardBadges:
-                switch(type) {
-                    case enums.Type.Challenge:
-                        text = entries.length > 0
-                            ? `Challenge (${entries.length})`
-                            : `Challenge`;
-                            break;
-                    default:
-                        text = 'Challenge';
-                    case enums.Type.Celebrate:
-                        text = entries.length > 0
-                            ? `Celebrate (${entries.length})`
-                            : `Celebrate`;
-                            break;
-                    default:
-                        text = 'Celebrate';
-                    default:
-                        text = '';
-                }
-                break;
-            case enums.Capability.CardDetailBadges:
-                switch(type) {
-                    case enums.Type.Challenge:
-                        text = entries.length > 0
-                            ? `Challenges (${entries.length})`
-                            : '';
-                            break;
-                    case enums.Type.Celebrate:
-                        text = entries.length > 0
-                            ? `Celebrations (${entries.length})`
-                            : '';
-                            break;
-                    default:
-                        text = '';
-                }
-                break;
+        switch(type) {
+            case enums.Type.Challenge:
+                text = entries.length > 0
+                    ? `Challenges (${entries.length})`
+                    : `Challenge`;
+                    break;
+            case enums.Type.Celebrate:
+                text = entries.length > 0
+                    ? `Celebrations (${entries.length})`
+                    : `Celebrate`;
+                    break;
         }
 
         return text;

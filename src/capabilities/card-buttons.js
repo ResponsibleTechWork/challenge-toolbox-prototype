@@ -7,7 +7,7 @@ const get = async t => {
     const scope = enums.Scope.Member;
     const visibility = enums.Visibility.Shared;
     const key = enums.Key.LogEntries;
-    const capability = enums.Capability.CardDetailBadges;
+    const capability = enums.Capability.CardButtons;
 
     const log = await t.get(scope, visibility, key);
 
@@ -27,9 +27,10 @@ const get = async t => {
     return [
         {
             text: challengeText,
+            // icon: '',
             callback: function(t){
                 return t.modal({
-                    title: "Challenge",
+                    title: "Challenge",                    
                     args: { type: enums.Type.Challenge },
                     url: './modals/challenge.html',
                     fullscreen: false,
@@ -40,6 +41,7 @@ const get = async t => {
         },      
         {
             text: celebrateText,
+            // icon: '',
             callback: function(t){
                 return t.modal({
                     title: "Celebrate",
@@ -53,6 +55,6 @@ const get = async t => {
     ];
 };    
 
-export const getCardDetailBadges = (t, opts) => {
+export const getCardButtons = (t, opts) => {
     return get(t);
 }

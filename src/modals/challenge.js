@@ -128,7 +128,7 @@ const submitButton = document.getElementById('submit');
 submitButton.addEventListener('click', async e => {
 // submitButton.addEventListener('click', e => {
 
-    const scope = enums.Scope.Card;
+    const scope = enums.Scope.Member;
     const visibility = enums.Visibility.Shared;
     const key = enums.Key.LogEntries;
     const value = challengeLog.getLog();

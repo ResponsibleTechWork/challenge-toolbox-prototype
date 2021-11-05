@@ -4,7 +4,7 @@ import { ChallengeLog } from '../shared/challenge-log';
 
 const get = async t => {
 
-    const scope = enums.Scope.Card;
+    const scope = enums.Scope.Member;
     const visibility = enums.Visibility.Shared;
     const key = enums.Key.LogEntries;
     const capability = enums.Capability.CardBadges;
@@ -34,6 +34,6 @@ const get = async t => {
         });
 };
 
-export const getCardDetailBadges = (t, opts) => {
+export const getCardBadges = (t, opts) => {
     return get(t);
 }

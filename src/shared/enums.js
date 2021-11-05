@@ -21,6 +21,7 @@ const Key = Object.freeze({
 
 const Capability = Object.freeze({
     CardBadges: 'card-badges',
+    CardButtons: 'card-buttons',
     CardDetailBadges: 'card-detail-badges'
 });
 

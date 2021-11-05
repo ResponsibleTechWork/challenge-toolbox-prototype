@@ -189,8 +189,7 @@ describe('test for capability badge text', () => {
     });
     it('should return "Challenge (2)" as text for the Challenge badge when pledge has been challenged twice', () => {
         log = [{type:enums.Type.Challenge}, {type:enums.Type.Challenge}];
-        const text = ChallengeLog.getBut
-        tonText(log, enums.Capability.CardBadges, enums.Type.Challenge);
-        expect(text).toBe('Challenge (2)');
+        const text = ChallengeLog.getButtonText(log, enums.Capability.CardBadges, enums.Type.Challenge);
+        expect(text).toBe('Challenges (2)');
     });
 });
