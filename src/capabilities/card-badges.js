@@ -2,7 +2,7 @@ import enums from '../shared/enums';
 
 import { ChallengeLog } from '../shared/challenge-log';
 
-export const getCardBadges = (t, opts) => {    
+const get = async t => {
 
     const scope = enums.Scope.Card;
     const visibility = enums.Visibility.Shared;
@@ -33,3 +33,7 @@ export const getCardBadges = (t, opts) => {
         ];
         });
 };
+
+export const getCardDetailBadges = (t, opts) => {
+    return get(t);
+}
