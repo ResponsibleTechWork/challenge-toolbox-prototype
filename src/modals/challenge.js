@@ -12,7 +12,7 @@ document.getElementById('src').href = sources.data.find(s => s.selected).src;
 const t = window.TrelloPowerUp.iframe();
 
 const scope = enums.Scope.Card;
-const visibility = enums.Visibility.Private;
+const visibility = enums.Visibility.Shared;
 const key = enums.Key.LogEntries;
 const capability = enums.Capability.CardButtons;
 
@@ -147,7 +147,7 @@ submitButton.addEventListener('click', async e => {
 // submitButton.addEventListener('click', e => {
 
     const scope = enums.Scope.Card;
-    const visibility = enums.Visibility.Private;
+    const visibility = enums.Visibility.Shared;
     const key = enums.Key.LogEntries;
     const value = challengeLog.getLog();
     
