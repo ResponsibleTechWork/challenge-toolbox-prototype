@@ -5,7 +5,7 @@ const GRAY_ICON = 'https://cdn.hyperdev.com/us-east-1%3A3d31b21c-01a0-4da2-8827-
 
 window.TrelloPowerUp.initialize({
 
-    // "card-badges": (t, opts) => getCardBadges(t, opts),
+    "card-badges": (t, opts) => getCardBadges(t, opts),
     'card-detail-badges': (t, opts) => getCardDetailBadges(t, opts),
 
 });

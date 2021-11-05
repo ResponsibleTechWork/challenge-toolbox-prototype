@@ -150,11 +150,15 @@ export class ChallengeLog {
                             ? `Challenge (${entries.length})`
                             : `Challenge`;
                             break;
+                    default:
+                        text = 'Challenge';
                     case enums.Type.Celebrate:
                         text = entries.length > 0
                             ? `Celebrate (${entries.length})`
                             : `Celebrate`;
                             break;
+                    default:
+                        text = 'Celebrate';
                     default:
                         text = '';
                 }
