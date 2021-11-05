@@ -155,6 +155,8 @@ export class ChallengeLog {
                     break;
         }
 
+        console.warn('button text: ', text);
+
         return text;
     }
 }

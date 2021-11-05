@@ -25,12 +25,22 @@ const Capability = Object.freeze({
     CardDetailBadges: 'card-detail-badges'
 });
 
+const Condition = Object.freeze({
+    Admin: 'admin',
+    Edit: 'edit',
+    ReadOnly: 'readOnly',
+    SignedIn: 'signedIn',
+    SignedOut: 'signedOut',
+    Always: 'always'
+});
+
 const enums = {
     Scope,
     Type,
     Visibility,
     Key,
-    Capability
+    Capability,
+    Condition
 };
 
 export default enums;
