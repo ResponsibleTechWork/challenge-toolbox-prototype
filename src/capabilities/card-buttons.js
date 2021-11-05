@@ -15,6 +15,10 @@ const get = async t => {
 
     console.log(`Data stored for ${key} against ${scope} with ${visibility} access for ${capability}  : `,  log);
 
+    const context = t.getContext();
+
+    console.log('Context for card badges: ', context);
+    
     const { challenges, celebrations } = ChallengeLog.getChallengeBadgeCounts(context, log);
 
     const challengeText = ChallengeLog.getButtonText(enums.Type.Challenge, challenges);
