@@ -108,6 +108,14 @@
             {
                 "id": 2,
                 "text": "protect against abuse"
+            },
+            {
+                "id": 3,
+                "text": "make accessible tech"
+            },
+            {
+                "id": 4,
+                "text": "consider social impacts"
             }
         ],
         "reasons": {
