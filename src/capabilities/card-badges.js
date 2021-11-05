@@ -13,10 +13,21 @@ const get = async t => {
 
     console.log(`Data stored for ${key} against ${scope} with ${visibility} access for ${capability}  : `,  log);
 
+    const context = t.getContext();
+
+    console.log('Context for card badges: ', context);
+
+    const card = await t.card('name').get('name');
+
+    console.log('card: ', JSON.stringify(card, null, 2));
+
     const challengeText = ChallengeLog.getButtonText(log, capability, enums.Type.Challenge);
     const celebrateText = ChallengeLog.getButtonText(log, capability, enums.Type.Celebrate);
 
     console.log(`Current value for ${key} for card-badges`,  log);
+
+    // check for card in log - if there's a match return challenges, celebrations, both or neither
+    // match count agsainst specific card
 
     return t
         .card('id', 'name')            
