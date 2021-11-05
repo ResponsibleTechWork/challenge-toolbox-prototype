@@ -177,7 +177,7 @@ describe('test for islogFalsy function', () => {
     });
 });
 
-describe.only('test for capability badge text', () => {
+describe('test for capability badge text', () => {
     let log;
     it('should return "Challenge" as initial text for the Challenge badge', () => {
         const text = ChallengeLog.getButtonText(log, enums.Capability.CardBadges, enums.Type.Challenge);
@@ -186,5 +186,11 @@ describe.only('test for capability badge text', () => {
     it('should return "Celebrate" as initial text for the Celebrate badge', () => {
         const text = ChallengeLog.getButtonText(log, enums.Capability.CardBadges, enums.Type.Celebrate);
         expect(text).toBe('Celebrate');
+    });
+    it('should return "Challenge (2)" as text for the Challenge badge when pledge has been challenged twice', () => {
+        log = [{type:enums.Type.Challenge}, {type:enums.Type.Challenge}];
+        const text = ChallengeLog.getBut
+        tonText(log, enums.Capability.CardBadges, enums.Type.Challenge);
+        expect(text).toBe('Challenge (2)');
     });
 });

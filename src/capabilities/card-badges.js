@@ -4,7 +4,7 @@ import { ChallengeLog } from '../shared/challenge-log';
 
 export const getCardBadges = (t, opts) => {    
 
-    const scope = enums.Scope.Member;
+    const scope = enums.Scope.Card;
     const visibility = enums.Visibility.Shared;
     const key = enums.Key.LogEntries;
     const capability = enums.Capability.CardBadges;
