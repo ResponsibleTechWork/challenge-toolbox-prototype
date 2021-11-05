@@ -12,8 +12,21 @@ document.getElementById('src').href = sources.data.find(s => s.selected).src;
 
 const t = window.TrelloPowerUp.iframe();
 
+const scope = enums.Scope.Card;
+const visibility = enums.Visibility.Shared;
+const key = enums.Key.LogEntries;
+const capability = enums.Capability.CardButtons;
+
+const log = await t.get(scope, visibility, key);
+
+console.log(`Data stored for ${key} against ${scope} with ${visibility} access for ${capability}  : `,  log);
+
 // const challengeLog = new ChallengeLog(enums.Type.Challenge);
 const challengeLog = new ChallengeLog(t.arg('type'));
+
+if(log && log !== undefined) {
+    console.log('saved log reinstated as: ', challengeLog.setLog(log));   
+}
 
 const showSelectedPledges = (pledges, currentPledge) => {
 

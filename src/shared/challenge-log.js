@@ -29,6 +29,12 @@ export class ChallengeLog {
     getLog() {
         return this.log;
     }
+  
+    // public
+    setLog(log) {
+        this.log = log;
+        return this.log;
+    }
 
     // public
     getCurrentPledge() {
