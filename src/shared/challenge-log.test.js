@@ -133,6 +133,101 @@ describe('tests for challenge reasons', () => {
 
 });
 
+describe('tests for mixing challenges and celebrations', () => {
+
+    let type = enums.Type.Challenge;
+
+    const challengeLog = new ChallengeLog(type);
+
+    const context = {
+        board: 'board #1',
+        member: 'member #1',
+        card: 'card #1',
+    };
+
+    const challengePledge = {
+        id: 1,
+        text: 'pledge #1'
+    };
+
+    const celebratePledge = {
+        id: 1,
+        text: 'pledge #1'
+    };
+
+    const challengeReason = {
+        id: 1,
+        text: 'reason #1'
+    };
+
+    const celebrateReason = {
+        id: 1,
+        text: 'reason #1'
+    };
+
+    it('log should initially be empty', () => {
+        expect(challengeLog.getLog()).toEqual([]);
+    });
+
+    it('log should contain one entry with a challenge pledge, and one reason', () => {
+        const { isPledgeNowLogged, updatedPledges } = challengeLog.togglePledge(context, challengePledge);
+        expect(challengeLog.getLog()).toStrictEqual([
+            {
+                type: type,
+                board: context.board,
+                member: context.member,
+                card: context.card,
+                pledge: { ...challengePledge, reasons: [] }
+            }
+        ]);
+        const { isReasonNowLogged, updatedReasons } = challengeLog.toggleReason(challengeReason);
+        expect(challengeLog.getLog()).toStrictEqual([
+            {
+                type: type,
+                board: context.board,
+                member: context.member,
+                card: context.card,
+                pledge: { ...challengePledge, reasons: [ challengeReason ] }
+            }
+        ]);
+        expect(isReasonNowLogged).toBe(true);
+        expect(updatedReasons.length).toBe(1);
+    });
+
+    it('log should contain entries for a challenge and a celebration, each with one reason', () => {
+
+        let type = enums.Type.Celebrate;
+
+        challengeLog.setType(type);
+
+        const { isPledgeNowLogged, updatedPledges } = challengeLog.togglePledge(context, celebratePledge);
+
+        expect(challengeLog.getLog().find(entry => entry.type === type)).toStrictEqual({
+                "board": "board #1",
+                "card": "card #1",
+                "member": "member #1",
+                "pledge": {
+                    "id": 1,
+                    "reasons": [],
+                    "text": "pledge #1"
+                },
+                "type": "celebrate"
+            });
+        const { isReasonNowLogged, updatedReasons } = challengeLog.toggleReason(celebrateReason);
+        expect(challengeLog.getLog().filter(entry => entry.type === type)).toStrictEqual([
+            {
+                type: type,
+                board: context.board,
+                member: context.member,
+                card: context.card,
+                pledge: { ...celebratePledge, reasons: [ celebrateReason ] }
+            }
+        ]);
+        expect(isReasonNowLogged).toBe(true);
+        expect(updatedReasons.length).toBe(1);
+    });
+});
+
 describe('test for islogTruthy function', () => {
 
     const type = enums.Type.Challenge;
