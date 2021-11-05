@@ -6,7 +6,7 @@ const GRAY_ICON = 'https://cdn.hyperdev.com/us-east-1%3A3d31b21c-01a0-4da2-8827-
 
 const get = async t => {
 
-    const scope = enums.Scope.Member;
+    const scope = enums.Scope.Card;
     const visibility = enums.Visibility.Shared;
     const key = enums.Key.LogEntries;
     const capability = enums.Capability.CardButtons;
@@ -18,7 +18,7 @@ const get = async t => {
     const context = t.getContext();
 
     console.log('Context for card badges: ', context);
-    
+
     const { challenges, celebrations } = ChallengeLog.getChallengeBadgeCounts(context, log);
 
     const challengeText = ChallengeLog.getButtonText(enums.Type.Challenge, challenges);
