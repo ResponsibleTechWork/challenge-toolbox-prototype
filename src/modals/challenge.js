@@ -3,7 +3,6 @@ import enums from '../shared/enums';
 import { ChallengeLog } from '../shared/challenge-log';
 
 const pledges = sources.data.find(s => s.selected).pledges;
-const reasons = sources.data.find(s => s.selected).reasons.negative;
 
 const pledgesContainer = document.getElementById('pledges');
 const reasonsContainer = document.getElementById('reasons');
@@ -21,8 +20,14 @@ const log = await t.get(scope, visibility, key);
 
 console.log(`Data stored for ${key} against ${scope} with ${visibility} access for ${capability}  : `,  log);
 
+const type = t.arg('type');
+
 // const challengeLog = new ChallengeLog(enums.Type.Challenge);
-const challengeLog = new ChallengeLog(t.arg('type'));
+const challengeLog = new ChallengeLog(type);
+
+const reasons = type === enums.Type.Challenge
+    ? sources.data.find(s => s.selected).reasons.negative
+    : sources.data.find(s => s.selected).reasons.positive;
 
 if(log && log !== undefined) {
     console.log('set log with log from t: ', challengeLog.setLog(log));   
