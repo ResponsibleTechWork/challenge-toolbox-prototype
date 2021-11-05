@@ -17,32 +17,57 @@ const get = async t => {
 
     console.log('Context for card badges: ', context);
 
-    const card = await t.card('name').get('name');
+    const { challenges, celebrations } = ChallengeLog.getChallengeBadgeCounts(context, log);
 
-    console.log('card: ', JSON.stringify(card, null, 2));
-
-    const challengeText = ChallengeLog.getButtonText(log, capability, enums.Type.Challenge);
-    const celebrateText = ChallengeLog.getButtonText(log, capability, enums.Type.Celebrate);
+    const challengeText = ChallengeLog.getButtonText(enums.Type.Challenge, challenges);
+    const celebrateText = ChallengeLog.getButtonText(enums.Type.Celebrate, celebrations);
 
     console.log(`Current value for ${key} for card-badges`,  log);
 
     // check for card in log - if there's a match return challenges, celebrations, both or neither
     // match count agsainst specific card
 
-    return t
-        .card('id', 'name')            
-        .then(function (card) {
-        return [
-            {
-            text: challengeText,
-            color: "red"
-            },
-            {
-            text: celebrateText,
-            color: "green"
-            },
-        ];
-        });
+    if(challenges === 0 && celebrations === 0) return [];
+
+    if(challenges !== 0 && celebrations !== 0)
+        return t
+            .card('id', 'name')            
+            .then(function (card) {
+            return [
+                    {
+                    text: challengeText,
+                    color: "red"
+                    },
+                    {
+                    text: celebrateText,
+                    color: "green"
+                    },
+                ];
+            });
+
+    if(challenges !== 0 && celebrations === 0)
+        return t
+            .card('id', 'name')            
+            .then(function (card) {
+            return [
+                    {
+                    text: challengeText,
+                    color: "red"
+                    }
+                ];
+            });
+
+    if(challenges === 0 && celebrations !== 0)
+        return t
+            .card('id', 'name')            
+            .then(function (card) {
+            return [
+                    {
+                    text: celebrateText,
+                    color: "green"
+                    },
+                ];
+            });
 };
 
 export const getCardBadges = (t, opts) => {

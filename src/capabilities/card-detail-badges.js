@@ -13,8 +13,10 @@ const get = async t => {
 
     console.log(`Data stored for ${key} against ${scope} with ${visibility} access for ${capability}  : `,  log);
 
-    const challengeText = ChallengeLog.getButtonText(log, capability, enums.Type.Challenge);
-    const celebrateText = ChallengeLog.getButtonText(log, capability, enums.Type.Celebrate);
+    const { challenges, celebrations } = ChallengeLog.getChallengeBadgeCounts(context, log);
+
+    const challengeText = ChallengeLog.getButtonText(enums.Type.Challenge, challenges);
+    const celebrateText = ChallengeLog.getButtonText(enums.Type.Celebrate, celebrations);
 
     const onCloseChallengToolbox = t => {
         console.log('onCloseChallengToolbox');

@@ -135,22 +135,20 @@ export class ChallengeLog {
         return reasonCount === 0 ? '' : reasonCount.toString();
     }
 
-    //static
-    static getButtonText(log, capability, type) {
+    // public static
+    static getButtonText(type, count) {
      
-        const entries = (log && log !== undefined) ? log.filter(entry => entry.type === type) : [];
-
         let text = '';
 
         switch(type) {
             case enums.Type.Challenge:
-                text = entries.length > 0
-                    ? `Challenges (${entries.length})`
+                text = count > 0
+                    ? `Challenges (${count})`
                     : `Challenge`;
                     break;
             case enums.Type.Celebrate:
-                text = entries.length > 0
-                    ? `Celebrations (${entries.length})`
+                text = count > 0
+                    ? `Celebrations (${count})`
                     : `Celebrate`;
                     break;
         }
@@ -158,5 +156,22 @@ export class ChallengeLog {
         // console.warn('button text: ', text);
 
         return text;
+    }
+
+    // public static
+    static getChallengeBadgeCounts(context, log) {
+
+        if(log === undefined) {
+            return { challenges: 0, celebrations: 0 };
+        }
+
+        const card = context.card;
+        const cardChallengeCount = log.filter(entry => entry.type === enums.Type.Challenge && entry.card === card).length;
+        const cardCelebrationCount = log.filter(entry => entry.type === enums.Type.Celebrate && entry.card === card).length;
+
+        return {
+            challenges: cardChallengeCount,
+            celebrations: cardCelebrationCount
+        }
     }
 }
