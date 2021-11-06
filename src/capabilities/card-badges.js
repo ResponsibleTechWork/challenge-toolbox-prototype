@@ -29,45 +29,30 @@ const get = async t => {
 
     if(challenges === 0 && celebrations === 0) return [];
 
-    if(challenges !== 0 && celebrations !== 0)
-        return t
-            .card('id', 'name')            
-            .then(function (card) {
-            return [
-                    {
-                    text: challengeText,
-                    color: "red"
-                    },
-                    {
-                    text: celebrateText,
-                    color: "green"
-                    },
-                ];
-            });
+    const badges = [
+        {
+            text: challengeText,
+            color: "red"
+        },
+        {
+            text: celebrateText,
+            color: "green"
+        },
+    ];
 
-    if(challenges !== 0 && celebrations === 0)
-        return t
-            .card('id', 'name')            
-            .then(function (card) {
-            return [
-                    {
-                    text: challengeText,
-                    color: "red"
-                    }
-                ];
-            });
+    const badgeArray = [];
+    
+    if(challenges !== 0) {
+        badgeArray.push(badges[0]);
+    } if(challenges !== 0) {
+        badgeArray.push(badges[1]);
+    }
 
-    if(challenges === 0 && celebrations !== 0)
-        return t
-            .card('id', 'name')            
-            .then(function (card) {
-            return [
-                    {
-                    text: celebrateText,
-                    color: "green"
-                    },
-                ];
-            });
+    return t
+    .card('id', 'name')            
+    .then(function (card) {
+        return badgeArray;
+    });
 };
 
 export const getCardBadges = (t, opts) => {

@@ -274,14 +274,14 @@ describe('test for islogFalsy function', () => {
 
 describe('test for capability badge text', () => {
     let context, log;
-    const { challenges, celebrations } = ChallengeLog.getChallengeBadgeCounts(context, log);
+    const { challenges, celebrations } = ChallengeLog.getChallengePledgeCounts(context, log);
     it('should return "Challenge" as initial text for the Challenge badge', () => {
-        const { challenges, celebrations } = ChallengeLog.getChallengeBadgeCounts(context, log);
+        const { challenges, celebrations } = ChallengeLog.getChallengePledgeCounts(context, log);
         const text = ChallengeLog.getButtonText(enums.Type.Challenge, challenges);
         expect(text).toBe('Challenge');
     });
     it('should return "Celebrate" as initial text for the Celebrate badge', () => {
-        const { challenges, celebrations } = ChallengeLog.getChallengeBadgeCounts(context, log);
+        const { challenges, celebrations } = ChallengeLog.getChallengePledgeCounts(context, log);
         const text = ChallengeLog.getButtonText(enums.Type.Celebrate, celebrations);
         expect(text).toBe('Celebrate');
     });
@@ -340,7 +340,7 @@ describe('test for capability badge text', () => {
             }
         ];
 
-        const { challenges, celebrations } = ChallengeLog.getChallengeBadgeCounts(context, log);
+        const { challenges, celebrations } = ChallengeLog.getChallengePledgeCounts(context, log);
         const text = ChallengeLog.getButtonText(enums.Type.Challenge, challenges);
         expect(text).toBe('Challenges (2)');
     });
@@ -349,7 +349,7 @@ describe('test for capability badge text', () => {
 describe('test for card badge counts', () => {
     let context, log;
     it('should return 0 for all badge counts where log is missing', () => {
-        expect(ChallengeLog.getChallengeBadgeCounts(context, log)).toStrictEqual(
+        expect(ChallengeLog.getChallengePledgeCounts(context, log)).toStrictEqual(
             { challenges: 0, celebrations: 0 }
         );
     });
@@ -409,9 +409,45 @@ describe('test for card badge counts', () => {
             }
         ];
     
-        expect(ChallengeLog.getChallengeBadgeCounts(context, log)).toStrictEqual(
+        expect(ChallengeLog.getChallengePledgeCounts(context, log)).toStrictEqual(
             { challenges: 2, celebrations: 0 }
         );
     });
 
+});
+
+describe('test for vote count', () => {
+    const context = { card: 1 };
+    const log = [
+        { 
+            card: 1,
+            member: 1,
+            type: enums.Type.Challenge
+        },
+        { 
+            card: 1,
+            member: 1,
+            type: enums.Type.Challenge
+        },
+        { 
+            card: 1,
+            member: 2,
+            type: enums.Type.Challenge
+        },
+    ];
+    it('where member has voted twice on one challenge', () => {
+        const { challenges, celebrations } = ChallengeLog.getChallengeBadgeCounts(context, log);
+        expect(challenges).toStrictEqual(2);
+        expect(celebrations).toStrictEqual(0);
+    });
+    it('where member has also voted for on new celebration', () => {
+        log.push({ 
+            card: 1,
+            member: 2,
+            type: enums.Type.Celebrate
+        });
+        const { challenges, celebrations } = ChallengeLog.getChallengeBadgeCounts(context, log);
+        expect(challenges).toStrictEqual(2);
+        expect(celebrations).toStrictEqual(1);
+    });
 });

@@ -178,6 +178,22 @@ export class ChallengeLog {
         }
 
         const card = context.card;
+        const cardChallengeCount = [ ...new Set(log.filter(e => e.type === enums.Type.Challenge && e.card === card).map(e => e.member)) ].length;
+        const cardCelebrationCount = [ ...new Set(log.filter(e => e.type === enums.Type.Celebrate && e.card === card).map(e => e.member)) ].length;
+
+        return {
+            challenges: cardChallengeCount,
+            celebrations: cardCelebrationCount
+        }
+    }
+
+    static getChallengePledgeCounts(context, log) {
+
+        if(log === undefined) {
+            return { challenges: 0, celebrations: 0 };
+        }
+
+        const card = context.card;
         const cardChallengeCount = log.filter(entry => entry.type === enums.Type.Challenge && entry.card === card).length;
         const cardCelebrationCount = log.filter(entry => entry.type === enums.Type.Celebrate && entry.card === card).length;
 
