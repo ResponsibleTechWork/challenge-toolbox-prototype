@@ -9,20 +9,20 @@ const reasonsContainer = document.getElementById('reasons');
 
 document.getElementById('src').href = sources.data.find(s => s.selected).src;
 
-const t = window.TrelloPowerUp.iframe();
-
 const scope = enums.Scope.Card;
 const visibility = enums.Visibility.Shared;
 const key = enums.Key.LogEntries;
 const capability = enums.Capability.CardButtons;
+
+const t = window.TrelloPowerUp.iframe();
 
 const log = await t.get(scope, visibility, key);
 
 console.log(`Data stored for ${key} against ${scope} with ${visibility} access for ${capability}  : `,  log);
 
 const type = t.arg('type');
+// const type = enums.Type.Challenge;
 
-// const challengeLog = new ChallengeLog(enums.Type.Challenge);
 const challengeLog = new ChallengeLog(type);
 
 const reasons = type === enums.Type.Challenge
@@ -30,7 +30,8 @@ const reasons = type === enums.Type.Challenge
     : sources.data.find(s => s.selected).reasons.positive;
 
 if(log && log !== undefined) {
-    console.log('set log with log from t: ', challengeLog.setLog(log));   
+    const updatedLogFromTrello = challengeLog.setLog(log);
+    console.log('set log with log from t: ', challengeLog.setLog(updatedLogFromTrello));   
 }
 
 const showSelectedPledges = (pledges, currentPledge) => {
@@ -44,6 +45,10 @@ const showSelectedPledges = (pledges, currentPledge) => {
                 btn.classList.add('selected');
             }
         });
+
+        if (parseInt(currentPledge.id) === parseInt(btn.id)) {
+            btn.classList.add('selected');
+        }
     });
 };
 
@@ -106,7 +111,7 @@ const redrawChallengePledges = () => {
         const reasonCount = challengeLog.getReasonsCountByPledge(pledge.id);
 
         return `<li>
-                    <button id="${pledge.id}" class="btn btnChallenge">${pledge.text}<span class="counter">${reasonCount}</span></button>
+                    <button id="${pledge.id}" class="btn ${type === enums.Type.Challenge ? "btnChallenge" : "btnCelebrate"}">${pledge.text}<span class="counter">${reasonCount}</span></button>
                 </li>`;
     });
 
@@ -126,7 +131,7 @@ const redrawChallengeReasons = () => {
     const reasonItems = reasons.map(reason => {
         const reasonCount = challengeLog.getReasonsCount();
         return `<li>
-                    <button id="${reason.id}" class="btn btnChallenge">${reason.text}<span class="counter">${reasonCount}</span></button>
+                    <button id="${reason.id}" class="btn btnReason">${reason.text}<span class="counter">${reasonCount}</span></button>
                 </li>`;
     });
     

@@ -37,27 +37,35 @@ a {
 }
 
 .btnChallenge {
-    background-color: rgb(245, 121, 58,.3);
+    background-color: rgb(235, 90, 70,.3);
 }
 
 .btnChallenge:hover, .btnChallenge.selected {
-    background-color: rgb(245, 121, 58);
+    background-color: rgb(235, 90, 70);
 }
 
 .btnChallenge.selected:hover {
-    background-color: rgb(245, 121, 58,.7);
+    background-color: rgb(235, 90, 70,.7);
 }
 
 .btnCelebrate {
-    background-color: rgba(169, 90, 161,.3);
+    background-color: rgba(97, 189, 79,.3)
 }
 
 .btnCelebrate:hover, .btnCelebrate.selected {
-    background-color: rgb(169, 90, 161);
+    background-color: rgb(97, 189, 79);
 }
 
 .btnCelebrate.selected:hover {
-    background-color: rgba(169, 90, 161,.7);
+    background-color: rgba(97, 189, 79,.7);
+}
+
+.btnReason {
+    background-color: rgba(242, 214, 0,.5);
+}
+
+.btnReason:hover, .btnReason.selected {
+    background-color: rgba(242, 214, 0,.8);
 }
 
 .btn .counter {
@@ -68,10 +76,10 @@ a {
 }
 
 .btnSubmit {
-    background-color: rgba(15, 32, 128, .5);
+    background-color: rgba(24, 90, 140, .5);
     margin: 2rem 0;
 }
 
 .btnSubmit:hover {
-    background-color: rgba(15, 32, 128, .3);
+    background-color: rgba(24, 90, 140, .3);
 }
