@@ -36,36 +36,30 @@ a {
     position: relative;
 }
 
-.btnChallenge {
+.btnChallenge, #challenge .btnReason {
     background-color: rgb(235, 90, 70,.3);
 }
 
-.btnChallenge:hover, .btnChallenge.selected {
+.btnChallenge:hover, .btnChallenge.selected, #challenge .btnReason:hover, #challenge .btnReason.selected {
     background-color: rgb(235, 90, 70);
+    color: rgb(255,255,255);
 }
 
-.btnChallenge.selected:hover {
+.btnChallenge.selected:hover, #challenge .btnReason.selected:hover {
     background-color: rgb(235, 90, 70,.7);
 }
 
-.btnCelebrate {
+.btnCelebrate, #celebrate .btnReason {
     background-color: rgba(97, 189, 79,.3)
 }
 
-.btnCelebrate:hover, .btnCelebrate.selected {
+.btnCelebrate:hover, .btnCelebrate.selected, #celebrate .btnReason:hover, #celebrate .btnReason.selected {
     background-color: rgb(97, 189, 79);
+    color: rgb(255,255,255);
 }
 
-.btnCelebrate.selected:hover {
+.btnCelebrate.selected:hover, #celebrate .btnReason.selected:hover {
     background-color: rgba(97, 189, 79,.7);
-}
-
-.btnReason {
-    background-color: rgba(242, 214, 0,.5);
-}
-
-.btnReason:hover, .btnReason.selected {
-    background-color: rgba(242, 214, 0,.8);
 }
 
 .btn .counter {

@@ -120,8 +120,10 @@ const init = async () => {
         
             const reasonCount = challengeLog.getReasonsCountByPledge(pledge.id);
 
+            const classList = type === enums.Type.Challenge ? 'btnChallenge' : 'btnCelebrate';
+
             return `<li>
-                        <button id="${pledge.id}" class="btn ${type === enums.Type.Challenge ? "btnChallenge" : "btnCelebrate"}">${pledge.text}<span class="counter">${reasonCount}</span></button>
+                        <button id="${pledge.id}" class="btn ${classList}">${pledge.text}<span class="counter">${reasonCount}</span></button>
                     </li>`;
         });
 
@@ -139,9 +141,8 @@ const init = async () => {
     const redrawChallengeReasons = () => {
 
         const reasonItems = reasons.map(reason => {
-            const reasonCount = challengeLog.getReasonsCount();
             return `<li>
-                        <button id="${reason.id}" class="btn btnReason">${reason.text}<span class="counter">${reasonCount}</span></button>
+                        <button id="${reason.id}" class="btn btnReason">${reason.text}</button>
                     </li>`;
         });
         
@@ -170,7 +171,7 @@ const init = async () => {
 
         console.log('returned save object: ',  response);
 
-        t.notifyParent('done');
+        await t.notifyParent('done');
 
         return t.closeModal();
 
