@@ -1,3 +1,4 @@
+import 'regenerator-runtime/runtime'
 import sources from '../shared/sources.json';
 import enums from '../shared/enums';
 import { ChallengeLog } from '../shared/challenge-log';
@@ -65,11 +66,11 @@ const init = async () => {
 
     const clickPledgeHandler = (e, pledgeId) => {
         
-        const context = isLocal ? {
+        const context = isLive ? t.getContext() : {
             board: 'board #1',
             member: 'member #1',
             card: 'card #1',
-        } : t.getContext();
+        };
 
         const pledge = pledges.find(p => parseInt(p.id) === parseInt(pledgeId));
 
