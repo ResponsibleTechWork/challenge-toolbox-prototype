@@ -5,8 +5,7 @@ import { ChallengeLog } from '../shared/challenge-log';
 
 const init = async () => {
 
-    const isLive = window.location.href.indexOf('localhost') === 0 
-        || (!!document.querySelector('.plugin-iframe') && !!document.querySelector('.plugin-iframe').contentWindow.location);
+    const isLive = document.referrer === 'https://trello.com/';
 
     console.log('isLive: ', isLive);
 
@@ -84,7 +83,7 @@ const init = async () => {
 
     const showSelectedReasons = reasons => {
 
-        console.log(JSON.stringify(challengeLog.getCurrentPledge(), null, 2));
+        // console.log(JSON.stringify(challengeLog.getCurrentPledge(), null, 2));
 
         reasonsContainer.querySelectorAll('.btn').forEach(btn => {
 
