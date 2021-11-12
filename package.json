@@ -12,7 +12,7 @@
     "regenerator-runtime": "^0.13.9"
   },
   "scripts": {
-    "build": "parcel build src/index.html",
+    "build": "parcel build src/index.html --dist-dir public",
     "tests": "jest"
   },
   "dependencies": {
