@@ -1,3 +1,4 @@
+import regeneratorRuntime from "regenerator-runtime";
 import sources from '../shared/sources.json';
 import enums from '../shared/enums';
 import { ChallengeLog } from '../shared/challenge-log';
