@@ -2,7 +2,7 @@
   "name": "challenge-toolbox-draft",
   "version": "1.0.0",
   "description": "Test power-up app",
-  "repository": "https://github.com/danhartley/challenge-toolbox-draft.git",
+  "repository": "https://github.com/ResponsibleTechWork/challenge-toolbox-prototype.git",
   "author": "Daniel Hartley <danhartleybcn@gmail.com>",
   "license": "MIT",
   "devDependencies": {
