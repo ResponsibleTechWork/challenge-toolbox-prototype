@@ -24,8 +24,12 @@ NB Power-up state is stored by Trello. Locally there is no persistent storage.
 
 ## gh-pages
 
-The Trello Power-Up (rtw-challenge-toolbox-prototype) is served from a GitHub page: https://responsibletechwork.github.io/challenge-toolbox-prototype/
+The Trello Power-Up (rtw-challenge-toolbox-prototype) is served from a GitHub page: https://responsibletechwork.github.io/challenge-toolbox-prototype/.
 
-This branch points to the public directory. To push only public to gh-pages branch use git subtree push --prefix public origin gh-pages.
+For more on configuring the Trello Power-Up: https://trello.com/power-ups/61891dc2d6918449e3c28bdc/edit
+
+The gh-pages branch must contain only "public" directory files. To push the "public" directory to gh-pages branch use:
+
+    git subtree push --prefix public origin gh-pages.
 
 *** WARNING !! CURRENT BUILD TO PUBLIC DOES NOT USE CORRECT URLS - THESE MUST BE CHANGED MANUALLY !! ***
