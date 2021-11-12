@@ -1,26 +1,23 @@
-# Working with the RWT Challenge Toolbox Prototype
+# Working with the RTW Challenge Toolbox Prototype
 
-## Clone the repo
+Welcome to the Responsible Tech Work Trello Prototype.
 
-## Add dependencies in package.json to node_modules 
-yarn install
+## Set up
+    git clone https://github.com/ResponsibleTechWork/challenge-toolbox-prototype.git
+    yarn install
 
-# Running the unit tests
-npm run tests
-yarn tests
+## Working with the prototype
+    yarn build
+    yarn tests
 
-# Running the website locally
+Commit updates to the main branch. The Trello Power-Up points at the trello branch. To update this branch, make a pull request.
 
-## Build to dist folder
-yarn build 
+We each have a directory for experimenting under play/. To run this locally:
 
-## Start local server and go to file
-parcel <_path to file>
-parcel ./src/modals/challenge.html
-parcel ./src/modals/celebrate.html
+    parcel <path to file>
+    parcel ./src/modals/challenge.html
+    parcel ./src/modals/celebrate.html
 
-Go to: http://localhost:1234 
+Parcel creates a new server endpoint at: http://localhost:1234 
 
 NB Power-up state is stored by Trello. Locally there is no persistent storage.
-
-
