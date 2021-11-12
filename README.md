@@ -21,3 +21,11 @@ We each have a directory for experimenting under play/. To run this locally:
 Parcel creates a new server endpoint at: http://localhost:1234 
 
 NB Power-up state is stored by Trello. Locally there is no persistent storage.
+
+## gh-pages
+
+The Trello Power-Up (rtw-challenge-toolbox-prototype) is served from a GitHub page: https://responsibletechwork.github.io/challenge-toolbox-prototype/
+
+This branch points to the public directory. To push only public to gh-pages branch use git subtree push --prefix public origin gh-pages.
+
+*** WARNING !! CURRENT BUILD TO PUBLIC DOES NOT USE CORRECT URLS - THESE MUST BE CHANGED MANUALLY !! ***
