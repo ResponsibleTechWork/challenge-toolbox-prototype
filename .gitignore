@@ -4,3 +4,4 @@ dist
 PRIVATE.md
 play
 .cache
+public

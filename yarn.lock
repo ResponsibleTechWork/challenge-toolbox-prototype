@@ -716,7 +716,7 @@
     "@babel/helper-create-regexp-features-plugin" "^7.16.0"
     "@babel/helper-plugin-utils" "^7.14.5"
 
-"@babel/preset-env@^7.16.0":
+"@babel/preset-env@^7.16.0", "@babel/preset-env@^7.4.0":
   version "7.16.0"
   resolved "https://registry.npmjs.org/@babel/preset-env/-/preset-env-7.16.0.tgz"
   dependencies:
@@ -1061,6 +1061,13 @@
     "@parcel/source-map" "^2.0.0"
     "@parcel/utils" "^2.0.0"
     astring "^1.6.2"
+
+"@parcel/babel-preset-env@^2.0.1":
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/@parcel/babel-preset-env/-/babel-preset-env-2.0.1.tgz#704185be3f2d85343c19af5bc58c74ee0c7fcc59"
+  dependencies:
+    "@babel/preset-env" "^7.4.0"
+    semver "^5.4.1"
 
 "@parcel/babylon-walk@^2.0.0":
   version "2.0.0"
@@ -5169,7 +5176,7 @@ regenerate@^1.4.2:
   version "1.4.2"
   resolved "https://registry.npmjs.org/regenerate/-/regenerate-1.4.2.tgz"
 
-regenerator-runtime@^0.13.4, regenerator-runtime@^0.13.7, regenerator-runtime@^0.13.9:
+regenerator-runtime@^0.13.4, regenerator-runtime@^0.13.7:
   version "0.13.9"
   resolved "https://registry.npmjs.org/regenerator-runtime/-/regenerator-runtime-0.13.9.tgz"
 
