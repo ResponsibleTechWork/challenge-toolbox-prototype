@@ -30,10 +30,10 @@ const get = async t => {
 
     const onBtnClick = t => {
         console.log('t in onBtnClick: ', t);
-        // return t.popup({
-        //     title: 'Toolbox preferences',
-        //     items: preferences
-        // });
+        return t.popup({
+            title: 'Toolbox preferences',
+            items: preferences
+        });
     };
 
     return [{
