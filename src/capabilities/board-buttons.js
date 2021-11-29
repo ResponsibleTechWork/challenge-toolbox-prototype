@@ -29,10 +29,11 @@ const get = async t => {
     });
 
     const onBtnClick = t => {
-        return t.popup({
-            title: 'Toolbox preferences',
-            items: preferences
-        });
+        console.log('t in onBtnClick: ', t);
+        // return t.popup({
+        //     title: 'Toolbox preferences',
+        //     items: preferences
+        // });
     };
 
     return [{
@@ -41,7 +42,7 @@ const get = async t => {
           light: BLACK_ICON
         },
         text: 'Callback',
-        callback: onBtnClick,
+        callback: t => onBtnClick(t),
         condition: 'edit'
       }];
 
