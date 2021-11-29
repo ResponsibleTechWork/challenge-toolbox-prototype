@@ -14,6 +14,10 @@ const get = async t => {
     const key = enums.Key.ChallengePreferences;
     const capability = enums.Capability.BoardButtons;
 
+    const context = t.getContext();
+
+    console.log('Context for board buttons: ', context);
+
     const preferences = data.authors.map(a => {
         return {
             text: a.title,
