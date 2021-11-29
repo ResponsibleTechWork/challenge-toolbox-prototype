@@ -16,10 +16,12 @@ const Visibility = Object.freeze({
 });
 
 const Key = Object.freeze({
-    LogEntries: 'Log entries'
+    LogEntries: 'Log entries',
+    ChallengePreferences: 'Challenge preferences'
 });
 
 const Capability = Object.freeze({
+    BoardButtons: 'board-buttons',
     CardBadges: 'card-badges',
     CardButtons: 'card-buttons',
     CardDetailBadges: 'card-detail-badges'

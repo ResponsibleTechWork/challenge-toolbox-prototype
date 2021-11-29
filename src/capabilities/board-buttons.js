@@ -1,0 +1,48 @@
+import enums from '../shared/enums';
+
+import ChallengeLog from '../shared/challenge-log';
+
+import data from '../api/data/authors.json';
+
+const WHITE_ICON = 'https://cdn.hyperdev.com/us-east-1%3A3d31b21c-01a0-4da2-8827-4bc6e88b7618%2Ficon-white.svg';
+const BLACK_ICON = 'https://cdn.hyperdev.com/us-east-1%3A3d31b21c-01a0-4da2-8827-4bc6e88b7618%2Ficon-black.svg';
+
+const get = async t => {
+
+    const scope = enums.Scope.Board;
+    const visibility = enums.Visibility.Shared;
+    const key = enums.Key.ChallengePreferences;
+    const capability = enums.Capability.BoardButtons;
+
+    const preferences = data.authors.map(a => {
+        return {
+            text: a.title,
+            callback: (t, opts) => {
+                console.log('t: ', t);
+                console.log('opts: ', opts);
+            }
+        }
+    });
+
+    const onBtnClick = t => {
+        return t.popup({
+            title: 'Toolbox preferences',
+            items: preferences
+        });
+    };
+
+    return [{
+        icon: {
+          dark: WHITE_ICON,
+          light: BLACK_ICON
+        },
+        text: 'Callback',
+        callback: onBtnClick,
+        condition: 'edit'
+      }];
+
+};
+
+export const getBoardButtons = (t, opts) => {
+    return get(t);
+}
