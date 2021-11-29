@@ -30,6 +30,9 @@ For more on configuring the Trello Power-Up: https://trello.com/power-ups/61891d
 
 The gh-pages branch must contain only "public" directory files. To push the "public" directory to gh-pages branch use:
 
-    git subtree push --prefix public origin gh-pages.
+    git subtree push --prefix public origin gh-pages
+    git push origin `git subtree split --prefix public main`:gh-pages --force
+
+From https://clontz.org/blog/2014/05/08/git-subtree-push-for-deployment/
 
 *** WARNING !! CURRENT BUILD TO PUBLIC DOES NOT USE CORRECT URLS - THESE MUST BE CHANGED MANUALLY !! ***
