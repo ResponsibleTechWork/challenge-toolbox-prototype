@@ -21,9 +21,13 @@ const get = async t => {
     const preferences = data.authors.map(a => {
         return {
             text: a.title,
-            callback: (t, opts) => {
+            callback: async (t, opts, a) => {
                 console.log('t: ', t);
                 console.log('opts: ', opts);
+                console.log('a: ', a);
+                await t.set(scope, visibility, key, a);
+                const response = await t.get(scope, visibility, key);
+                console.log('return saved author: ',  response);
             }
         }
     });
