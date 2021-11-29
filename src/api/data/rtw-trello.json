@@ -1,0 +1,29 @@
+{
+    "capabilities": [
+        {
+            "capability": "card-badges"
+        },
+        {
+            "capability": "card-buttons",
+            "prompt": "Is this card aligned with ResponsibleTech.Work pledges?",            
+            "results": "The card might be breaking the following pledges:",
+            "buttons": [
+                {
+                    "label": "Upholds pledge",
+                    "valence": "positive"
+                },
+                {
+                    "label": "Breaks pledge",
+                    "valence": "negative"
+                }
+            ]
+        }
+    ],
+    "environment": "Trello",
+    "modal": {
+        "prompt": "Which pledges might we break if we do this?"
+    },
+    "popup": {
+        
+    }
+}

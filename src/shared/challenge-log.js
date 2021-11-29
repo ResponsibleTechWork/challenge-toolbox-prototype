@@ -1,6 +1,6 @@
 import enums from '../shared/enums';
 
-export class ChallengeLog {
+class ChallengeLog {
 
     constructor(type) {
       this.type = type;
@@ -202,4 +202,6 @@ export class ChallengeLog {
             celebrations: cardCelebrationCount
         }
     }
-}
+};
+
+export default ChallengeLog;

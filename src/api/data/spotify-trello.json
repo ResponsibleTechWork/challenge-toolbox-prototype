@@ -1,0 +1,48 @@
+{
+    "capabilities": [
+        {
+            "capability": "card-badges"
+        },
+        {
+            "capability": "card-buttons",
+            "prompt": "Is this card aligned with ResponsibleTech.Work pledges?",            
+            "results": "The card might be breaking the following pledges:",
+            "buttons": [
+                {
+                    "label": "Upholds pledge"
+                }
+            ]
+        }
+    ],
+    "environment": "Trello",
+    "popup": {        
+        "prompt": "How certain are you the product produces an effect?",
+        "options": [
+            {
+                "valence": 1,
+                "name": "Highly improbable",
+                "description": "There is quantitative evidence and/or a body of pre-existing research that shows this product does not have this effect, or the product is completely unrelated from this effect."
+            },         
+            {
+                "valence": 2,
+                "name": "Improbable",
+                "description": "It is unlikely that the product is uniquely encouraging or causing this effect. It may be worth looking into whether specific populations are affected."
+            },         
+            {
+                "valence": 3,
+                "name": "Possible",
+                "description": "There is anecdotal evidence or the team has voiced concerns over the possibility of an effect. Worth doing additional research or testing."
+            },         
+            {
+                "valence": 4,
+                "name": "Probable",
+                "description": "There is some evidence from internal research that suggests this product or similar products have this effect. It may be worth validating with additional research or testing."
+            },         
+            {
+                "valence": 5,
+                "name": "Highly probable",
+                "description": "There is quantitative evidence and/or a body of pre-existing research which shows that this product or similar products have this effect."
+            }
+        ]
+    }
+}

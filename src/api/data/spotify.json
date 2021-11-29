@@ -1,0 +1,22 @@
+{
+    "title": "Spotify Ethics Assessment",
+    "description": "A basic set of challenges based on the ResponsbileTech.Work pledges",
+    "id": "spotify-ethics",
+    "url": "https://docs.google.com/document/d/1sOWZhs8zZCRoERPjFBmwYqo9K55FsZG557lOAFCqjLY/edit",
+    "author": "Spotify",    
+    "challenges": [
+       {
+          "id": "1",
+          "title": "Physical harm"
+       },
+       {
+          "id": "2",
+          "title": "Emotional harm"
+       },
+       {
+          "id": "3",
+          "title": "Societal harm"
+       }
+    ],
+    "environment": "Trello"
+ }

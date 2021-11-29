@@ -1,6 +1,6 @@
 import enums from '../shared/enums';
 
-import { ChallengeLog } from '../shared/challenge-log';
+import ChallengeLog from '../shared/challenge-log';
 
 const get = async t => {
 

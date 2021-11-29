@@ -1,6 +1,6 @@
 import enums from '../shared/enums';
 
-import { ChallengeLog } from '../shared/challenge-log';
+import ChallengeLog from '../shared/challenge-log';
 
 const get = async t => {
 
@@ -36,7 +36,7 @@ const get = async t => {
                     url: './modals/challenge.html',
                     fullscreen: false,
                     height: 500,                    
-                    // callback: onCloseChallengToolbox,
+                    callback: onCloseChallengToolbox,
                 });
             }
         },      
