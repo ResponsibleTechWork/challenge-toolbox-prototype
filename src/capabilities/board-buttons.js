@@ -21,7 +21,7 @@ const get = async t => {
     const preferences = data.authors.map(a => {
         return {
             text: a.title,
-            callback: async (t, opts, a) => {
+            callback: async (t, opts) => {
                 console.log('t: ', t);
                 console.log('opts: ', opts);
                 console.log('a: ', a);
