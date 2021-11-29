@@ -37,11 +37,11 @@ const get = async t => {
     };
 
     return [{
-        icon: {
-          dark: WHITE_ICON,
-          light: BLACK_ICON
-        },
-        text: 'Callback',
+        // icon: {
+        //   dark: WHITE_ICON,
+        //   light: BLACK_ICON
+        // },
+        text: 'Challenge Toolbox',
         callback: t => onBtnClick(t),
         condition: enums.Condition.Always
       }];
