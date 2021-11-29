@@ -43,7 +43,7 @@ const get = async t => {
         },
         text: 'Callback',
         callback: t => onBtnClick(t),
-        condition: 'edit'
+        condition: enums.Condition.Always
       }];
 
 };
