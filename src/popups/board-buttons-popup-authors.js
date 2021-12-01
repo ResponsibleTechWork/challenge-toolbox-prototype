@@ -24,7 +24,7 @@ const init = async () => {
 
     const authorList = document.getElementById('authors');
 
-    const selected = data.authors.find(a => a.id === prefs.id);
+    const selectedAuthor = data.authors.find(a => a.id === prefs.id);
 
     const selectAuthor = async (e, id) => {
 
@@ -34,29 +34,31 @@ const init = async () => {
         const visibility = trelloEnums.Visibility.Shared;
         const key = trelloEnums.Key.ChallengePreferences;
 
-        await t.set(scope, visibility, key, a);
+        await t.set(scope, visibility, key, selectedAuthor);
         const response = await t.get(scope, visibility, key);
         
         console.log('return saved author: ',  response);
 
-        t.closePopup();
+        renderAuthorsList();
     };
         
-    const authors = data.authors.map(a => {
+    const renderAuthorsList = () => {
 
-        return `<li>
-                    <button id="${a.id}" class="btn"><span class="${a.id === selected.id ? 'selected' : null}">${a.title}</span></button>
-                </li>`;
-    });
+        const authors = data.authors.map(a => {
 
-    authorList.innerHTML = authors.join('');
+            return `<li>
+                        <button id="${a.id}" class="btn"><span class="${a.id === selectedAuthor.id ? 'selected' : null}">${a.title}</span></button>
+                    </li>`;
+        });
+    
+        authorList.innerHTML = authors.join('');
+    
+        authorList.querySelectorAll('.btn').forEach(btn => {
+            btn.addEventListener('click', e => selectAuthor(e, btn.id));
+        });
+    };
 
-    console.log('authorList ', authorList);
-    console.log('authors ', authors);
-
-    authorList.querySelectorAll('.btn').forEach(btn => {
-        btn.addEventListener('click', e => selectAuthor(e, btn.id));
-    });
+    renderAuthorsList();
 };
 
 init();

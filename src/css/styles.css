@@ -100,3 +100,7 @@ a {
     background-color: transparent;
     text-align: left;
 }
+
+#authors .selected {
+    font-weight: bold;
+}
