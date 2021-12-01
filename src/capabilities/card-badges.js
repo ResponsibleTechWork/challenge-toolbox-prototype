@@ -22,7 +22,7 @@ const get = async t => {
     const challengeText = ChallengeLog.getButtonText(trelloEnums.Type.Challenge, challenges);
     const celebrateText = ChallengeLog.getButtonText(trelloEnums.Type.Celebrate, celebrations);
 
-    console.log(`Current value for ${key} for card-badges`,  log);
+    // console.log(`Current value for ${key} for card-badges`,  log);
 
     // check for card in log - if there's a match return challenges, celebrations, both or neither
     // match count agsainst specific card

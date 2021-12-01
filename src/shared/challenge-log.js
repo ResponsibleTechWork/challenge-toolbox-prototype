@@ -76,6 +76,9 @@ class ChallengeLog {
     // public
     togglePledge(context, pledge) {
 
+        console.log('togglePledge context ', context);
+        console.log('togglePledge pledge ', pledge);
+
         this.currentPledge = pledge;
         this.context = context;
         
