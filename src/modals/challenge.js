@@ -83,8 +83,6 @@ const init = async () => {
 
     const showSelectedReasons = reasons => {
 
-        // console.log(JSON.stringify(challengeLog.getCurrentPledge(), null, 2));
-
         reasonsContainer.querySelectorAll('.btn').forEach(btn => {
 
             btn.classList.remove('selected');
