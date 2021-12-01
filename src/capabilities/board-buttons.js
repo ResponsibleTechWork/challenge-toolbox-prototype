@@ -12,7 +12,7 @@ const get = async t => {
 
         return t.popup({
             title: 'Toolbox preferences',
-            url: '../popups/authors.html',
+            url: './popups/authors.html',
             args: { myArgs: prefs }
         });
     };
