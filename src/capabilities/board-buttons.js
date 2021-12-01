@@ -6,6 +6,7 @@ import data from '../api/data/authors.json';
 
 const GRAY_ICON = 'https://cdn.hyperdev.com/us-east-1%3A3d31b21c-01a0-4da2-8827-4bc6e88b7618%2Ficon-gray.svg';
 const BLACK_ICON = 'https://cdn.hyperdev.com/us-east-1%3A3d31b21c-01a0-4da2-8827-4bc6e88b7618%2Ficon-black.svg';
+const WHITE_ICON = 'https://cdn.hyperdev.com/us-east-1%3A3d31b21c-01a0-4da2-8827-4bc6e88b7618%2Ficon-white.svg';
 
 const get = async t => {
 
@@ -22,7 +23,10 @@ const get = async t => {
         const preferences = data.authors.map(a => {
             return {
                 text: a.title,
-                icon: selected.id === prefs.id ? BLACK_ICON : GRAY_ICON,
+                icon: {
+                    light: selected.id === prefs.id ? BLACK_ICON : GRAY_ICON,
+                    dark: selected.id === prefs.id ? WHITE_ICON : GRAY_ICON
+                },
                 callback: async (t, opts) => {
                     await t.set(scope, visibility, key, a);
                     const response = await t.get(scope, visibility, key);
@@ -31,6 +35,7 @@ const get = async t => {
             }
         });
     
+        console.log('selected: ', selected);
         console.log('prefs: ', prefs);
 
         return t.popup({
