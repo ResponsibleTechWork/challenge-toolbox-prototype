@@ -15,7 +15,7 @@ const get = async t => {
 
     const context = t.getContext();
 
-    console.log('Context for card badges: ', context);
+    // console.log('Context for card badges: ', context);
 
     const { challenges, celebrations } = ChallengeLog.getChallengeBadgeCounts(context, log);
 

@@ -4,7 +4,12 @@ import selector from '../shared/capability-selector';
 const get = async t => {
 
     const context = t.getContext();
+
+    console.log('card-detail-badges context ', context);
+
     const logEntries = await t.get(trelloEnums.Scope.Card, trelloEnums.Visibility.Shared, trelloEnums.Key.LogEntries);
+
+    console.log('card-detail-badges logEntries ', logEntries);
 
     let log;
 
