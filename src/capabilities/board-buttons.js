@@ -14,23 +14,24 @@ const get = async t => {
     const key = trelloEnums.Key.ChallengePreferences;
     const capability = trelloEnums.Capability.BoardButtons;
 
-    const context = t.getContext();
+    const onBtnClick = async t => {
 
-    console.log('Context for board buttons: ', context);
-
-    const preferences = data.authors.map(a => {
-        return {
-            text: a.title,
-            callback: async (t, opts) => {
-                await t.set(scope, visibility, key, a);
-                const response = await t.get(scope, visibility, key);
-                console.log('return saved author: ',  response);
+        const prefs = await t.get(trelloEnums.Scope.Board, trelloEnums.Visibility.Shared, trelloEnums.Key.ChallengePreferences);
+        
+        const preferences = data.authors.map(a => {
+            return {
+                text: a.title,
+                icon: WHITE_ICON,
+                callback: async (t, opts) => {
+                    await t.set(scope, visibility, key, a);
+                    const response = await t.get(scope, visibility, key);
+                    console.log('return saved author: ',  response);
+                }
             }
-        }
-    });
+        });
+    
+        console.log('prefs: ', prefs);
 
-    const onBtnClick = t => {
-        console.log('t in onBtnClick: ', t);
         return t.popup({
             title: 'Toolbox preferences',
             items: preferences
