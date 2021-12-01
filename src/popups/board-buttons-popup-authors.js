@@ -12,7 +12,7 @@ const init = async () => {
 
     if(isLive) {
         t = window.TrelloPowerUp.iframe();
-        prefs = t.arg('prefs');
+        prefs = await t.get(trelloEnums.Scope.Board, trelloEnums.Visibility.Shared, trelloEnums.Key.ChallengePreferences);
         console.log('prefs: ', prefs);
     } else {
         prefs = {

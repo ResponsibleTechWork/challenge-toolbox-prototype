@@ -8,12 +8,9 @@ const get = async t => {
 
     const onBtnClick = async t => {
 
-        const prefs = await t.get(trelloEnums.Scope.Board, trelloEnums.Visibility.Shared, trelloEnums.Key.ChallengePreferences);
-
         return t.popup({
             title: 'Toolbox preferences',
-            url: './board-buttons-popup-authors.html',
-            args: { myArgs: prefs }
+            url: './board-buttons-popup-authors.html'
         });
     };
 
