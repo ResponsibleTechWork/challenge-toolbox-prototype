@@ -83,8 +83,9 @@ class ChallengeLog {
         this.currentPledge = pledge;
         this.context = context;
 
-        if(this.log.pledge === "Emotional harm") {
-            this.log.pledge.id = "2"; // quick hack
+        this.log = {
+            id: "2",
+            text: "Emotional harm"
         }
 
         console.log('togglePledge this.log ', this.log);
