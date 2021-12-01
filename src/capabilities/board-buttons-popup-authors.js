@@ -8,9 +8,12 @@ const init = async () => {
 
     let t, prefs;
 
+    console.log('isLive: ', isLive);
+
     if(isLive) {
         t = window.TrelloPowerUp.iframe();
         prefs = t.arg('prefs');
+        console.log('prefs: ', prefs);
     } else {
         prefs = {
             id: "spotify",
@@ -18,7 +21,6 @@ const init = async () => {
             title: "Spotify Ethics Assessment"
         };
     }
-
 
     const authorList = document.getElementById('authors');
 
@@ -46,6 +48,9 @@ const init = async () => {
     });
 
     authorList.innerHTML = authors.join('');
+
+    console.log('authorList ', authorList);
+    console.log('authors ', authors);
 
     authorList.querySelectorAll('.btn').forEach(btn => {
         btn.addEventListener('click', e => selectAuthor(e, btn.id));

@@ -12,7 +12,7 @@ const get = async t => {
 
         return t.popup({
             title: 'Toolbox preferences',
-            url: './capabilities/board-buttons-popup-authors.html',
+            url: 'capabilities/board-buttons-popup-authors.html',
             args: { myArgs: prefs }
         });
     };
