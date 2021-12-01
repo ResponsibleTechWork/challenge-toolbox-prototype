@@ -3,7 +3,7 @@ import selector from '../shared/capability-selector';
 
 const get = async t => {
 
-    const scope = trelloEnums.Scope.Card;
+    const scope = trelloEnums.Scope.Board;
     const visibility = trelloEnums.Visibility.Shared;
 
     const prefs = await t.get(scope, visibility, trelloEnums.Key.ChallengePreferences);
