@@ -90,7 +90,7 @@ class ChallengeLog {
         this.log = [{
             id: "2",
             text: "Emotional harm",
-            entry: this.type
+            type: this.type
         }];
 
         // to here
