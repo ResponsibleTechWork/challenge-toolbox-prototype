@@ -12,7 +12,7 @@ const get = async t => {
 
     console.log('card-detail-badges logEntries ', logEntries);
 
-    const challengeLog = new ChallengeLog(type);
+    const challengeLog = new ChallengeLog();
 
     let log;
 
@@ -28,7 +28,7 @@ const get = async t => {
     console.log('card-detail-badges data ', data);
 
     const pledges = await selector.getCapabilityPreferences(data, trelloEnums.Capability.CardDetailBadges);
-    const labels = await selector.getTrelloLabels({pledges, log, context: {board: context.board, card: context.card, member: context.member}});
+    const labels = await selector.getTrelloLabels({t, challengeLog, pledges, log, context: {board: context.board, card: context.card, member: context.member}});
 
     console.log('card-detail-badges labels ', labels);
 
