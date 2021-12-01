@@ -85,7 +85,7 @@ class ChallengeLog {
 
         // hack from here
 
-        this.type = enums.Type.Challenge;
+        this.type = trelloEnums.Type.Challenge;
 
         this.log = [{
             id: "2",
