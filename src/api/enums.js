@@ -1,8 +1,9 @@
 const Authors = Object.freeze({
-    Spotify: 'Spotify',
-    RTW: 'RTW',
-    SWM: "Sustainable Web Manifesto",
-    PrinciplesGreen: "Principles.Green"
+    RTW: 'rtw',
+    Spotify: 'spotify',
+    SWM: "swm",
+    PrinciplesGreen: "pg",
+    Princeton: "princeton"
 });
 
 const Environments = Object.freeze({

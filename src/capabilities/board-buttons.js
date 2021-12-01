@@ -1,4 +1,4 @@
-import enums from '../shared/enums';
+import trelloEnums from '../shared/trello-enums';
 
 import ChallengeLog from '../shared/challenge-log';
 
@@ -9,10 +9,10 @@ const BLACK_ICON = 'https://cdn.hyperdev.com/us-east-1%3A3d31b21c-01a0-4da2-8827
 
 const get = async t => {
 
-    const scope = enums.Scope.Board;
-    const visibility = enums.Visibility.Shared;
-    const key = enums.Key.ChallengePreferences;
-    const capability = enums.Capability.BoardButtons;
+    const scope = trelloEnums.Scope.Board;
+    const visibility = trelloEnums.Visibility.Shared;
+    const key = trelloEnums.Key.ChallengePreferences;
+    const capability = trelloEnums.Capability.BoardButtons;
 
     const context = t.getContext();
 
@@ -22,9 +22,6 @@ const get = async t => {
         return {
             text: a.title,
             callback: async (t, opts) => {
-                console.log('t: ', t);
-                console.log('opts: ', opts);
-                console.log('a: ', a);
                 await t.set(scope, visibility, key, a);
                 const response = await t.get(scope, visibility, key);
                 console.log('return saved author: ',  response);
@@ -47,7 +44,7 @@ const get = async t => {
         // },
         text: 'Challenge Toolbox',
         callback: t => onBtnClick(t),
-        condition: enums.Condition.Always
+        condition: trelloEnums.Condition.Always
       }];
 
 };

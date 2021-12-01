@@ -1,13 +1,13 @@
-import enums from '../shared/enums';
+import trelloEnums from '../shared/trello-enums';
 
 import ChallengeLog from '../shared/challenge-log';
 
 const get = async t => {
 
-    const scope = enums.Scope.Card;
-    const visibility = enums.Visibility.Shared;
-    const key = enums.Key.LogEntries;
-    const capability = enums.Capability.CardBadges;
+    const scope = trelloEnums.Scope.Card;
+    const visibility = trelloEnums.Visibility.Shared;
+    const key = trelloEnums.Key.LogEntries;
+    const capability = trelloEnums.Capability.CardBadges;
 
     const log = await t.get(scope, visibility, key);
 
@@ -19,8 +19,8 @@ const get = async t => {
 
     const { challenges, celebrations } = ChallengeLog.getChallengeBadgeCounts(context, log);
 
-    const challengeText = ChallengeLog.getButtonText(enums.Type.Challenge, challenges);
-    const celebrateText = ChallengeLog.getButtonText(enums.Type.Celebrate, celebrations);
+    const challengeText = ChallengeLog.getButtonText(trelloEnums.Type.Challenge, challenges);
+    const celebrateText = ChallengeLog.getButtonText(trelloEnums.Type.Celebrate, celebrations);
 
     console.log(`Current value for ${key} for card-badges`,  log);
 

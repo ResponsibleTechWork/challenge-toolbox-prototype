@@ -1,9 +1,9 @@
-import enums from '../shared/enums';
+import trelloEnums from '../shared/trello-enums';
 import ChallengeLog from '../shared/challenge-log';
 
 describe('tests for instances of ChallengeLog', () => {
 
-    const type = enums.Type.Challenge;
+    const type = trelloEnums.Type.Challenge;
 
     const challengeLog = new ChallengeLog(type);
 
@@ -82,7 +82,7 @@ describe('tests for instances of ChallengeLog', () => {
 
 describe('tests for challenge reasons', () => {
 
-    const type = enums.Type.Challenge;
+    const type = trelloEnums.Type.Challenge;
 
     const challengeLog = new ChallengeLog(type);
 
@@ -135,7 +135,7 @@ describe('tests for challenge reasons', () => {
 
 describe('tests for mixing challenges and celebrations', () => {
 
-    let type = enums.Type.Challenge;
+    let type = trelloEnums.Type.Challenge;
 
     const challengeLog = new ChallengeLog(type);
 
@@ -196,7 +196,7 @@ describe('tests for mixing challenges and celebrations', () => {
 
     it('log should contain entries for a challenge and a celebration, each with one reason', () => {
 
-        let type = enums.Type.Celebrate;
+        let type = trelloEnums.Type.Celebrate;
 
         challengeLog.setType(type);
 
@@ -230,7 +230,7 @@ describe('tests for mixing challenges and celebrations', () => {
 
 describe('test for islogTruthy function', () => {
 
-    const type = enums.Type.Challenge;
+    const type = trelloEnums.Type.Challenge;
 
     const challengeLog = new ChallengeLog(type);
 
@@ -252,7 +252,7 @@ describe('test for islogTruthy function', () => {
 
 describe('test for islogFalsy function', () => {
 
-    const type = enums.Type.Challenge;
+    const type = trelloEnums.Type.Challenge;
 
     const challengeLog = new ChallengeLog(type);
 
@@ -277,12 +277,12 @@ describe('test for capability badge text', () => {
     const { challenges, celebrations } = ChallengeLog.getChallengePledgeCounts(context, log);
     it('should return "Challenge" as initial text for the Challenge badge', () => {
         const { challenges, celebrations } = ChallengeLog.getChallengePledgeCounts(context, log);
-        const text = ChallengeLog.getButtonText(enums.Type.Challenge, challenges);
+        const text = ChallengeLog.getButtonText(trelloEnums.Type.Challenge, challenges);
         expect(text).toBe('Challenge');
     });
     it('should return "Celebrate" as initial text for the Celebrate badge', () => {
         const { challenges, celebrations } = ChallengeLog.getChallengePledgeCounts(context, log);
-        const text = ChallengeLog.getButtonText(enums.Type.Celebrate, celebrations);
+        const text = ChallengeLog.getButtonText(trelloEnums.Type.Celebrate, celebrations);
         expect(text).toBe('Celebrate');
     });
     it('should return "Challenge (2)" as text for the Challenge badge when pledge has been challenged twice', () => {
@@ -341,7 +341,7 @@ describe('test for capability badge text', () => {
         ];
 
         const { challenges, celebrations } = ChallengeLog.getChallengePledgeCounts(context, log);
-        const text = ChallengeLog.getButtonText(enums.Type.Challenge, challenges);
+        const text = ChallengeLog.getButtonText(trelloEnums.Type.Challenge, challenges);
         expect(text).toBe('Challenges (2)');
     });
 });
@@ -422,17 +422,17 @@ describe('test for vote count', () => {
         { 
             card: 1,
             member: 1,
-            type: enums.Type.Challenge
+            type: trelloEnums.Type.Challenge
         },
         { 
             card: 1,
             member: 1,
-            type: enums.Type.Challenge
+            type: trelloEnums.Type.Challenge
         },
         { 
             card: 1,
             member: 2,
-            type: enums.Type.Challenge
+            type: trelloEnums.Type.Challenge
         },
     ];
     it('where member has voted twice on one challenge', () => {
@@ -444,7 +444,7 @@ describe('test for vote count', () => {
         log.push({ 
             card: 1,
             member: 2,
-            type: enums.Type.Celebrate
+            type: trelloEnums.Type.Celebrate
         });
         const { challenges, celebrations } = ChallengeLog.getChallengeBadgeCounts(context, log);
         expect(challenges).toStrictEqual(2);

@@ -1,20 +1,29 @@
 {
     "authors": [
         {
+            "id": "rtw",
             "name": "ResponsibleTech.Work",
             "title": "ResponsibleTech.Work Pledges"
         },
         {
+            "id": "spotify",
             "name": "Spotify",
             "title": "Spotify Ethics Assessment"
         },
         {
+            "id": "swm",
             "name": "Sustainable Web Manifesto",
             "title": "Sustainable Web Manifesto"
         },
         {
+            "id": "pg",
             "name": "Principles.Green",
             "title": "Principles of Green Software Engineering"
+        },
+        {
+            "id": "princeton",
+            "name": "Princeton web transparency",
+            "title": "Dark Patterns at Scale"
         }
     ]
 }

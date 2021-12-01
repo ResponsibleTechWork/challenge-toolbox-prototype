@@ -1,4 +1,4 @@
-import enums from '../shared/enums';
+import trelloEnums from './trello-enums';
 
 class ChallengeLog {
 
@@ -153,12 +153,12 @@ class ChallengeLog {
         let text = '';
 
         switch(type) {
-            case enums.Type.Challenge:
+            case trelloEnums.Type.Challenge:
                 text = count > 0
                     ? `Challenges (${count})`
                     : `Challenge`;
                     break;
-            case enums.Type.Celebrate:
+            case trelloEnums.Type.Celebrate:
                 text = count > 0
                     ? `Celebrations (${count})`
                     : `Celebrate`;
@@ -178,8 +178,8 @@ class ChallengeLog {
         }
 
         const card = context.card;
-        const cardChallengeCount = [ ...new Set(log.filter(e => e.type === enums.Type.Challenge && e.card === card).map(e => e.member)) ].length;
-        const cardCelebrationCount = [ ...new Set(log.filter(e => e.type === enums.Type.Celebrate && e.card === card).map(e => e.member)) ].length;
+        const cardChallengeCount = [ ...new Set(log.filter(e => e.type === trelloEnums.Type.Challenge && e.card === card).map(e => e.member)) ].length;
+        const cardCelebrationCount = [ ...new Set(log.filter(e => e.type === trelloEnums.Type.Celebrate && e.card === card).map(e => e.member)) ].length;
 
         return {
             challenges: cardChallengeCount,
@@ -194,8 +194,8 @@ class ChallengeLog {
         }
 
         const card = context.card;
-        const cardChallengeCount = log.filter(entry => entry.type === enums.Type.Challenge && entry.card === card).length;
-        const cardCelebrationCount = log.filter(entry => entry.type === enums.Type.Celebrate && entry.card === card).length;
+        const cardChallengeCount = log.filter(entry => entry.type === trelloEnums.Type.Challenge && entry.card === card).length;
+        const cardCelebrationCount = log.filter(entry => entry.type === trelloEnums.Type.Celebrate && entry.card === card).length;
 
         return {
             challenges: cardChallengeCount,

@@ -1,4 +1,4 @@
-import enums from '../shared/enums';
+import trelloEnums from '../shared/trello-enums';
 
 import ChallengeLog from '../shared/challenge-log';
 
@@ -6,10 +6,10 @@ const GRAY_ICON = 'https://cdn.hyperdev.com/us-east-1%3A3d31b21c-01a0-4da2-8827-
 
 const get = async t => {
 
-    const scope = enums.Scope.Card;
-    const visibility = enums.Visibility.Shared;
-    const key = enums.Key.LogEntries;
-    const capability = enums.Capability.CardButtons;
+    const scope = trelloEnums.Scope.Card;
+    const visibility = trelloEnums.Visibility.Shared;
+    const key = trelloEnums.Key.LogEntries;
+    const capability = trelloEnums.Capability.CardButtons;
 
     const log = await t.get(scope, visibility, key);
 
@@ -21,8 +21,8 @@ const get = async t => {
 
     const { challenges, celebrations } = ChallengeLog.getChallengeBadgeCounts(context, log);
 
-    const challengeText = ChallengeLog.getButtonText(enums.Type.Challenge, challenges);
-    const celebrateText = ChallengeLog.getButtonText(enums.Type.Celebrate, celebrations);
+    const challengeText = ChallengeLog.getButtonText(trelloEnums.Type.Challenge, challenges);
+    const celebrateText = ChallengeLog.getButtonText(trelloEnums.Type.Celebrate, celebrations);
 
     const onCloseChallengToolbox = t => {
         console.log('onCloseChallengToolbox');
@@ -36,11 +36,11 @@ const get = async t => {
         {
             icon: GRAY_ICON,
             text: challengeText,
-            condition: enums.Condition.Always,
+            condition: trelloEnums.Condition.Always,
             callback: function(t){
                 return t.modal({
                     title: "Challenge",                    
-                    args: { type: enums.Type.Challenge },
+                    args: { type: trelloEnums.Type.Challenge },
                     url: './modals/challenge.html',
                     fullscreen: false,
                     height: 500,                    
@@ -51,11 +51,11 @@ const get = async t => {
         {
             icon: GRAY_ICON,
             text: celebrateText,
-            condition: enums.Condition.Always,
+            condition: trelloEnums.Condition.Always,
             callback: function(t){
                 return t.modal({
                     title: "Celebrate",
-                    args: { type: enums.Type.Celebrate },
+                    args: { type: trelloEnums.Type.Celebrate },
                     url: './modals/celebrate.html',
                     fullscreen: false,
                     height: 500

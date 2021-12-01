@@ -1,23 +1,35 @@
 {
     "capabilities": [
         {
-            "capability": "card-badges"
+            "capability": "card-badges",
+            "enabled": true
         },
         {
-            "capability": "card-buttons",
-            "prompt": "Is this card aligned with ResponsibleTech.Work pledges?",            
-            "results": "The card might be breaking the following pledges:",
-            "buttons": [
+            "capability": "card-detail-badges",
+            "enabled": true,
+            "prompt": "What are the potential effects of this feature?",     
+            "results": "The card might bring about the following:",
+            "labels": [
                 {
-                    "label": "Upholds pledge"
-                }
+                    "id": "1",
+                    "title": "Physical harm"
+                 },
+                 {
+                    "id": "2",
+                    "title": "Emotional harm"
+                 },
+                 {
+                    "id": "3",
+                    "title": "Societal harm"
+                 }
             ]
         }
     ],
     "environment": "Trello",
     "popup": {        
-        "prompt": "How certain are you the product produces an effect?",
-        "options": [
+        "enabled": false,
+        "prompt": "How confident are you of this outcome?",
+        "effects": [
             {
                 "valence": 1,
                 "name": "Highly improbable",

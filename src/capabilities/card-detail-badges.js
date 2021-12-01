@@ -1,58 +1,23 @@
-import enums from '../shared/enums';
-
-import ChallengeLog from '../shared/challenge-log';
+import trelloEnums from '../shared/trello-enums';
+import selector from '../shared/capability-selector';
 
 const get = async t => {
 
-    const scope = enums.Scope.Card;
-    const visibility = enums.Visibility.Shared;
-    const key = enums.Key.LogEntries;
-    const capability = enums.Capability.CardDetailBadges;
+    const scope = trelloEnums.Scope.Card;
+    const visibility = trelloEnums.Visibility.Shared;
 
-    const log = await t.get(scope, visibility, key);
+    const prefs = await t.get(scope, visibility, trelloEnums.Key.ChallengePreferences);
 
-    console.log(`Data stored for ${key} against ${scope} with ${visibility} access for ${capability}  : `,  log);
+    console.log('prefs from card-detail-badges: ', prefs);
 
-    const { challenges, celebrations } = ChallengeLog.getChallengeBadgeCounts(context, log);
+    const data = await selector.getData(prefs);
 
-    const challengeText = ChallengeLog.getButtonText(enums.Type.Challenge, challenges);
-    const celebrateText = ChallengeLog.getButtonText(enums.Type.Celebrate, celebrations);
+    console.log('data from card-detail-badges: ', data);
 
-    const onCloseChallengToolbox = t => {
-        console.log('onCloseChallengToolbox');
-    };
+    const labels = await selector.getCapabilityPreferences(data, trelloEnums.Capability.CardDetailBadges);
+    const trelloLabels = await selector.getTrelloLabels(labels);
 
-    const card = await t.card('name').get('name');
-
-    console.log('card: ', JSON.stringify(card, null, 2));
-
-    return [
-        {
-            text: challengeText,
-            callback: function(t){
-                return t.modal({
-                    title: "Challenge",
-                    args: { type: enums.Type.Challenge },
-                    url: './modals/challenge.html',
-                    fullscreen: false,
-                    height: 500,                    
-                    callback: onCloseChallengToolbox,
-                });
-            }
-        },      
-        {
-            text: celebrateText,
-            callback: function(t){
-                return t.modal({
-                    title: "Celebrate",
-                    args: { type: enums.Type.Celebrate },
-                    url: './modals/celebrate.html',
-                    fullscreen: false,
-                    height: 500
-                });
-            }
-        }
-    ];
+    return trelloLabels;
 };    
 
 export const getCardDetailBadges = (t, opts) => {

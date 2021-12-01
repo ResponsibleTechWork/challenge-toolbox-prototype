@@ -36,7 +36,7 @@ const Condition = Object.freeze({
     Always: 'always'
 });
 
-const enums = {
+const trelloEnums = {
     Scope,
     Type,
     Visibility,
@@ -45,4 +45,4 @@ const enums = {
     Condition
 };
 
-export default enums;
+export default trelloEnums;

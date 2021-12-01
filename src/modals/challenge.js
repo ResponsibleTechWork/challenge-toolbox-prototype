@@ -1,6 +1,6 @@
 import regeneratorRuntime from "regenerator-runtime";
 import sources from '../shared/sources.json';
-import enums from '../shared/enums';
+import trelloEnums from '../shared/trello-enums';
 import ChallengeLog from '../shared/challenge-log';
 
 const init = async () => {
@@ -16,10 +16,10 @@ const init = async () => {
 
     document.getElementById('src').href = sources.data.find(s => s.selected).src;
 
-    const scope = enums.Scope.Card;
-    const visibility = enums.Visibility.Shared;
-    const key = enums.Key.LogEntries;
-    const capability = enums.Capability.CardButtons;
+    const scope = trelloEnums.Scope.Card;
+    const visibility = trelloEnums.Visibility.Shared;
+    const key = trelloEnums.Key.LogEntries;
+    const capability = trelloEnums.Capability.CardButtons;
 
     let type, t, log;
 
@@ -32,12 +32,12 @@ const init = async () => {
         console.log(`Data stored for ${key} against ${scope} with ${visibility} access for ${capability}  : `,  log);    
 
     } else {
-        type = enums.Type.Challenge;
+        type = trelloEnums.Type.Challenge;
     }
 
     const challengeLog = new ChallengeLog(type);
 
-    const reasons = type === enums.Type.Challenge
+    const reasons = type === trelloEnums.Type.Challenge
         ? sources.data.find(s => s.selected).reasons.negative
         : sources.data.find(s => s.selected).reasons.positive;
 
@@ -120,7 +120,7 @@ const init = async () => {
         
             const reasonCount = challengeLog.getReasonsCountByPledge(pledge.id);
 
-            const classList = type === enums.Type.Challenge ? 'btnChallenge' : 'btnCelebrate';
+            const classList = type === trelloEnums.Type.Challenge ? 'btnChallenge' : 'btnCelebrate';
 
             return `<li>
                         <button id="${pledge.id}" class="btn ${classList}">${pledge.text}<span class="counter">${reasonCount}</span></button>
