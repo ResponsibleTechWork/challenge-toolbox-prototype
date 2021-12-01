@@ -83,9 +83,11 @@ class ChallengeLog {
         this.currentPledge = pledge;
         this.context = context;
 
-        if(this.log.pledge = "Emotional harm") {
+        if(this.log.pledge === "Emotional harm") {
             this.log.pledge.id = "2"; // quick hack
         }
+
+        console.log('togglePledge this.log ', this.log);
         
         const isPledgeLogged = this.isLogEmpty() ? false : this.islogTruthy(this.log.find(entry => entry.pledge.id === pledge.id && entry.type === this.type));
 
