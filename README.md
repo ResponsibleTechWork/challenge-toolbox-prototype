@@ -7,7 +7,6 @@ Welcome to the Responsible Tech Work Trello Prototype.
     yarn install
 
 ## Working with the prototype
-    yarn build
     yarn build --public-url ./
     yarn tests
 

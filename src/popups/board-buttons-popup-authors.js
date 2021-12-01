@@ -24,11 +24,13 @@ const init = async () => {
 
     const authorList = document.getElementById('authors');
 
-    const selectedAuthor = data.authors.find(a => a.id === prefs.id);
+    let selectedAuthor = data.authors.find(a => a.id === prefs.id);
 
     const selectAuthor = async (e, id) => {
 
         if(!isLive) return console.log(id);
+
+        selectedAuthor = data.authors.find(a => a.id === id);
 
         const scope = trelloEnums.Scope.Board;
         const visibility = trelloEnums.Visibility.Shared;
