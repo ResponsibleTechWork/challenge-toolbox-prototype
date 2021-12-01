@@ -83,11 +83,17 @@ class ChallengeLog {
         this.currentPledge = pledge;
         this.context = context;
 
-        this.log = {
+        // hack from here
+
+        this.type = enums.Type.Challenge;
+
+        this.log = [{
             id: "2",
             text: "Emotional harm",
             entry: this.type
-        }
+        }];
+
+        // to here
 
         console.log('togglePledge this.log ', this.log);
         
