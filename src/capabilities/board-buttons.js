@@ -22,11 +22,8 @@ const get = async t => {
         
         const preferences = data.authors.map(a => {
             return {
-                text: a.title,
-                icon: {
-                    light: selected.id === prefs.id ? BLACK_ICON : GRAY_ICON,
-                    dark: selected.id === prefs.id ? WHITE_ICON : GRAY_ICON
-                },
+                icon: selected.id === prefs.id ? BLACK_ICON : GRAY_ICON,
+                text: a.title,                
                 callback: async (t, opts) => {
                     await t.set(scope, visibility, key, a);
                     const response = await t.get(scope, visibility, key);
@@ -45,10 +42,6 @@ const get = async t => {
     };
 
     return [{
-        // icon: {
-        //   dark: WHITE_ICON,
-        //   light: BLACK_ICON
-        // },
         text: 'Challenge Toolbox',
         callback: t => onBtnClick(t),
         condition: trelloEnums.Condition.Always
