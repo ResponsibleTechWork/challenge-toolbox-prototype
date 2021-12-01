@@ -7,7 +7,7 @@ Welcome to the Responsible Tech Work Trello Prototype.
     yarn install
 
 ## Working with the prototype
-    yarn build
+    yarn build --public-url ./
     yarn tests
 
 Commit updates to the main branch. The Trello Power-Up points at the trello branch. To update this branch, make a pull request.
