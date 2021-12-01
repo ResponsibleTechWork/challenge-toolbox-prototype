@@ -41,7 +41,7 @@ const get = async t => {
                 return t.modal({
                     title: "Challenge",                    
                     args: { type: trelloEnums.Type.Challenge },
-                    url: './modals/challenge.html',
+                    url: './challenge.html',
                     fullscreen: false,
                     height: 500,                    
                     callback: onCloseChallengToolbox,
