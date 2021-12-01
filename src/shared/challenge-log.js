@@ -78,11 +78,14 @@ class ChallengeLog {
 
         console.log('togglePledge context ', context);
         console.log('togglePledge pledge ', pledge);
+        console.log('togglePledge this.log ', this.log);
 
         this.currentPledge = pledge;
         this.context = context;
         
         const isPledgeLogged = this.isLogEmpty() ? false : this.islogTruthy(this.log.find(entry => entry.pledge.id === pledge.id && entry.type === this.type));
+
+        console.log('togglePledge isPledgeLogged ', isPledgeLogged);
 
         const { isPledgeNowLogged, updatedPledges } = isPledgeLogged
             ? this.removePledgeFromLog()

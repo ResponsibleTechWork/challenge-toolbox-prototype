@@ -31,10 +31,10 @@ const onLabelForPopupClick = (t, context, popup) => {
 
 const onLabelForActionClick = async (t, challengeLog, context, pledge) => {
 
-    console.log('t ', t);
-    console.log('challengeLog ', challengeLog);
-    console.log('context ', context);
-    console.log('pledge ', pledge);
+    // console.log('t ', t);
+    // console.log('challengeLog ', challengeLog);
+    // console.log('context ', context);
+    // console.log('pledge ', pledge);
 
     const { isPledgeNowLogged, updatedPledges } = challengeLog.togglePledge(context, pledge);
 
