@@ -36,14 +36,16 @@ const init = async () => {
 
         await t.set(scope, visibility, key, a);
         const response = await t.get(scope, visibility, key);
+        
         console.log('return saved author: ',  response);
 
+        t.closePopup();
     };
         
     const authors = data.authors.map(a => {
 
         return `<li>
-                    <button id="${a.id}" class="btn"><span>${a.id === selected.id ? '*' : '-' }</span> <span>${a.title}</span></button>
+                    <button id="${a.id}" class="btn"><span class="${a.id === selected.id ? 'selected' : null}">${a.title}</span></button>
                 </li>`;
     });
 

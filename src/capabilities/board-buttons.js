@@ -10,7 +10,8 @@ const get = async t => {
 
         return t.popup({
             title: 'Toolbox preferences',
-            url: './board-buttons-popup-authors.html'
+            url: './board-buttons-popup-authors.html',
+            height: 250
         });
     };
 
