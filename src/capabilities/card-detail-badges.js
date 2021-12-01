@@ -1,3 +1,4 @@
+import ChallengeLog from '../shared/challenge-log';
 import trelloEnums from '../shared/trello-enums';
 import selector from '../shared/capability-selector';
 
@@ -10,6 +11,8 @@ const get = async t => {
     const logEntries = await t.get(trelloEnums.Scope.Card, trelloEnums.Visibility.Shared, trelloEnums.Key.LogEntries);
 
     console.log('card-detail-badges logEntries ', logEntries);
+
+    const challengeLog = new ChallengeLog(type);
 
     let log;
 
