@@ -11,7 +11,7 @@ const get = async t => {
 
     const log = await t.get(scope, visibility, key);
 
-    console.log(`Data stored for ${key} against ${scope} with ${visibility} access for ${capability}  : `,  log);
+    // console.log(`Data stored for ${key} against ${scope} with ${visibility} access for ${capability}  : `,  log);
 
     const context = t.getContext();
 

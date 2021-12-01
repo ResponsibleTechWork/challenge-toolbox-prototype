@@ -8,12 +8,12 @@ const init = async () => {
 
     let t, prefs;
 
-    console.log('isLive: ', isLive);
+    // console.log('isLive: ', isLive);
 
     if(isLive) {
         t = window.TrelloPowerUp.iframe();
         prefs = await t.get(trelloEnums.Scope.Board, trelloEnums.Visibility.Shared, trelloEnums.Key.ChallengePreferences);
-        console.log('prefs: ', prefs);
+        // console.log('prefs: ', prefs);
     } else {
         prefs = {
             id: "spotify",

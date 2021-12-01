@@ -7,7 +7,7 @@ const init = async () => {
 
     const isLive = document.referrer === 'https://trello.com/';
 
-    console.log('isLive: ', isLive);
+    // console.log('isLive: ', isLive);
 
     const pledges = sources.data.find(s => s.selected).pledges;
 
@@ -29,7 +29,7 @@ const init = async () => {
         log = await t.get(scope, visibility, key);
         type = t.arg('type');
 
-        console.log(`Data stored for ${key} against ${scope} with ${visibility} access for ${capability}  : `,  log);    
+        // console.log(`Data stored for ${key} against ${scope} with ${visibility} access for ${capability}  : `,  log);    
 
     } else {
         type = trelloEnums.Type.Challenge;
