@@ -1,4 +1,5 @@
 import regeneratorRuntime from "regenerator-runtime";
+import ChallengeLog from '../shared/challenge-log';
 import trelloEnums from '../shared/trello-enums';
 import api from '../api/api';
 
@@ -14,51 +15,49 @@ const getCapabilityPreferences = (data, capability) => {
     if(capabilitySelection && capabilitySelection.enabled) {
         return capabilitySelection.labels;
     } else {
-        return [{}];
+        return [];
     }
 };
 
-const setTrelloProperty = async (t, scope, visibility, key, label) => {
-
-    const value = {
-        // board
-        // card
-        // member
-        pledge: label,
-        type: label.title
-    };
-    await t.set(scope, visibility, key, value);
-    const response = await t.get(scope, visibility, key);
-    return response;
-};
-
-const onLabelForPopupClick = (t, title, effects) => {
+const onLabelForPopupClick = (t, context, popup) => {
     
     return t.popup({
-        title: title,
-        items: effects
+        title: popup.prompt,
+        items: popup.effects
     });
+
+    // click events missing …
 };
 
-const onLabelActionClick = (t, label) => {
-    setTrelloProperty(t, trelloEnums.Scope.Card, trelloEnums.Visibility.Shared, trelloEnums.Key.LogEntries, label);
+const onLabelForActionClick = async (t, context, pledge) => {
+
+    const challengeLog = new ChallengeLog();
+    
+    const { isPledgeNowLogged, updatedPledges } = challengeLog.togglePledge(context, pledge);
+
+    await t.set(scope, visibility, key, updatedPledges); // pass func to mock
+    return await t.get(scope, visibility, key);
+
+    // update label in situ after click?
 };
 
-const getTrelloLabels = async (labels, popup = null) => {
+const getTrelloLabels = async ({pledges, log, context, popup = null}) => {
+
+    console.log('getTrelloLabels log: ', log);
 
     return popup 
-            ? labels.map(label => {
+            ? pledges.map(pledge => {
                 return {
-                    text: label.title,
+                    text: `${pledge.text} ${ChallengeLog.getCustomBadgeCounts(context, log, pledge)}`,
                     condition: trelloEnums.Condition.Always,
-                    callback: t => onLabelForPopupClick(t, popup.prompt, popup.effects)
+                    callback: t => onLabelForPopupClick(t, context, popup)
                 }
             })
-            : labels.map(label => {
+            : pledges.map(pledge => {
                 return {
-                    text: label.title,
+                    text: pledge.text,
                     condition: trelloEnums.Condition.Always,
-                    callback: t => onLabelActionClick(t, label.title)
+                    callback: t => onLabelForActionClick(t, context, pledge)
                 }
             });
 };

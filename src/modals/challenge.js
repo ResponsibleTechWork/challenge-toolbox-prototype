@@ -74,7 +74,7 @@ const init = async () => {
 
         const pledge = pledges.find(p => parseInt(p.id) === parseInt(pledgeId));
 
-        const { isPledgeNowLogged, updatedPledges } = challengeLog.togglePledge(context, pledge); 
+        const { isPledgeNowLogged, updatedPledges } = challengeLog.togglePledge(context, pledge);
 
         showSelectedPledges(updatedPledges, pledge);
         redrawChallengeReasons();

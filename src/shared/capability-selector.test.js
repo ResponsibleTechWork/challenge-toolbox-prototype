@@ -12,15 +12,15 @@ describe('selector validation', () => {
     const labels = [
         {
             "id": "1",
-            "title": "Physical harm"
+            "text": "Physical harm"
          },
          {
             "id": "2",
-            "title": "Emotional harm"
+            "text": "Emotional harm"
          },
          {
             "id": "3",
-            "title": "Societal harm"
+            "text": "Societal harm"
          }
     ];
 
@@ -33,7 +33,7 @@ describe('selector validation', () => {
     it('should not return labels for card-buttons', async () => {
         const data = await selector.getData(prefs);
         const _labels = await selector.getCapabilityPreferences(data, trelloEnums.Capability.CardButtons);
-        expect(_labels).toStrictEqual([{}]);
+        expect(_labels).toStrictEqual([]);
     });
 
     it('should not return popup where it is missing or disabled', async () => {
@@ -53,32 +53,18 @@ describe('selector validation', () => {
 
     it('should return trello badges without popup', async () => {
         const data = await selector.getData(prefs);
-        const _labels = await selector.getCapabilityPreferences(data, trelloEnums.Capability.CardDetailBadges);
-        const trelloLabels = await selector.getTrelloLabels(_labels);
+        const pledges = await selector.getCapabilityPreferences(data, trelloEnums.Capability.CardDetailBadges);
+        const trelloLabels = await selector.getTrelloLabels({pledges, log:{}, context:{}});
         expect(trelloLabels.length).toStrictEqual(3); // mock here
-        // expect(trelloLabels).toStrictEqual([
-        //     {
-        //         text: "Physical harm",
-        //         condition: "always"
-        //      },
-        //      {
-        //         text: "Emotional harm",
-        //         condition: "always"
-        //      },
-        //      {
-        //         text: "Societal harm",
-        //         condition: "always"
-        //      }
-        // ]);
     });
 
-    it('should return trello badges with popup', async () => {
-        const data = await selector.getData(prefs);
-        data.popup.enabled = true;
-        const popup = await selector.getPopup(data);
-        const _labels = await selector.getCapabilityPreferences(data, trelloEnums.Capability.CardDetailBadges);
-        const trelloLabels = await selector.getTrelloLabels(_labels, popup);
-        expect(trelloLabels.length).toStrictEqual(3); // mock here
-    });
+    // it('should return trello badges with popup', async () => {
+    //     const data = await selector.getData(prefs);
+    //     data.popup.enabled = true;
+    //     const popup = await selector.getPopup(data);
+    //     const _labels = await selector.getCapabilityPreferences(data, trelloEnums.Capability.CardDetailBadges);
+    //     const trelloLabels = await selector.getTrelloLabels(_labels, popup);
+    //     expect(trelloLabels.length).toStrictEqual(3); // mock here
+    // });
     
 });

@@ -2,7 +2,7 @@ import trelloEnums from './trello-enums';
 
 class ChallengeLog {
 
-    constructor(type) {
+    constructor(type = trelloEnums.Type.Challenge) {
       this.type = type;
       this.log = [];
       this.currentPledge = {};
@@ -185,6 +185,24 @@ class ChallengeLog {
             challenges: cardChallengeCount,
             celebrations: cardCelebrationCount
         }
+    }
+
+    // public static 
+    static getCustomBadgeCounts(context, log, pledge = {}) {
+
+        if(log === undefined) {            
+            pledge.count = 0;
+            return pledge;
+            // return { ...pledge, count : 0 };
+        }
+
+        const card = context.card;
+
+        const count = [ ...new Set(log.filter(e => e.pledge.id === pledge.id && e.card === card).map(e => e.member)) ].length;
+
+        pledge.count = count;
+        return pledge;
+        // return { ...pledge, count };
     }
 
     static getChallengePledgeCounts(context, log) {

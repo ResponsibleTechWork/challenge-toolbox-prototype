@@ -3,21 +3,22 @@ import selector from '../shared/capability-selector';
 
 const get = async t => {
 
-    const scope = trelloEnums.Scope.Board;
-    const visibility = trelloEnums.Visibility.Shared;
+    const context = t.getContext();
+    const logEntries = await t.get(trelloEnums.Scope.Card, trelloEnums.Visibility.Shared, trelloEnums.Key.LogEntries);
 
-    const prefs = await t.get(scope, visibility, trelloEnums.Key.ChallengePreferences);
+    let log;
 
-    console.log('prefs from card-detail-badges: ', prefs);
-
+    if(logEntries && logEntries !== undefined) {
+        log = challengeLog.setLog(logEntries);
+    }
+    
+    const prefs = await t.get(trelloEnums.Scope.Board, trelloEnums.Visibility.Shared, trelloEnums.Key.ChallengePreferences);
     const data = await selector.getData(prefs);
 
-    console.log('data from card-detail-badges: ', data);
+    const pledges = await selector.getCapabilityPreferences(data, trelloEnums.Capability.CardDetailBadges);
+    const labels = await selector.getTrelloLabels({pledges, log, context: {board: context.board, card: context.card, member: context.member}});
 
-    const labels = await selector.getCapabilityPreferences(data, trelloEnums.Capability.CardDetailBadges);
-    const trelloLabels = await selector.getTrelloLabels(labels);
-
-    return trelloLabels;
+    return labels;
 };    
 
 export const getCardDetailBadges = (t, opts) => {
