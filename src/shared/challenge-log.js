@@ -85,7 +85,8 @@ class ChallengeLog {
 
         this.log = {
             id: "2",
-            text: "Emotional harm"
+            text: "Emotional harm",
+            entry: this.type
         }
 
         console.log('togglePledge this.log ', this.log);
