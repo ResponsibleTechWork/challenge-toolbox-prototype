@@ -23,6 +23,26 @@
                     "text": "Societal harm"
                  }
             ]
+        },
+        {
+            "capability": "card-back-section",
+            "enabled": true,
+            "prompt": "What are the potential effects of this feature?",     
+            "results": "The card might bring about the following:",
+            "labels": [
+                {
+                    "id": "1",
+                    "text": "Physical harm"
+                 },
+                 {
+                    "id": "2",
+                    "text": "Emotional harm"
+                 },
+                 {
+                    "id": "3",
+                    "text": "Societal harm"
+                 }
+            ]
         }
     ],
     "environment": "Trello",
