@@ -65,10 +65,10 @@ class ChallengeLog {
         this.log.push(pledge);
 
         console.log('log ', this.log);
+        console.log('this.currentPledge ', this.currentPledge);
 
         const matchingEntries = this.log.map(entry => entry.type === this.type && parseInt(entry.pledge.id) === parseInt(this.currentPledge.id));
 
-        console.log('isPledgeNowLogged ', isPledgeNowLogged);
         console.log('matchingEntries ', matchingEntries);
 
         return { isPledgeNowLogged: true, updatedPledges: matchingEntries };
