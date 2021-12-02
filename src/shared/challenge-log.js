@@ -208,17 +208,17 @@ class ChallengeLog {
     }
 
     // public static 
-    static getCustomBadgeCounts(context, log, pledge = {}) {
+    static getLabelVoteCount(context, log, pledge = {}) {
 
         if(log === undefined) {            
-            return { ...pledge, count : 0 };
+            return 0;
         }
 
         const card = context.card;
 
         const count = [ ...new Set(log.filter(e => e.pledge.id === pledge.id && e.card === card).map(e => e.member)) ].length;
 
-        return { ...pledge, count };
+        return count;
     }
 
     static getChallengePledgeCounts(context, log) {

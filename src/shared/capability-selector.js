@@ -58,9 +58,9 @@ const onLabelForActionClick = async (t, challengeLog, context, pledge) => {
 const getTrelloLabels = async ({t, challengeLog, pledges, log, context, popup = null, modal = null, mode = trelloEnums.Mode.Label}) => {
 
     const getCount = pledge => {
-        const count = ChallengeLog.getCustomBadgeCounts(context, log, pledge);
+        const count = ChallengeLog.getLabelVoteCount(context, log, pledge);
         console.log('count ', count);
-        return count;
+        return (count).toString() || '';
     };
 
     switch(mode) {
