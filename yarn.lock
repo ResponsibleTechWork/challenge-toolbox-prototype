@@ -4866,6 +4866,13 @@
   "resolved" "https://registry.npmjs.org/pako/-/pako-1.0.11.tgz"
   "version" "1.0.11"
 
+"parcel-plugin-nuke-dist@^1.0.1":
+  "integrity" "sha512-pwYcpHDRohHMpRvU5HeDG8uTvMtT6xTQYDdY7jIEz5dIYQo6L17lYWal29mJyfQZeI4nLHhl+UNR6axoCoRLsg=="
+  "resolved" "https://registry.npmjs.org/parcel-plugin-nuke-dist/-/parcel-plugin-nuke-dist-1.0.1.tgz"
+  "version" "1.0.1"
+  dependencies:
+    "rimraf" "^3.0.0"
+
 "parcel@^2.0.0":
   "integrity" "sha512-vALKLDWz9DF3YD4oGcG1UpMR32TXHr3wj0OZTCo0nLuP8LqNNhG7Twf+ZIpVf2r1b5Glex5eUl0vcx/x2xY6pw=="
   "resolved" "https://registry.npmjs.org/parcel/-/parcel-2.0.0.tgz"

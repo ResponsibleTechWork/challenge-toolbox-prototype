@@ -53,7 +53,7 @@ const onLabelForActionClick = async (t, challengeLog, context, pledge) => {
 
 const getTrelloLabels = async ({t, challengeLog, pledges, log, context, popup = null, modal = null}) => {
 
-    console.log('ChallengeLog.getCustomBadgeCounts(context, log, pledge) ', ChallengeLog.getCustomBadgeCounts(context, log, pledge));
+    console.log('ChallengeLog.getCustomBadgeCounts(context, log, pledge) ', ChallengeLog.getCustomBadgeCounts(context, log, pledges));
 
     return popup 
             ? pledges.map(pledge => {

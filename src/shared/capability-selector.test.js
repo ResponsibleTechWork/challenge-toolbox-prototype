@@ -54,7 +54,7 @@ describe('selector validation', () => {
     it('should return trello badges without popup', async () => {
         const data = await selector.getData(prefs);
         const pledges = await selector.getCapabilityPreferences(data, trelloEnums.Capability.CardDetailBadges);
-        const trelloLabels = await selector.getTrelloLabels({pledges, log:{}, context:{}});
+        const trelloLabels = await selector.getTrelloLabels({pledges, log:[], context:{}});
         expect(trelloLabels.length).toStrictEqual(3); // mock here
     });
 

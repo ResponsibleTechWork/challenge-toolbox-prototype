@@ -17,7 +17,8 @@
     "regenerator-runtime": "^0.13.9"
   },
   "scripts": {
-    "build": "parcel build src/index.html --dist-dir public",
+    "build": "rm -rf dist/* && rm -rf public/* && parcel build src/index.html --public-url ./ --dist-dir public && mv ./public/popups/*.html ./public && mv ./public/modals/*.html ./public",
+    
     "tests": "jest"
   },
   "dependencies": {
