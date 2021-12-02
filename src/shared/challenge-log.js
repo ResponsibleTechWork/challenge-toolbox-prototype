@@ -49,6 +49,9 @@ class ChallengeLog {
 
     // private
     addPledgeToLog() {
+
+        console.log('addPledgeToLog');
+
         this.log.push({
                 type: this.type,
                 board: this.context.board,
@@ -65,6 +68,9 @@ class ChallengeLog {
     
     // private
     removePledgeFromLog() {
+
+        console.log('removePledgeFromLog');
+
         if(this.isLogEmpty()) return { isPledgeNowLogged: false, updatedPledges: [] };
         if(this.getReasonsForCurrentPledge(this.currentPledge).length > 0) {
             return { isPledgeNowLogged: false, updatedPledges: this.log.map(entry => entry.pledge) };
@@ -79,21 +85,21 @@ class ChallengeLog {
         this.currentPledge = pledge;
         this.context = context;
 
-        // console.log('togglePledge this.log ', this.log);
+        console.log('togglePledge this.log ', this.log);
         
-        // console.log('togglePledge this.type ', this.type);
+        console.log('togglePledge this.type ', this.type);
         
-        // console.log('togglePledge this.log ', this.log);
+        console.log('togglePledge this.log ', this.log);
 
-        // console.log('this.isLogEmpty() ', this.isLogEmpty());
+        console.log('this.isLogEmpty() ', this.isLogEmpty());
 
-        // console.log('this.log.find(entry => entry.pledge.id === pledge.id) ', this.log.find(entry => entry.pledge.id === pledge.id));
+        console.log('this.log.find(entry => entry.pledge.id === pledge.id) ', this.log.find(entry => entry.pledge.id === pledge.id));
 
-        // console.log('this.log.find(entry => entry.pledge.id === pledge.id && entry.type === this.type) ', this.log.find(entry => entry.pledge.id === pledge.id && entry.type === this.type));
+        console.log('this.log.find(entry => entry.pledge.id === pledge.id && entry.type === this.type) ', this.log.find(entry => entry.pledge.id === pledge.id && entry.type === this.type));
         
         const isPledgeLogged = this.isLogEmpty() ? false : this.islogTruthy(this.log.find(entry => entry.pledge.id === pledge.id && entry.type === this.type));
 
-        // console.log('togglePledge isPledgeLogged ', isPledgeLogged);
+        console.log('togglePledge isPledgeLogged ', isPledgeLogged);
 
         const { isPledgeNowLogged, updatedPledges } = isPledgeLogged
             ? this.removePledgeFromLog()
