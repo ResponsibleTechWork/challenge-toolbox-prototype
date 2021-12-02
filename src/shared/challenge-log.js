@@ -93,11 +93,14 @@ class ChallengeLog {
 
         console.log('this.isLogEmpty() ', this.isLogEmpty());
 
-        console.log('this.log.find(entry => entry.pledge.id === pledge.id) ', this.log.find(entry => entry.pledge.id === pledge.id));
+        console.log('context ', context);
+        console.log('pledge ', pledge);
 
-        console.log('this.log.find(entry => entry.pledge.id === pledge.id && entry.type === this.type) ', this.log.find(entry => entry.pledge.id === pledge.id && entry.type === this.type));
+        console.log('this.log.find(entry => entry.pledge.id === pledge.id) ', this.log.filternd(entry => parseInt(entry.pledge.id) === parseInt(pledge.id)));
+
+        console.log('this.log.find(entry => entry.pledge.id === pledge.id && entry.type === this.type) ', this.log.filter(entry => parseInt(entry.pledge.id) === parseInt(pledge.id) && entry.type === this.type));
         
-        const isPledgeLogged = this.isLogEmpty() ? false : this.islogTruthy(this.log.find(entry => entry.pledge.id === pledge.id && entry.type === this.type));
+        const isPledgeLogged = this.isLogEmpty() ? false : this.islogTruthy(this.log.find(entry => parseInt(entry.pledge.id) === parseInt(pledge.id) && entry.type === this.type));
 
         console.log('togglePledge isPledgeLogged ', isPledgeLogged);
 

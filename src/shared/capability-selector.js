@@ -41,14 +41,10 @@ const onLabelForPopupClick = (t, context, popup) => {
 
 const onLabelForActionClick = async (t, challengeLog, context, pledge) => {
 
-    // console.log('context ', context);
-    // console.log('pledge ', pledge);
-
     const { isPledgeNowLogged, updatedPledges } = challengeLog.togglePledge(context, pledge);
 
     console.log('updatedPledges ', updatedPledges);
 
-    // missing context, etc!!!!
     await t.set(scope, visibility, key, updatedPledges); // pass func to mock
     return await t.get(scope, visibility, key);
 
