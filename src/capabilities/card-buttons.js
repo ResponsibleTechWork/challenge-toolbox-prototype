@@ -9,8 +9,7 @@ const get = async t => {
     const scope = trelloEnums.Scope.Card;
     const visibility = trelloEnums.Visibility.Shared;
     const key = trelloEnums.Key.LogEntries;
-    const capability = trelloEnums.Capability.CardButtons;
-
+    
     const log = await t.get(scope, visibility, key);
 
     const context = t.getContext();

@@ -50,8 +50,6 @@ class ChallengeLog {
     // private
     addPledgeToLog() {
 
-        console.log('addPledgeToLog');        
-
         const pledge = {
             type: this.type,
             board: this.context.board,
@@ -64,15 +62,10 @@ class ChallengeLog {
             },                
         };
 
-        console.log('pledge ', pledge);
-
         this.log.push(pledge);
 
         const matchingEntries = this.log.map(entry => entry.type === this.type && entry.pledge.id === this.currentPledge.id);
 
-        console.log('log ', matchingEntries);
-        console.log('log ', this.log);
-            
         return { isPledgeNowLogged: true, updatedPledges: matchingEntries };
     };
     

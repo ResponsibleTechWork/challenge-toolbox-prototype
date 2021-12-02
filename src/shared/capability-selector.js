@@ -39,38 +39,32 @@ const onLabelForPopupClick = (t, context, popup) => {
     // click events missing …
 };
 
-const onLabelForActionClick = async (t, challengeLog, context, pledge) => {
+const onLabelForActionClick = async ({t, challengeLog, context, pledge, scope, visibility, key}) => {
 
     const { isPledgeNowLogged, updatedPledges } = challengeLog.togglePledge(context, pledge);
 
     console.log('updatedPledges ', updatedPledges);
 
-    await t.set(scope, visibility, key, updatedPledges); // pass func to mock
+    await t.set(scope, visibility, key, updatedPledges);
     return await t.get(scope, visibility, key);
 
     // update label in situ after click?
 };
 
-const getTrelloLabels = async ({t, challengeLog, pledges, log, context, popup = null, modal = null, mode = trelloEnums.Mode.Label}) => {
-
-    console.log('context ', context);
-    console.log('log ', log);
-    console.log('pledges ', pledges);
+const getTrelloLabels = async ({t, challengeLog, pledges, log, context, popup = null, modal = null, mode = trelloEnums.Mode.Label}, scope, visibility, key) => {
 
     const getCount = (context, log, pledge) => {
         const count = ChallengeLog.getLabelVoteCount(context, log, pledge);
-        console.log('count ', count);
         return count ? (count).toString() || '' : '';
     };
 
     switch(mode) {
         case trelloEnums.Mode.Label:
-            console.log('mode ', trelloEnums.Mode.Label);
             return pledges.map(pledge => {
                 return {
                     text: `${pledge.text} ${getCount(context, log, pledge)}`,
                     condition: trelloEnums.Condition.Always,
-                    callback: () => onLabelForActionClick(t, challengeLog, context, pledge)
+                    callback: () => onLabelForActionClick({t, challengeLog, context, pledge, scope, visibility, key})
                 }
             });
             case trelloEnums.Mode.Popup:
