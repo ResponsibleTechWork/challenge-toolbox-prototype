@@ -27,8 +27,6 @@ const get = async t => {
 
     const labels = await selector.getLabelsByCapability(data, trelloEnums.Capability.CardDetailBadges);
 
-    // return await selector.getTrelloLabels({t, challengeLog, labels, log, context: {board: context.board, card: context.card, member: context.member}, mode: trelloEnums.Mode.Popup, scope, visibility, key});
-
     if(data) {
         console.log('title ', data.title);
         if(data.modal) {
@@ -41,9 +39,8 @@ const get = async t => {
         icon: GRAY_ICON,
         content: {
           type: 'iframe',
-        //   url:'./card-back-modal-challenges.html',
-          url: t.signUrl('./card-back-modal-challenges.html'),
-          height: 230, // Max height is 1500.
+          url: t.signUrl('./card-back-modal-challenges.html', { data: data }),
+          height: 180,
           action: {
             text: 'My Action',
             callback: t => console.log(t)
