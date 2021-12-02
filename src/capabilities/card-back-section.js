@@ -36,24 +36,24 @@ const get = async t => {
         }
     }
 
-    return t.modal({
+    return {
         title: 'Spotify Ethics Assessment',
         icon: GRAY_ICON,
         content: {
           type: 'iframe',
-          url:'./card-back-modal-challenges.html',
-        //   url: t.signUrl('./card-back-modal-challenges.html'),
+        //   url:'./card-back-modal-challenges.html',
+          url: t.signUrl('./card-back-modal-challenges.html'),
           height: 230, // Max height is 1500.
           action: {
             text: 'My Action',
             callback: t => console.log(t)
           },
         }
-    });
+    };
 
 
 };
 
 export const getCardBackSection = (t, opts) => {
-        return get(t);
+    return get(t);
 };
