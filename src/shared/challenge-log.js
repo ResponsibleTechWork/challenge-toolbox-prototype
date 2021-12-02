@@ -96,7 +96,7 @@ class ChallengeLog {
         console.log('context ', context);
         console.log('pledge ', pledge);
 
-        console.log('this.log.find(entry => entry.pledge.id === pledge.id) ', this.log.filternd(entry => parseInt(entry.pledge.id) === parseInt(pledge.id)));
+        console.log('this.log.find(entry => entry.pledge.id === pledge.id) ', this.log.filter(entry => parseInt(entry.pledge.id) === parseInt(pledge.id)));
 
         console.log('this.log.find(entry => entry.pledge.id === pledge.id && entry.type === this.type) ', this.log.filter(entry => parseInt(entry.pledge.id) === parseInt(pledge.id) && entry.type === this.type));
         

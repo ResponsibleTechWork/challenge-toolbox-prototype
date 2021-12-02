@@ -6,14 +6,6 @@ const get = async t => {
 
     const context = t.getContext();
 
-    // await t.set(trelloEnums.Scope.Card, trelloEnums.Visibility.Shared, trelloEnums.Key.LogEntries, [{
-    //     ...context,
-    //     pledge: {
-    //         id: '2', text: 'Emotional harm'
-    //     },
-    //     type: trelloEnums.Type.Challenge
-    // }])
-
     const logEntries = await t.get(trelloEnums.Scope.Card, trelloEnums.Visibility.Shared, trelloEnums.Key.LogEntries);
 
     const challengeLog = new ChallengeLog(trelloEnums.Type.Challenge);
