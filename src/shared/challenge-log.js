@@ -103,6 +103,8 @@ class ChallengeLog {
                         }]            
                     }
 
+                    console.log('togglePledge this.log ', this.log);
+
         console.log('this.log.find(entry => entry.pledge.id === pledge.id) ', this.log.find(entry => entry.pledge.id === pledge.id));
 
         console.log('this.log.find(entry => entry.pledge.id === pledge.id && entry.type === this.type) ', this.log.find(entry => entry.pledge.id === pledge.id && entry.type === this.type));
@@ -219,6 +221,8 @@ class ChallengeLog {
 
     // public static 
     static getLabelVoteCount(context, log, pledge = {}) {
+
+        return 0;
 
         if(log === undefined) {            
             return 0;
