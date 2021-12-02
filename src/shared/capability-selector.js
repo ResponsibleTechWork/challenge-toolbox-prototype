@@ -61,7 +61,7 @@ const getTrelloLabels = async ({t, challengeLog, pledges, log, context, popup = 
     console.log('log ', log);
     console.log('pledges ', pledges);
 
-    const getCount = pledge => {
+    const getCount = (context, log, pledge) => {
         const count = ChallengeLog.getLabelVoteCount(context, log, pledge);
         console.log('count ', count);
         return count ? (count).toString() || '' : '';
@@ -72,7 +72,7 @@ const getTrelloLabels = async ({t, challengeLog, pledges, log, context, popup = 
             console.log('mode ', trelloEnums.Mode.Label);
             return pledges.map(pledge => {
                 return {
-                    text: `${pledge.text} ${getCount(pledge)}`,
+                    text: `${pledge.text} ${getCount(context, log, pledge)}`,
                     condition: trelloEnums.Condition.Always,
                     callback: () => onLabelForActionClick(t, challengeLog, context, pledge)
                 }
@@ -81,7 +81,7 @@ const getTrelloLabels = async ({t, challengeLog, pledges, log, context, popup = 
                 console.log('mode ', trelloEnums.Mode.Popup);
                 return pledges.map(pledge => {
                     return {
-                        text: `${pledge.text} ${getCount(pledge)}`,
+                        text: `${pledge.text} ${getCount(context, log, pledge)}`,
                         condition: trelloEnums.Condition.Always,
                         callback: () => onLabelForPopupClick(t, context, popup)
                     }
@@ -90,7 +90,7 @@ const getTrelloLabels = async ({t, challengeLog, pledges, log, context, popup = 
                 console.log('mode ', trelloEnums.Mode.Modal);
                 return pledges.map(pledge => {
                     return {
-                        text: `${pledge.text} ${getCount(pledge)}`,
+                        text: `${pledge.text} ${getCount(context, log, pledge)}`,
                         condition: trelloEnums.Condition.Always,
                         callback: () => onLabelForModalClick(t, context, modal)
                     }
