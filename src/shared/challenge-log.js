@@ -93,18 +93,6 @@ class ChallengeLog {
 
         console.log('this.isLogEmpty() ', this.isLogEmpty());
 
-                // hack 
-                if(this.log.pledge && this.log.pledge === "Emotional harm") {
-                    this.log = [{
-                            ...context,
-                            pledge: {
-                                id: '2', text: 'Emotional harm'
-                            }
-                        }]            
-                    }
-
-                    console.log('togglePledge this.log ', this.log);
-
         console.log('this.log.find(entry => entry.pledge.id === pledge.id) ', this.log.find(entry => entry.pledge.id === pledge.id));
 
         console.log('this.log.find(entry => entry.pledge.id === pledge.id && entry.type === this.type) ', this.log.find(entry => entry.pledge.id === pledge.id && entry.type === this.type));
@@ -222,23 +210,11 @@ class ChallengeLog {
     // public static 
     static getLabelVoteCount(context, log, pledge = {}) {
 
-        return 0;
-
         if(log === undefined) {            
             return 0;
         }
 
         const card = context.card;
-
-        // hack 
-        if(log && log.pledge && log.pledge === "Emotional harm") {
-        this.log = [{
-                ...context,
-                pledge: {
-                    id: '2', text: 'Emotional harm'
-                }
-            }]            
-        }
 
         const count = [ ...new Set(log.filter(e => e.pledge.id === pledge.id && e.card === card).map(e => e.member)) ].length;
 
