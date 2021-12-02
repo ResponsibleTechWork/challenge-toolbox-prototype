@@ -60,6 +60,7 @@ const getTrelloLabels = async ({t, challengeLog, pledges, log, context, popup = 
     console.log('log ', log);
     console.log('pledges ', pledges);
     console.log('context ', context);
+    console.log('modal ', modal);
 
     const getCount = pledge => {
         const count = ChallengeLog.getCustomBadgeCounts(context, log, pledge);
@@ -67,7 +68,7 @@ const getTrelloLabels = async ({t, challengeLog, pledges, log, context, popup = 
         return count;
     };
 
-    return popup 
+    return !!popup 
             ? pledges.map(pledge => {
                 return {
                     text: `${pledge.text} ${getCount(pledge)}`,
@@ -75,7 +76,7 @@ const getTrelloLabels = async ({t, challengeLog, pledges, log, context, popup = 
                     callback: () => onLabelForPopupClick(t, context, popup)
                 }
             })
-            : modal 
+            : !!modal 
                 ? pledges.map(pledge => {
                     return {
                         text: `${pledge.text} ${ChallengeLog.getCustomBadgeCounts(context, log, pledge)}`,
