@@ -67,7 +67,7 @@ class ChallengeLog {
         console.log('log ', this.log);
         console.log('this.currentPledge ', this.currentPledge);
 
-        const matchingEntries = this.log.map(entry => entry.type === this.type && parseInt(entry.pledge.id) === parseInt(this.currentPledge.id));
+        const matchingEntries = this.log.filter(entry => entry.type === this.type && parseInt(entry.pledge.id) === parseInt(this.currentPledge.id));
 
         console.log('matchingEntries ', matchingEntries);
 
@@ -84,7 +84,7 @@ class ChallengeLog {
             return { isPledgeNowLogged: false, updatedPledges: this.log.map(entry => entry.pledge) };
         }
         this.log = this.log.filter(entry => entry.pledge.id !== this.currentPledge.id && entry.type === this.type);
-        return { isPledgeNowLogged: false, updatedPledges: this.log.map(entry => entry.pledge).filter(entry => entry.type === this.type) };
+        return { isPledgeNowLogged: false, updatedPledges: this.log.filter(entry => entry.pledge).filter(entry => entry.type === this.type) };
     }
 
     // public
