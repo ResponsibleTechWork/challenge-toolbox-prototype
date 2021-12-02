@@ -41,7 +41,8 @@ const get = async t => {
         icon: GRAY_ICON,
         content: {
           type: 'iframe',
-          url: t.signUrl('./card-back-modal-challenges.html'),
+          url:'./card-back-modal-challenges.html',
+        //   url: t.signUrl('./card-back-modal-challenges.html'),
           height: 230, // Max height is 1500.
           action: {
             text: 'My Action',
