@@ -94,7 +94,7 @@ class ChallengeLog {
         console.log('this.isLogEmpty() ', this.isLogEmpty());
 
                 // hack 
-                if(log.pledge && log.pledge === "Emotional harm") {
+                if(this.log.pledge && this.log.pledge === "Emotional harm") {
                     this.log = [{
                             ...context,
                             pledge: {
@@ -227,7 +227,7 @@ class ChallengeLog {
         const card = context.card;
 
         // hack 
-        if(log.pledge && log.pledge === "Emotional harm") {
+        if(log && log.pledge && log.pledge === "Emotional harm") {
         this.log = [{
                 ...context,
                 pledge: {
