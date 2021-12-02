@@ -22,7 +22,9 @@ const init = async () => {
 
     const challengeLog = new ChallengeLog(trelloEnums.Type.Challenge);
 
-    const capability = data.capabilities.find(c => c.capability === trelloEnums.Capability.CardDetailBadges);
+    const capability = data.capabilities.find(c => c.capability === trelloEnums.Capability.CardBackSection);
+
+    console.log('capability ', capability);
 
     const clickLabelHandler = async (e, id) => {
 

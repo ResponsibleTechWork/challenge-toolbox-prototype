@@ -24,7 +24,8 @@ const Capability = Object.freeze({
     BoardButtons: 'board-buttons',
     CardBadges: 'card-badges',
     CardButtons: 'card-buttons',
-    CardDetailBadges: 'card-detail-badges'
+    CardDetailBadges: 'card-detail-badges',
+    CardBackSection: 'card-back-section',
 });
 
 const Condition = Object.freeze({
