@@ -57,7 +57,7 @@ const onLabelForActionClick = async ({t, challengeLog, context, pledge, scope, v
     // update label in situ after click?
 };
 
-const getTrelloLabels = async ({t, challengeLog, pledges, log, context, popup = null, modal = null, mode = trelloEnums.Mode.Label}, scope, visibility, key) => {
+const getTrelloLabels = async ({t, challengeLog, pledges, log, context, popup = null, modal = null, mode = trelloEnums.Mode.Label, scope, visibility, key}) => {
 
     console.log('scope ', scope);
     console.log('visibility ', visibility);
