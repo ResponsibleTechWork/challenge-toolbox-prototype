@@ -27,34 +27,9 @@
     ],
     "environment": "Trello",
     "popup": {        
-        "enabled": false,
-        "prompt": "How confident are you of this outcome?",
-        "effects": [
-            {
-                "valence": 1,
-                "name": "Highly improbable",
-                "description": "There is quantitative evidence and/or a body of pre-existing research that shows this product does not have this effect, or the product is completely unrelated from this effect."
-            },         
-            {
-                "valence": 2,
-                "name": "Improbable",
-                "description": "It is unlikely that the product is uniquely encouraging or causing this effect. It may be worth looking into whether specific populations are affected."
-            },         
-            {
-                "valence": 3,
-                "name": "Possible",
-                "description": "There is anecdotal evidence or the team has voiced concerns over the possibility of an effect. Worth doing additional research or testing."
-            },         
-            {
-                "valence": 4,
-                "name": "Probable",
-                "description": "There is some evidence from internal research that suggests this product or similar products have this effect. It may be worth validating with additional research or testing."
-            },         
-            {
-                "valence": 5,
-                "name": "Highly probable",
-                "description": "There is quantitative evidence and/or a body of pre-existing research which shows that this product or similar products have this effect."
-            }
-        ]
+        "prompt": "How confident are you of this outcome?"
+    },
+    "modal": {        
+        "prompt": "How confident are you of this outcome?"
     }
 }

@@ -36,19 +36,17 @@ describe('selector validation', () => {
         expect(_labels).toStrictEqual([]);
     });
 
-    it('should not return popup where it is missing or disabled', async () => {
-        const data = await selector.getData(prefs);
-        const popup = await selector.getPopup(data);
-        expect(popup).toBe(null);
-    });
+    // it('should not return popup where it is missing or disabled', async () => {
+    //     const data = await selector.getData(prefs);
+    //     const popup = await selector.getPopup(data);
+    //     expect(popup).toBe(null);
+    // });
 
-    it('should return enabled popup', async () => {
+    it('should return popup prompt and challenges', async () => {
         const data = await selector.getData(prefs);
-        data.popup.enabled = true;
         const popup = await selector.getPopup(data);
-        expect(popup.enabled).toBe(true);
         expect(popup.prompt).toBe("How confident are you of this outcome?");
-        expect(popup.effects.length).toBe(5);
+        expect(data.challenges.length).toBe(5);
     });
 
     it('should return trello badges without popup', async () => {

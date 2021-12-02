@@ -19,18 +19,19 @@ const getLabelsByCapability = (data, capability) => {
     }
 };
 
-const onLabelForModalClick = (t, context, modal) => {
+const onLabelForModalClick = ({t, challengeLog, context, label, scope, visibility, key, modal}) => {
     
     return t.modal({
-        title: modal.prompt,
-        items: modal.effects
+        title: modal.prompt
     });
 
     // click events missing …
 };
 
-const onLabelForPopupClick = (t, context, popup) => {
+const onLabelForPopupClick = ({t, challengeLog, context, label, scope, visibility, key, popup}) => {
     
+    // not needed at the moment, or ever?
+
     return t.popup({
         title: popup.prompt,
         items: popup.effects
@@ -69,7 +70,7 @@ const getTrelloLabels = async ({t, challengeLog, labels, log, context, popup = n
                     return {
                         text: `${label.text} ${getCount(context, log, label)}`,
                         condition: trelloEnums.Condition.Always,
-                        callback: () => onLabelForPopupClick(t, context, popup)
+                        callback: () => onLabelForPopupClick({t, challengeLog, context, label, scope, visibility, key, popup})
                     }
                 });
             case trelloEnums.Mode.Modal:
@@ -77,7 +78,7 @@ const getTrelloLabels = async ({t, challengeLog, labels, log, context, popup = n
                     return {
                         text: `${label.text} ${getCount(context, log, label)}`,
                         condition: trelloEnums.Condition.Always,
-                        callback: () => onLabelForModalClick(t, context, modal)
+                        callback: () => onLabelForModalClick({t, challengeLog, context, label, scope, visibility, key, modal})
                     }
                 });
     }
@@ -87,7 +88,7 @@ const getPopup = async data => {
     
     const popup = data.popup;
 
-    if(!popup || (popup && !popup.enabled)) return null;
+    if(!popup) return null;
 
     return popup;
 }
