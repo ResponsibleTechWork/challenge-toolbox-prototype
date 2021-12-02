@@ -20,7 +20,7 @@ const init = async () => {
     const prompt = document.getElementById('prompt');
     const labelsContainer = document.getElementById('labels');
 
-    const challengeLog = new ChallengeLog(type);
+    const challengeLog = new ChallengeLog(trelloEnums.Type.Challenge);
 
     const capability = data.capabilites.find(c => c.capability === trelloEnums.Capability.CardDetailBadges);
 
