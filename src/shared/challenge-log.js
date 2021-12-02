@@ -210,6 +210,8 @@ class ChallengeLog {
     // public static 
     static getLabelVoteCount(context, log, pledge = {}) {
 
+        return 0;
+
         if(log === undefined) {            
             return 0;
         }
