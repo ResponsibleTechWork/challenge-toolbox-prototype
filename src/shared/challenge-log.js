@@ -64,6 +64,8 @@ class ChallengeLog {
 
         this.log.push(pledge);
 
+        console.log('log ', this.log);
+
         const matchingEntries = this.log.map(entry => entry.type === this.type && parseInt(entry.pledge.id) === parseInt(this.currentPledge.id));
 
         console.log('isPledgeNowLogged ', isPledgeNowLogged);
