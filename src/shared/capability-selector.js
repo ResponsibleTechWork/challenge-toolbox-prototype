@@ -19,6 +19,16 @@ const getCapabilityPreferences = (data, capability) => {
     }
 };
 
+const onLabelForModalClick = (t, context, modal) => {
+    
+    return t.modal({
+        title: modal.prompt,
+        items: modal.effects
+    });
+
+    // click events missing …
+};
+
 const onLabelForPopupClick = (t, context, popup) => {
     
     return t.popup({
@@ -31,11 +41,6 @@ const onLabelForPopupClick = (t, context, popup) => {
 
 const onLabelForActionClick = async (t, challengeLog, context, pledge) => {
 
-    // console.log('t ', t);
-    // console.log('challengeLog ', challengeLog);
-    // console.log('context ', context);
-    // console.log('pledge ', pledge);
-
     const { isPledgeNowLogged, updatedPledges } = challengeLog.togglePledge(context, pledge);
 
     console.log('updatedPledges ', updatedPledges);
@@ -46,9 +51,7 @@ const onLabelForActionClick = async (t, challengeLog, context, pledge) => {
     // update label in situ after click?
 };
 
-const getTrelloLabels = async ({t, challengeLog, pledges, log, context, popup = null}) => {
-
-    console.log('getTrelloLabels log: ', log);
+const getTrelloLabels = async ({t, challengeLog, pledges, log, context, popup = null, modal = null}) => {
 
     return popup 
             ? pledges.map(pledge => {
@@ -58,13 +61,20 @@ const getTrelloLabels = async ({t, challengeLog, pledges, log, context, popup = 
                     callback: () => onLabelForPopupClick(t, context, popup)
                 }
             })
-            : pledges.map(pledge => {
-                return {
-                    text: pledge.text,
-                    condition: trelloEnums.Condition.Always,
-                    callback: () => onLabelForActionClick(t, challengeLog, context, pledge)
-                }
-            });
+            : modal ?            
+                pledges.map(pledge => {
+                    return {
+                        text: `${pledge.text} ${ChallengeLog.getCustomBadgeCounts(context, log, pledge)}`,
+                        condition: trelloEnums.Condition.Always,
+                        callback: () => onLabelForModalClick(t, context, popup)
+                    }
+                }) : pledges.map(pledge => {
+                    return {
+                        text: pledge.text,
+                        condition: trelloEnums.Condition.Always,
+                        callback: () => onLabelForActionClick(t, challengeLog, context, pledge)
+                    }
+                });
 };
 
 const getPopup = async data => {

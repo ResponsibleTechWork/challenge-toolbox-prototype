@@ -13,11 +13,7 @@ const get = async t => {
 
     const log = await t.get(scope, visibility, key);
 
-    // console.log(`Data stored for ${key} against ${scope} with ${visibility} access for ${capability}  : `,  log);
-
     const context = t.getContext();
-
-    // console.log('Context for card badges: ', context);
 
     const { challenges, celebrations } = ChallengeLog.getChallengeBadgeCounts(context, log);
 
@@ -27,10 +23,6 @@ const get = async t => {
     const onCloseChallengToolbox = t => {
         console.log('onCloseChallengToolbox');
     };
-
-    const card = await t.card('name').get('name');
-
-    console.log('card: ', JSON.stringify(card, null, 2));
 
     return [
         {

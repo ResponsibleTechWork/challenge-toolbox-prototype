@@ -80,6 +80,39 @@ describe('tests for instances of ChallengeLog', () => {
 
 });
 
+describe('tests for trello labels', () => {
+
+    const type = trelloEnums.Type.Challenge;
+
+    const challengeLog = new ChallengeLog(type);
+
+    const context = {
+        board: 'board #1',
+        member: 'member #1',
+        card: 'card #1',
+    };
+
+    const pledge = {
+        id: "2",
+        text: "Emotional harm"
+    };
+
+    it('log should handle pledge with string id', () => {
+
+        const { isPledgeNowLogged, updatedPledges } = challengeLog.togglePledge(context, pledge);
+        expect(challengeLog.getLog()).toStrictEqual([
+            {
+                type: type,
+                board: context.board,
+                member: context.member,
+                card: context.card,
+                pledge: { ...pledge, reasons: [] }
+            }
+        ]);
+        expect(isPledgeNowLogged).toBe(true);
+    });
+});
+
 describe('tests for challenge reasons', () => {
 
     const type = trelloEnums.Type.Challenge;

@@ -76,26 +76,35 @@ class ChallengeLog {
     // public
     togglePledge(context, pledge) {
 
-        console.log('togglePledge context ', context);
-        console.log('togglePledge pledge ', pledge);
-        console.log('togglePledge this.log ', this.log);
-
         this.currentPledge = pledge;
         this.context = context;
 
         // hack from here
 
-        this.type = trelloEnums.Type.Challenge;
-
         this.log = [{
-            id: "2",
-            text: "Emotional harm",
-            type: this.type
+            type: this.type,
+            board: this.context.board,
+            member: this.context.member,
+            card: this.context.card,
+            pledge: {
+                id: "2",
+                text: "Emotional harm",
+            }
         }];
 
         // to here
 
         console.log('togglePledge this.log ', this.log);
+        
+        console.log('togglePledge this.type ', this.type);
+        
+        console.log('togglePledge this.log ', this.log);
+
+        console.log('this.isLogEmpty() ', this.isLogEmpty());
+
+        console.log('this.log.find(entry => entry.pledge.id === pledge.id) ', this.log.find(entry => entry.pledge.id === pledge.id));
+
+        console.log('this.log.find(entry => entry.pledge.id === pledge.id && entry.type === this.type) ', this.log.find(entry => entry.pledge.id === pledge.id && entry.type === this.type));
         
         const isPledgeLogged = this.isLogEmpty() ? false : this.islogTruthy(this.log.find(entry => entry.pledge.id === pledge.id && entry.type === this.type));
 
