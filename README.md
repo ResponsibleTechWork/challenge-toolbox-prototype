@@ -6,7 +6,8 @@ Welcome to the Responsible Tech Work Trello Prototype.
     git clone https://github.com/ResponsibleTechWork/challenge-toolbox-prototype.git
     yarn install
 
-## Working with the prototype
+## Building and testing
+
     yarn build
     yarn tests
 
@@ -24,6 +25,12 @@ NB Power-up state is stored by Trello. Locally there is no persistent storage.
 
 ## gh-pages
 
+### Quick release
+
+    git add .
+    git commit -m 'commit message goes here…'
+    yarn release
+
 The Trello Power-Up (rtw-challenge-toolbox-prototype) is served from a GitHub page: https://responsibletechwork.github.io/challenge-toolbox-prototype/.
 
 For more on configuring the Trello Power-Up: https://trello.com/power-ups/61891dc2d6918449e3c28bdc/edit
@@ -34,5 +41,3 @@ The gh-pages branch must contain only "public" directory files. To push the "pub
     git push origin `git subtree split --prefix public main`:gh-pages --force
 
 From https://clontz.org/blog/2014/05/08/git-subtree-push-for-deployment/
-
-*** WARNING !! CURRENT BUILD TO PUBLIC DOES NOT USE CORRECT URLS - THESE MUST BE CHANGED MANUALLY !! ***

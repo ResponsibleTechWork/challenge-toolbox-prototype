@@ -43,7 +43,7 @@ const init = async () => {
 
     if(log && log !== undefined) {
         const updatedLogFromTrello = challengeLog.setLog(log);
-        console.log('set log with log from t: ', challengeLog.setLog(updatedLogFromTrello));   
+        console.log('set log with log from t: ', updatedLogFromTrello);   
     }
 
     const showSelectedPledges = (pledges, currentPledge) => {
