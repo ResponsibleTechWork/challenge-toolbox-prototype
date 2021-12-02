@@ -8,12 +8,9 @@ const init = async () => {
 
     let t, prefs;
 
-    // console.log('isLive: ', isLive);
-
     if(isLive) {
         t = window.TrelloPowerUp.iframe();
         prefs = await t.get(trelloEnums.Scope.Board, trelloEnums.Visibility.Shared, trelloEnums.Key.ChallengePreferences);
-        // console.log('prefs: ', prefs);
     } else {
         prefs = {
             id: "spotify",
@@ -39,8 +36,6 @@ const init = async () => {
         await t.set(scope, visibility, key, selectedAuthor);
         const response = await t.get(scope, visibility, key);
         
-        console.log('return saved author: ',  response);
-
         renderAuthorsList();
     };
         

@@ -64,7 +64,6 @@ const getTrelloLabels = async ({t, challengeLog, pledges, log, context, popup = 
                 }
             });
             case trelloEnums.Mode.Popup:
-                console.log('mode ', trelloEnums.Mode.Popup);
                 return pledges.map(pledge => {
                     return {
                         text: `${pledge.text} ${getCount(context, log, pledge)}`,
@@ -73,7 +72,6 @@ const getTrelloLabels = async ({t, challengeLog, pledges, log, context, popup = 
                     }
                 });
             case trelloEnums.Mode.Modal:
-                console.log('mode ', trelloEnums.Mode.Modal);
                 return pledges.map(pledge => {
                     return {
                         text: `${pledge.text} ${getCount(context, log, pledge)}`,

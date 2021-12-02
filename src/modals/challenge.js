@@ -7,8 +7,6 @@ const init = async () => {
 
     const isLive = document.referrer === 'https://trello.com/';
 
-    // console.log('isLive: ', isLive);
-
     const pledges = sources.data.find(s => s.selected).pledges;
 
     const pledgesContainer = document.getElementById('pledges');
@@ -29,8 +27,6 @@ const init = async () => {
         log = await t.get(scope, visibility, key);
         type = t.arg('type');
 
-        // console.log(`Data stored for ${key} against ${scope} with ${visibility} access for ${capability}  : `,  log);    
-
     } else {
         type = trelloEnums.Type.Challenge;
     }
@@ -43,7 +39,6 @@ const init = async () => {
 
     if(log && log !== undefined) {
         const updatedLogFromTrello = challengeLog.setLog(log);
-        console.log('set log with log from t: ', updatedLogFromTrello);   
     }
 
     const showSelectedPledges = (pledges, currentPledge) => {
@@ -166,8 +161,6 @@ const init = async () => {
         await t.set(scope, visibility, key, value);
 
         const response = await t.get(scope, visibility, key);
-
-        console.log('returned save object: ',  response);
 
         await t.notifyParent('done');
 
