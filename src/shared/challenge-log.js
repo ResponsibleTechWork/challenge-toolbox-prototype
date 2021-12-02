@@ -50,20 +50,27 @@ class ChallengeLog {
     // private
     addPledgeToLog() {
 
-        console.log('addPledgeToLog');
+        console.log('addPledgeToLog');        
 
-        this.log.push({
-                type: this.type,
-                board: this.context.board,
-                member: this.context.member,
-                card: this.context.card,
-                pledge: {
-                    id: this.currentPledge.id,
-                    text: this.currentPledge.text,
-                    reasons: []
-                },                
-            })
-            return { isPledgeNowLogged: true, updatedPledges: this.log.map(entry => entry.pledge).filter(entry => entry.type === this.type) };
+        const pledge = {
+            type: this.type,
+            board: this.context.board,
+            member: this.context.member,
+            card: this.context.card,
+            pledge: {
+                id: this.currentPledge.id,
+                text: this.currentPledge.text,
+                reasons: []
+            },                
+        };
+
+        console.log('pledge ', pledge);
+
+        this.log.push(pledge);
+
+        console.log('log ', this.log.map(entry => entry.pledge).filter(entry => entry.type === this.type));
+            
+        return { isPledgeNowLogged: true, updatedPledges: this.log.map(entry => entry.pledge).filter(entry => entry.type === this.type) };
     };
     
     // private
@@ -85,24 +92,7 @@ class ChallengeLog {
         this.currentPledge = pledge;
         this.context = context;
 
-        console.log('togglePledge this.log ', this.log);
-        
-        console.log('togglePledge this.type ', this.type);
-        
-        console.log('togglePledge this.log ', this.log);
-
-        console.log('this.isLogEmpty() ', this.isLogEmpty());
-
-        console.log('context ', context);
-        console.log('pledge ', pledge);
-
-        console.log('this.log.find(entry => entry.pledge.id === pledge.id) ', this.log.filter(entry => parseInt(entry.pledge.id) === parseInt(pledge.id)));
-
-        console.log('this.log.find(entry => entry.pledge.id === pledge.id && entry.type === this.type) ', this.log.filter(entry => parseInt(entry.pledge.id) === parseInt(pledge.id) && entry.type === this.type));
-        
         const isPledgeLogged = this.isLogEmpty() ? false : this.islogTruthy(this.log.find(entry => parseInt(entry.pledge.id) === parseInt(pledge.id) && entry.type === this.type));
-
-        console.log('togglePledge isPledgeLogged ', isPledgeLogged);
 
         const { isPledgeNowLogged, updatedPledges } = isPledgeLogged
             ? this.removePledgeFromLog()
