@@ -71,7 +71,7 @@ const getTrelloLabels = async ({t, challengeLog, pledges, log, context, popup = 
 
     switch(mode) {
         case trelloEnums.Mode.Label:
-            pledges.map(pledge => {
+            return pledges.map(pledge => {
                 return {
                     text: pledge.text,
                     condition: trelloEnums.Condition.Always,
@@ -79,7 +79,7 @@ const getTrelloLabels = async ({t, challengeLog, pledges, log, context, popup = 
                 }
             });
             case trelloEnums.Mode.Popup:
-                pledges.map(pledge => {
+                return pledges.map(pledge => {
                     return {
                         text: `${pledge.text} ${getCount(pledge)}`,
                         condition: trelloEnums.Condition.Always,
@@ -87,7 +87,7 @@ const getTrelloLabels = async ({t, challengeLog, pledges, log, context, popup = 
                     }
                 });
             case trelloEnums.Mode.Modal:
-                pledges.map(pledge => {
+                return pledges.map(pledge => {
                     return {
                         text: `${pledge.text} ${ChallengeLog.getCustomBadgeCounts(context, log, pledge)}`,
                         condition: trelloEnums.Condition.Always,
