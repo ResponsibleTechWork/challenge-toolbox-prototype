@@ -43,25 +43,11 @@ const onLabelForActionClick = async ({t, challengeLog, context, pledge, scope, v
 
     const { isPledgeNowLogged, updatedPledges } = challengeLog.togglePledge(context, pledge);
 
-    console.log('updatedPledges ', updatedPledges);
-    console.log('scope ', scope);
-    console.log('visibility ', visibility);
-    console.log('key ', key);
-
     await t.set(scope, visibility, key, updatedPledges);
-    const rtnValue = await t.get(scope, visibility, key);
-
-    console.log('rtnValue ', rtnValue);
-
-    return rtnValue;
-    // update label in situ after click?
+    return await t.get(scope, visibility, key);
 };
 
 const getTrelloLabels = async ({t, challengeLog, pledges, log, context, popup = null, modal = null, mode = trelloEnums.Mode.Label, scope, visibility, key}) => {
-
-    console.log('scope ', scope);
-    console.log('visibility ', visibility);
-    console.log('key ', key);
 
     const getCount = (context, log, pledge) => {
         const count = ChallengeLog.getLabelVoteCount(context, log, pledge);

@@ -3,36 +3,45 @@
 Welcome to the Responsible Tech Work Trello Prototype.
 
 ## Set up
+
     git clone https://github.com/ResponsibleTechWork/challenge-toolbox-prototype.git
     yarn install
 
-## Building and testing
+## Viewing files locally
 
-    yarn build
-    yarn tests
-
-Commit updates to the main branch. The Trello Power-Up points at the trello branch. To update this branch, make a pull request.
-
-We each have a directory for experimenting under play/. To run this locally:
+(Some) Trello popups and (all) modals require independent html pages which are loaded in an iframe. These can be viewed locally (you will have to make allowances for Trello references especially the global variable t).
 
     parcel <path to file>
-    parcel ./src/modals/challenge.html
-    parcel ./src/modals/celebrate.html
 
-Parcel creates a new server endpoint at: http://localhost:1234 
+e.g. 
 
-NB Power-up state is stored by Trello. Locally there is no persistent storage.
+    parcel ./src/popups/board-buttons-popup-authors.html
 
-## gh-pages
+Parcel creates a new server endpoint where the page can be viewed at: http://localhost:1234 
 
-### Quick release
+We each have a directory for experimenting under play.
 
+## How to update the Trello Power-Up
+
+The Trello Power-Up (rtw-challenge-toolbox-prototype) is served from a GitHub page.
+
+The repo is at: https://github.com/ResponsibleTechWork/challenge-toolbox-prototype/tree/gh-pages.
+
+1) To check the tests are all passing run the command:
+
+    yarn tests
+
+2) To update the Power-Up from the command line run:
+
+    yarn build
     git commit -m 'commit message goes here…'
     yarn release
 
-The Trello Power-Up (rtw-challenge-toolbox-prototype) is served from a GitHub page: https://responsibletechwork.github.io/challenge-toolbox-prototype/.
+For more on configuring the Trello Power-Up: https://trello.com/Power-Ups/61891dc2d6918449e3c28bdc/edit.
 
-For more on configuring the Trello Power-Up: https://trello.com/power-ups/61891dc2d6918449e3c28bdc/edit
+NB Power-Up state is stored by Trello. Locally there is no persistent storage.
+
+### More on gh-pages
 
 The gh-pages branch must contain only "public" directory files. To push the "public" directory to gh-pages branch use:
 

@@ -64,20 +64,13 @@ class ChallengeLog {
 
         this.log.push(pledge);
 
-        console.log('log ', this.log);
-        console.log('this.currentPledge ', this.currentPledge);
-
         const matchingEntries = this.log.filter(entry => entry.type === this.type && entry.card === this.context.card);
-
-        console.log('matchingEntries ', matchingEntries);
 
         return { isPledgeNowLogged: true, updatedPledges: matchingEntries };
     };
     
     // private
     removePledgeFromLog() {
-
-        console.log('removePledgeFromLog');
 
         if(this.isLogEmpty()) return { isPledgeNowLogged: false, updatedPledges: [] };
         if(this.getReasonsForCurrentPledge(this.currentPledge).length > 0) {
