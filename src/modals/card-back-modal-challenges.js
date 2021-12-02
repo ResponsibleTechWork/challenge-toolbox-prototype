@@ -47,7 +47,7 @@ const init = async () => {
         console.log(response);
     };
 
-    const labels = data.labels.map(label => {
+    const labels = capability.labels.map(label => {
         return `<li>
                     <button id="${label.id}" class="btn">${label.text}</button>
                 </li>`;
