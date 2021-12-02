@@ -27,7 +27,6 @@ NB Power-up state is stored by Trello. Locally there is no persistent storage.
 
 ### Quick release
 
-    git add .
     git commit -m 'commit message goes here…'
     yarn release
 

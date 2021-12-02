@@ -59,7 +59,7 @@ const getTrelloLabels = async ({t, challengeLog, pledges, log, context, popup = 
 
     console.log('context ', context);
     console.log('log ', log);
-    console.log('pledge ', pledge);
+    console.log('pledges ', pledges);
 
     const getCount = pledge => {
         const count = ChallengeLog.getLabelVoteCount(context, log, pledge);
