@@ -20,7 +20,12 @@ const get = async t => {
     const data = await selector.getData(prefs);
 
     const pledges = await selector.getCapabilityPreferences(data, trelloEnums.Capability.CardDetailBadges);
+
+    console.log('card-detail-badges pledges ', pledges);
+
     const labels = await selector.getTrelloLabels({t, challengeLog, pledges, log, context: {board: context.board, card: context.card, member: context.member}});
+
+    console.log('card-detail-badges labels ', labels);
 
     return labels;
 };    

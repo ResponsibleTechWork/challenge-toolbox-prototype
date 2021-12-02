@@ -18,7 +18,7 @@
   },
   "scripts": {
     "build": "rm -rf dist/* && rm -rf public/* && parcel build src/index.html --public-url ./ --dist-dir public && mv ./public/popups/*.html ./public && mv ./public/modals/*.html ./public",
-    
+    "release": "git subtree push --prefix public origin gh-pages",
     "tests": "jest"
   },
   "dependencies": {

@@ -53,24 +53,33 @@ const onLabelForActionClick = async (t, challengeLog, context, pledge) => {
 
 const getTrelloLabels = async ({t, challengeLog, pledges, log, context, popup = null, modal = null}) => {
 
-    console.log('ChallengeLog.getCustomBadgeCounts(context, log, pledge) ', ChallengeLog.getCustomBadgeCounts(context, log, pledges));
+    console.log('log ', log);
+    console.log('pledges ', pledges);
+    console.log('context ', context);
+
+    const getCount = pledge => {
+        const count = ChallengeLog.getCustomBadgeCounts(context, log, pledge);
+        console.log('count ', count);
+        return count;
+    };
 
     return popup 
             ? pledges.map(pledge => {
                 return {
-                    text: `${pledge.text} ${ChallengeLog.getCustomBadgeCounts(context, log, pledge)}`,
+                    text: `${pledge.text} ${getCount(pledge)}`,
                     condition: trelloEnums.Condition.Always,
                     callback: () => onLabelForPopupClick(t, context, popup)
                 }
             })
-            : modal ?            
-                pledges.map(pledge => {
+            : modal 
+                ? pledges.map(pledge => {
                     return {
                         text: `${pledge.text} ${ChallengeLog.getCustomBadgeCounts(context, log, pledge)}`,
                         condition: trelloEnums.Condition.Always,
                         callback: () => onLabelForModalClick(t, context, popup)
                     }
-                }) : pledges.map(pledge => {
+                }) 
+                : pledges.map(pledge => {
                     return {
                         text: pledge.text,
                         condition: trelloEnums.Condition.Always,
