@@ -67,7 +67,7 @@ class ChallengeLog {
         console.log('log ', this.log);
         console.log('this.currentPledge ', this.currentPledge);
 
-        const matchingEntries = this.log.filter(entry => entry.type === this.type && parseInt(entry.pledge.id) === parseInt(this.currentPledge.id));
+        const matchingEntries = this.log.filter(entry => entry.type === this.type && entry.card === this.context.card);
 
         console.log('matchingEntries ', matchingEntries);
 
@@ -178,8 +178,6 @@ class ChallengeLog {
                     : `Celebrate`;
                     break;
         }
-
-        // console.warn('button text: ', text);
 
         return text;
     }

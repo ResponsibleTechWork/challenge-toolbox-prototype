@@ -44,10 +44,16 @@ const onLabelForActionClick = async ({t, challengeLog, context, pledge, scope, v
     const { isPledgeNowLogged, updatedPledges } = challengeLog.togglePledge(context, pledge);
 
     console.log('updatedPledges ', updatedPledges);
+    console.log('scope ', scope);
+    console.log('visibility ', visibility);
+    console.log('key ', key);
 
     await t.set(scope, visibility, key, updatedPledges);
-    return await t.get(scope, visibility, key);
+    const rtnValue = await t.get(scope, visibility, key);
 
+    console.log('rtnValue ', rtnValue);
+
+    return rtnValue;
     // update label in situ after click?
 };
 
