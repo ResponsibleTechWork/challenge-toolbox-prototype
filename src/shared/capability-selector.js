@@ -64,11 +64,12 @@ const getTrelloLabels = async ({t, challengeLog, pledges, log, context, popup = 
     const getCount = pledge => {
         const count = ChallengeLog.getLabelVoteCount(context, log, pledge);
         console.log('count ', count);
-        return (count).toString() || '';
+        return count ? (count).toString() || '' : '';
     };
 
     switch(mode) {
         case trelloEnums.Mode.Label:
+            console.log('mode ', trelloEnums.Mode.Label);
             return pledges.map(pledge => {
                 return {
                     text: `${pledge.text} ${getCount(pledge)}`,
@@ -77,6 +78,7 @@ const getTrelloLabels = async ({t, challengeLog, pledges, log, context, popup = 
                 }
             });
             case trelloEnums.Mode.Popup:
+                console.log('mode ', trelloEnums.Mode.Popup);
                 return pledges.map(pledge => {
                     return {
                         text: `${pledge.text} ${getCount(pledge)}`,
@@ -85,6 +87,7 @@ const getTrelloLabels = async ({t, challengeLog, pledges, log, context, popup = 
                     }
                 });
             case trelloEnums.Mode.Modal:
+                console.log('mode ', trelloEnums.Mode.Modal);
                 return pledges.map(pledge => {
                     return {
                         text: `${pledge.text} ${getCount(pledge)}`,

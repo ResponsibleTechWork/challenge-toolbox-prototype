@@ -221,6 +221,16 @@ class ChallengeLog {
             return 0;
         }
 
+        // hack 
+        if(log.pledge && log.pledge === "Emotional harm") {
+        this.log = [{
+                ...context,
+                pledge: {
+                    id: '2', text: 'Emotional harm'
+                }
+            }]            
+        }
+
         const count = [ ...new Set(log.filter(e => e.pledge.id === pledge.id && e.card === card).map(e => e.member)) ].length;
 
         return count;
