@@ -68,9 +68,12 @@ class ChallengeLog {
 
         this.log.push(pledge);
 
-        console.log('log ', this.log.map(entry => entry.pledge).filter(entry => entry.type === this.type));
+        const matchingEntries = this.log.map(entry => entry.type === this.type && entry.pledge.id === this.currentPledge.id);
+
+        console.log('log ', matchingEntries);
+        console.log('log ', this.log);
             
-        return { isPledgeNowLogged: true, updatedPledges: this.log.map(entry => entry.pledge).filter(entry => entry.type === this.type) };
+        return { isPledgeNowLogged: true, updatedPledges: matchingEntries };
     };
     
     // private
