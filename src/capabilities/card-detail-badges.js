@@ -23,7 +23,7 @@ const get = async t => {
 
     console.log('card-detail-badges pledges ', pledges);
 
-    const labels = await selector.getTrelloLabels({t, challengeLog, pledges, log, context: {board: context.board, card: context.card, member: context.member}});
+    const labels = await selector.getTrelloLabels({t, challengeLog, pledges, log, context: {board: context.board, card: context.card, member: context.member}, mode: trelloEnums.Mode.Label});
 
     console.log('card-detail-badges labels ', labels);
 

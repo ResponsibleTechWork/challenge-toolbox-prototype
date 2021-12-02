@@ -36,13 +36,20 @@ const Condition = Object.freeze({
     Always: 'always'
 });
 
+const Mode = Object.freeze({
+    Label: 'label',
+    Popup: 'popup',
+    Modal: 'modal'
+});
+
 const trelloEnums = {
     Scope,
     Type,
     Visibility,
     Key,
     Capability,
-    Condition
+    Condition,
+    Mode
 };
 
 export default trelloEnums;
