@@ -26,13 +26,13 @@ describe('selector validation', () => {
 
     it('should return labels for card-detail-badges', async () => {
         const data = await selector.getData(prefs);
-        const _labels = await selector.getCapabilityPreferences(data, trelloEnums.Capability.CardDetailBadges);
+        const _labels = await selector.getLabelsByCapability(data, trelloEnums.Capability.CardDetailBadges);
         expect(_labels).toStrictEqual(labels);
     });
 
     it('should not return labels for card-buttons', async () => {
         const data = await selector.getData(prefs);
-        const _labels = await selector.getCapabilityPreferences(data, trelloEnums.Capability.CardButtons);
+        const _labels = await selector.getLabelsByCapability(data, trelloEnums.Capability.CardButtons);
         expect(_labels).toStrictEqual([]);
     });
 
@@ -53,8 +53,8 @@ describe('selector validation', () => {
 
     it('should return trello badges without popup', async () => {
         const data = await selector.getData(prefs);
-        const pledges = await selector.getCapabilityPreferences(data, trelloEnums.Capability.CardDetailBadges);
-        const trelloLabels = await selector.getTrelloLabels({pledges, log:[], context:{}});
+        const labels = await selector.getLabelsByCapability(data, trelloEnums.Capability.CardDetailBadges);
+        const trelloLabels = await selector.getTrelloLabels({labels, log:[], context:{}});
         expect(trelloLabels.length).toStrictEqual(3); // mock here
     });
 
@@ -62,8 +62,8 @@ describe('selector validation', () => {
     //     const data = await selector.getData(prefs);
     //     data.popup.enabled = true;
     //     const popup = await selector.getPopup(data);
-    //     const _labels = await selector.getCapabilityPreferences(data, trelloEnums.Capability.CardDetailBadges);
-    //     const trelloLabels = await selector.getTrelloLabels(_labels, popup);
+    //     const labels = await selector.getLabelsByCapability(data, trelloEnums.Capability.CardDetailBadges);
+    //     const trelloLabels = await selector.getTrelloLabels(labels, popup);
     //     expect(trelloLabels.length).toStrictEqual(3); // mock here
     // });
     

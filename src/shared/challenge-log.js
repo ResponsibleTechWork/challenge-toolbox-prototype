@@ -193,7 +193,7 @@ class ChallengeLog {
     }
 
     // public static 
-    static getLabelVoteCount(context, log, pledge = {}) {
+    static getLabelVoteCount(context, log, label = {}) {
 
         if(log === undefined) {            
             return 0;
@@ -201,7 +201,7 @@ class ChallengeLog {
 
         const card = context.card;
 
-        const count = [ ...new Set(log.filter(e => e.pledge.id === pledge.id && e.card === card).map(e => e.member)) ].length;
+        const count = [ ...new Set(log.filter(e => e.pledge.id === label.id && e.card === card).map(e => e.member)) ].length;
 
         return count;
     }
