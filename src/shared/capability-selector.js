@@ -57,6 +57,10 @@ const onLabelForActionClick = async (t, challengeLog, context, pledge) => {
 
 const getTrelloLabels = async ({t, challengeLog, pledges, log, context, popup = null, modal = null, mode = trelloEnums.Mode.Label}) => {
 
+    console.log('context ', context);
+    console.log('log ', log);
+    console.log('pledge ', pledge);
+
     const getCount = pledge => {
         const count = ChallengeLog.getLabelVoteCount(context, log, pledge);
         console.log('count ', count);
@@ -85,7 +89,7 @@ const getTrelloLabels = async ({t, challengeLog, pledges, log, context, popup = 
                     return {
                         text: `${pledge.text} ${getCount(pledge)}`,
                         condition: trelloEnums.Condition.Always,
-                        callback: () => onLabelForModalClick(t, context, popup)
+                        callback: () => onLabelForModalClick(t, context, modal)
                     }
                 });
     }

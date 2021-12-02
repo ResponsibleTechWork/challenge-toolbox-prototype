@@ -216,6 +216,11 @@ class ChallengeLog {
 
         const card = context.card;
 
+        if(card === undefined || card === null) {
+            console.log('no card');
+            return 0;
+        }
+
         const count = [ ...new Set(log.filter(e => e.pledge.id === pledge.id && e.card === card).map(e => e.member)) ].length;
 
         return count;
