@@ -24,10 +24,13 @@ const init = async () => {
     let selectedAuthor = data.authors.find(a => a.id === prefs.id);
 
     const selectAuthor = async (e, id) => {
-
-        if(!isLive) return console.log(id);
-
+        
         selectedAuthor = data.authors.find(a => a.id === id);
+
+        if(!isLive) {
+            renderAuthorsList();
+            return;
+        }
 
         const scope = trelloEnums.Scope.Board;
         const visibility = trelloEnums.Visibility.Shared;
@@ -43,8 +46,8 @@ const init = async () => {
 
         const authors = data.authors.map(a => {
 
-            return `<li>
-                        <button id="${a.id}" class="btn"><span class="${a.id === selectedAuthor.id ? 'selected' : null}">${a.title}</span></button>
+            return `<li class="list">
+                        <button id="${a.id}" class="btn"><span class="${a.id === selectedAuthor.id ? 'selected' : 'unselected'}"></span>${a.title}</button>
                     </li>`;
         });
     

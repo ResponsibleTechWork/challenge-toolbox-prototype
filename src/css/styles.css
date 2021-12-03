@@ -101,6 +101,22 @@ a {
     text-align: left;
 }
 
+#authors .list .btn {
+    display: flex;
+    align-items: center;
+}
+
+#authors .unselected {
+    height: 1rem;
+    width: 1rem;
+    margin-right: .25rem;
+    content: url('https://cdn.hyperdev.com/us-east-1%3A3d31b21c-01a0-4da2-8827-4bc6e88b7618%2Ficon-gray.svg');
+}
+
 #authors .selected {
+    height: 1rem;
+    width: 1rem;
+    margin-right: .25rem;
+    content: url('https://cdn.hyperdev.com/us-east-1%3A3d31b21c-01a0-4da2-8827-4bc6e88b7618%2Ficon-black.svg');
     font-weight: bold;
 }
