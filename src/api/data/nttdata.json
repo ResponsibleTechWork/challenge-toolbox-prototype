@@ -1,0 +1,35 @@
+{
+    "title": "NTT DATA Group’s AI Guidelines",
+    "description": "We will use leading-edge technology to help solve social problems, such as labor shortage, and aim to be recognized as trustworthy by all individuals, businesses, and the society as a whole, including our clients.",
+    "id": "nttdata-ai-guidelines",
+    "url": "https://www.nttdata.com/global/en/about-us/ai-guidelines",
+    "author": "NTT DATA Group",
+    "authorId": "nttdata",
+    "challenges": [
+        {
+            "id": "1NTT",
+            "title": "Realizing Well-being and Sustainability of Society",
+            "description": "NTT DATA will focus on sustainability as well as well-being of human society. NTT DATA will promote solving social issues by using AI in recognition of diversity and in consideration with basic human rights. AI should not harm humans; instead, we will use AI to empower humans by supporting their lives and extending their capabilities."
+        },
+        {
+            "id": "2NTT",
+            "title": "Co-Creating New Values by AI",
+            "description": "NTT DATA strives to harness the potential benefits of AI and promote innovation by interacting and co-creating with AI stakeholders, including those who engage in research, development, operation, and utilization of AI and by establishing long-term relationships with clients."
+        },
+        {
+            "id": "3NTT",
+            "title": "Fair, Reliable, and Explainable AI",
+            "description": "For users of AI to realize its fairness and trustworthiness, NTT DATA invests reasonable efforts in presenting the decisions based on AI in a form that can be understood by humans and doesn’t cause unfair discrimination. We will strive to minimize concerns about the AI's decision-making process to apply constant provision of appropriate AI services."
+        },
+        {
+            "id": "4NTT",
+            "title": "Data Protection",
+            "description": "Privacy and security is critical to NTT DATA in providing AI services. Our AI leverages the principles of security and design to protect against unauthorized access, strengthen data traceability, and develop the proper means and policy for collecting, storing, using, and providing personal information."
+        },
+        {
+            "id": "5NTT",
+            "title": "Contribution to Dissemination of Sound AI",
+            "description": "NTT DATA will work to further the understanding of AI in order to accelerate its acceptance. NTT DATA will also contribute to the development of society with healthy and harmonious dissemination of AI by improving literacy of AI users and by service design that is universal design compliant."
+        }
+       ]
+}
