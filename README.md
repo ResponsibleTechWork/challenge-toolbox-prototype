@@ -33,8 +33,7 @@ The repo is at: https://github.com/ResponsibleTechWork/challenge-toolbox-prototy
 
 2) To update the Power-Up from the command line run:
 
-    yarn build  
-    git commit -m 'commit message goes here…'  
+    yarn build 'commit message goes here…'  
     yarn release
 
 For more on configuring the Trello Power-Up: https://trello.com/Power-Ups/61891dc2d6918449e3c28bdc/edit.
