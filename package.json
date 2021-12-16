@@ -12,16 +12,22 @@
     "@parcel/babel-preset-env": "^2.0.1",
     "ajv": "^8.8.2",
     "babel-jest": "^27.3.1",
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
     "jest": "^27.3.1",
+    "node-fetch": "^3.1.0",
     "parcel": "^2.0.0",
     "regenerator-runtime": "^0.13.9"
   },
   "scripts": {
     "build": "rm -rf dist/* && rm -rf public/* && parcel build src/index.html --public-url ./ --dist-dir public && mv ./public/popups/*.html ./public && mv ./public/modals/*.html ./public && git add . && git commit -m $1",
     "release": "git push && git subtree push --prefix public origin gh-pages",
-    "tests": "jest"
+    "tests": "jest",
+    "start": "node ./src/shared/server.js"
   },
   "dependencies": {
     "save-dev": "^0.0.1-security"
-  }
+  },
+  "type": "module"
 }
