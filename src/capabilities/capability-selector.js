@@ -1,6 +1,6 @@
 import regeneratorRuntime from "regenerator-runtime";
-import ChallengeLog from '../shared/challenge-log';
-import trelloEnums from '../shared/trello-enums';
+import ChallengeLog from '../challenge-log/challenge-log';
+import trelloEnums from '../trello-api/trello-enums';
 import api from '../api/api';
 
 const getData = async prefs => {

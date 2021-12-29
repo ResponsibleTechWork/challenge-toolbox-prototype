@@ -1,7 +1,7 @@
 import regeneratorRuntime from "regenerator-runtime";
-import sources from '../shared/sources.json';
-import trelloEnums from '../shared/trello-enums';
-import ChallengeLog from '../shared/challenge-log';
+import sources from '../challenge-log/sources.json';
+import trelloEnums from '../trello-api/trello-enums';
+import ChallengeLog from '../challenge-log/challenge-log';
 
 const init = async () => {
 

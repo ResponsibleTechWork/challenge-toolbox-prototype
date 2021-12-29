@@ -1,5 +1,5 @@
-import trelloEnums from '../shared/trello-enums';
-import ChallengeLog from '../shared/challenge-log';
+import trelloEnums from '../trello-api/trello-enums';
+import ChallengeLog from '../challenge-log/challenge-log';
 
 const init = async () => {
 

@@ -1,6 +1,6 @@
-import trelloEnums from '../shared/trello-enums';
+import trelloEnums from '../trello-api/trello-enums';
 
-import ChallengeLog from '../shared/challenge-log';
+import ChallengeLog from '../challenge-log/challenge-log';
 
 const GRAY_ICON = 'https://cdn.hyperdev.com/us-east-1%3A3d31b21c-01a0-4da2-8827-4bc6e88b7618%2Ficon-gray.svg';
 

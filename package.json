@@ -25,7 +25,7 @@
     "build": "rm -rf dist/* && rm -rf public/* && parcel build src/index.html --public-url ./ --dist-dir public && mv ./public/popups/*.html ./public && mv ./public/modals/*.html ./public && git add . && git commit -m $1",
     "release": "git push && git subtree push --prefix public origin gh-pages",
     "tests": "jest",
-    "start": "node ./src/shared/server.js"
+    "start": "node ./src/server/server.js"
   },
   "dependencies": {    
     "save-dev": "^0.0.1-security"

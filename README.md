@@ -70,5 +70,5 @@ To interact with the Trello API:
 
 2. Start the web client
 
-    parcel ./src/shared/trello-client.html
+    parcel ./src/trello-api/trello-client.html
 

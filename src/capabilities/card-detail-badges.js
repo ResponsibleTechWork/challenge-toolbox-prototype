@@ -1,6 +1,6 @@
-import ChallengeLog from '../shared/challenge-log';
-import trelloEnums from '../shared/trello-enums';
-import selector from '../shared/capability-selector';
+import ChallengeLog from '../challenge-log/challenge-log';
+import trelloEnums from '../trello-api/trello-enums';
+import selector from '../capabilities/capability-selector';
 
 const get = async t => {
 

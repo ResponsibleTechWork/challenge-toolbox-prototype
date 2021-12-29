@@ -1,6 +1,6 @@
 import regeneratorRuntime from "regenerator-runtime";
 import data from '../api/data/authors.json';
-import trelloEnums from '../shared/trello-enums';
+import trelloEnums from '../trello-api/trello-enums';
 
 const init = async () => {
 

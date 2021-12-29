@@ -1,4 +1,4 @@
-import trelloEnums from './trello-enums';
+import trelloEnums from '../trello-api/trello-enums';
 
 class ChallengeLog {
 

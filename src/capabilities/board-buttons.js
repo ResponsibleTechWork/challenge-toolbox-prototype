@@ -1,4 +1,4 @@
-import trelloEnums from '../shared/trello-enums';
+import trelloEnums from '../trello-api/trello-enums';
 
 const get = async t => {
 

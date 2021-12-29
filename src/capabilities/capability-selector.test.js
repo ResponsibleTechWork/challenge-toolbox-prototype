@@ -1,4 +1,4 @@
-import trelloEnums from '../shared/trello-enums';
+import trelloEnums from '../trello-api/trello-enums';
 import selector from './capability-selector';
 
 describe('selector validation', () => {
