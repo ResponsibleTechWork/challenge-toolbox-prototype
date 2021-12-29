@@ -5,5 +5,6 @@
       "@parcel/transformer-js",
       "@parcel/transformer-react-refresh-wrap"
     ]    
-  }
+  },
+  "reporters": ["@parcel/reporter-bundle-buddy", "@parcel/reporter-bundle-analyzer"]
 }
