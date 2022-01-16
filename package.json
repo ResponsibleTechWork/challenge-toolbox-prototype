@@ -10,6 +10,9 @@
     "@babel/plugin-proposal-object-rest-spread": "^7.16.0",
     "@babel/preset-env": "^7.16.0",
     "@parcel/babel-preset-env": "^2.0.1",
+    "@parcel/reporter-bundle-analyzer": "^2.2.0",
+    "@parcel/reporter-bundle-buddy": "^2.2.0",
+    "@parcel/reporter-cli": "^2.0.1",
     "ajv": "^8.8.2",
     "babel-jest": "^27.3.1",
     "cors": "^2.8.5",
@@ -18,8 +21,7 @@
     "jest": "^27.3.1",
     "node-fetch": "^3.1.0",
     "parcel": "^2.0.0",
-    "regenerator-runtime": "^0.13.9",
-    "@parcel/reporter-cli": "^2.0.1"
+    "regenerator-runtime": "^0.13.9"
   },
   "scripts": {
     "build": "rm -rf dist/* && rm -rf public/* && parcel build src/index.html --public-url ./ --dist-dir public && mv ./public/popups/*.html ./public && mv ./public/modals/*.html ./public && git add . && git commit -m $1",
@@ -27,7 +29,7 @@
     "tests": "jest",
     "start": "node ./src/server/server.js"
   },
-  "dependencies": {    
+  "dependencies": {
     "save-dev": "^0.0.1-security"
   },
   "type": "module"
